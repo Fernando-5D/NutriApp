@@ -5,6 +5,7 @@
      - Luis Fernando Alvarez Zandate <br>
        <img src="fotoLFAZ.jpeg" width="200"/>
        
-     - Edgar Uriel Morales Torres
+     - Edgar Uriel Morales Torres <br>
+       <img src="fotini.jpeg" width="200"/>
  
   3. **Analisis de la Base de Datos:**
