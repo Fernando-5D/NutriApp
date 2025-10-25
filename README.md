@@ -1,6 +1,6 @@
 # Documentación de Aplicación
   1. **Objetivo:**
-    Crear una aplicacion web nutricional que ofrezca recetas, informacion de inredientes y productos
+    Crear una aplicacion web nutricional que ofrezca recetas, informacion de ingredientes y productos
 
   2. **Integrantes:**
     - Luis Fernando Alvarez Zandate <br>
