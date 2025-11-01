@@ -278,7 +278,7 @@ simple y accesible.
   |                  | logging          | enfoque           | experiencia       |
   |                  |                  | profesional       | moderna y         |
   |                  |                  |                   | accesible         |
-  |:-----------------|:-----------------|:------------------|:------------------|
+  |------------------|------------------|- -----------------|-------------------|
 
 **Diseño y Resultados de la Encuesta**
 
