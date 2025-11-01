@@ -10,6 +10,5 @@
     <img src="static/img/readme/fotini.jpg" width="200"/>
 
 3. **Investigación:**
-  test
 
 4. **Analisis de la Base de Datos:**
