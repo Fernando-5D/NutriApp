@@ -228,54 +228,57 @@ simple y accesible.
 
 <img src="static/img/readme/Yazio.png" width="200"/>
 
-  -------------------------------------------------------------------------
-  Aspecto           MyFitnessPal      Cronometer         YAZIO
-  ----------------- ----------------- ------------------ ------------------
-  Funcionalidades   Registro de       Registro detallado Registro de
-  principales       alimentos,        de alimentos,      alimentos, escaneo
-                    escaneo de        enfoque en         de códigos, planes
-                    códigos, base de  micronutrientes,   de dieta,
-                    datos enorme,     dashboard          seguimiento de
-                    seguimiento de    avanzado, tracking ayuno
-                    calorías y        profesional,       intermitente,
-                    macros, planes de escaneo de códigos recetas integradas
-                    dieta básicos                        
-
-  Experiencia de    Fácil de usar,    Interfaz orientada Muy amigable,
-  usuario (UX / UI) interfaz rápida,  a datos, más       onboarding guiado,
-                    información       técnica, curva de  fácil de usar,
-                    abundante, curva  aprendizaje alta   diseño moderno y
-                    de aprendizaje                       limpio
-                    media                                
-
-  Modelo de negocio Freemium (gratis  Gratuita con       Freemium con PRO
-                    con funciones     opción Gold/Pro    (más nutrientes,
-                    básicas, Premium  (funciones         reconocimiento de
-                    con análisis      avanzadas y para   comidas por foto,
-                    avanzados)        profesionales)     reportes)
-
-  Puntos fuertes    Base de datos     Precisión          Experiencia de
-                    enorme,           nutricional,       usuario amigable,
-                    ecosistema        profundidad en     registro rápido
-                    maduro, registro  micronutrientes,   por foto,
-                    rápido, comunidad herramientas para  integración con
-                    amplia            profesionales      ayuno intermitente
-
-  Debilidades       Calidad variable  Curva de           Menos detalle en
-                    de entradas       aprendizaje alta,  micronutrientes,
-                    comunitarias,     menos comunidad,   funciones clave
-                    algunas funciones menos recetas      reservadas a PRO
-                    detrás de Premium comerciales        
-
-  Características   Evolución         Búsqueda avanzada  IA para
-  innovadoras       constante,        por nutrientes,    reconocimiento de
-                    mejoras en        reportes y         comidas,
-                    registro y uso de gráficas de        seguimiento de
-                    IA para facilitar tendencias,        ayuno guiado,
-                    logging           enfoque            experiencia
-                                      profesional        moderna y
-                                                         accesible
-  -------------------------------------------------------------------------
+  
+  |Aspecto           |MyFitnessPal      |Cronometer         |YAZIO
+  |----------------- |----------------- |------------------ |------------------
+  |Funcionalidades   | Registro de       |Registro detallado|Registro de
+  |principales       | alimentos,        |de alimentos,     | alimentos, escaneo
+  |                  | escaneo de        |enfoque en        | de códigos, planes
+  |                  | códigos, base de  |micronutrientes,  | de dieta,
+  |                  | datos enorme,     |dashboard         | seguimiento de
+  |                  | seguimiento de    |avanzado, tracking| ayuno
+  |                  | calorías y        |profesional,      | intermitente,
+  |                  | macros, planes de |recetas integradas|
+  |                  | escaneo de códigos|                  |
+  |                  | dieta básicos    |                   |  
+  |                  |                  |                   |
+  |                  |                  |                   |
+  |                  |                  |                   |
+  |Experiencia de    |Fácil de usar,    |Interfaz orientada |Muy amigable,
+  |usuario (UX / UI) | interfaz rápida, | a datos, más      | onboarding guiado,
+  |                  | información      | técnica, curva de | fácil de usar,
+  |                  | abundante, curva | aprendizaje alta  | diseño moderno y
+  |                  | de aprendizaje   |                   | limpio
+  |                  | media            |                    | 
+  |                  |                  |                   |
+  |Modelo de negocio | Freemium (gratis | Gratuita con      | Freemium con PRO
+  |                  | con funciones    | opción Gold/Pro   | (más nutrientes,
+  |                  | básicas, Premium | (funciones        | reconocimiento de
+  |                  | con análisis     | avanzadas y para  | comidas por foto,
+  |                  | avanzados)       | profesionales)    | reportes)
+  |                  |                  |                   |
+  |Puntos fuertes    | Base de datos    | Precisión         | Experiencia de
+  |                  | enorme,          | nutricional,      | usuario amigable,
+  |                  | ecosistema       | profundidad en    | registro rápido
+  |                  | maduro, registro | micronutrientes,  | por foto,
+  |                  | rápido, comunidad| herramientas para | integración con
+  |                  | amplia           | profesionales     | ayuno intermitente
+  |                  |                  |                   |
+  |Debilidades       | Calidad variable | Curva de          | Menos detalle en
+  |                  | de entradas      | aprendizaje alta, | micronutrientes,
+  |                  | comunitarias,    | menos comunidad,  | funciones clave
+  |                  | algunas funciones| menos recetas     | reservadas a PRO
+  |                  | detrás de Premium| comerciales       |
+  |                  |                  |                   |
+  |Características   | Evolución        | Búsqueda avanzada | IA para
+  |innovadoras       | constante,       | por nutrientes,   | reconocimiento de
+  |                  | mejoras en       | reportes y        | comidas,
+  |                  | registro y uso de| gráficas de       | seguimiento de
+  |                  | IA para facilitar| tendencias,       | ayuno guiado,
+  |                  | logging          | enfoque           | experiencia
+  |                  |                  | profesional       | moderna y
+  |                  |                  |                   | accesible
+  |:-----------------|:-----------------|:-------------------|:--------------------
 
 **Diseño y Resultados de la Encuesta**
 
@@ -368,11 +371,11 @@ observaciones y comparaciones de las respuestas abiertas.
 
 -   Edad
 
-<img src="static/img/readme/Edad.png" width="200"/>
+<img src="static/img/readme/Edad.png" width="300"/>
 
 -   ¿Con que frecuencia usas apps nutricionales?
 
-<img src="static/img/readme/Preg1.png" width="200"/>
+<img src="static/img/readme/Preg1.png" width="300"/>
 
 -   ¿Qué tan importante es para ti que las recetas incluyan información
     nutricional detallada (calorías, proteínas, grasas, carbohidratos,
@@ -383,16 +386,16 @@ observaciones y comparaciones de las respuestas abiertas.
 -   ¿Qué tan fácil te resulta usar una app de nutrición promedio (en
     cuanto a diseño, menús y navegación)?
 
-<img src="static/img/readme/Preg3.png" width="200"/>
+<img src="static/img/readme/Preg3.png" width="300"/>
 
 -   ¿Te gustaría que la app incluyera recordatorios o notificaciones
     para ayudarte a seguir tus hábitos saludables?
 
-<img src="static/img/readme/Preg4.png" width="200"/>
+<img src="static/img/readme/Preg4.png" width="300"/>
 
 -   ¿Qué funciones y/o herramientas valoras en una app nutricional?
 
-<img src="static/img/readme/Preg5.png" width="200"/>
+<img src="static/img/readme/Preg5.png" width="300"/>
 
 **Análisis de Datos**
 
