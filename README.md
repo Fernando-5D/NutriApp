@@ -58,8 +58,6 @@
     compararon en una tabla resumida para facilitar la visualización de
     diferencias y similitudes entre las aplicaciones.
 
-    **\
-    **
 
     **Análisis de Aplicaciones**
 
