@@ -26,21 +26,21 @@
 
     **Objetivos de la Investigación**
 
-    1.  Identificar y comparar las funcionalidades principales de cada
+1.  Identificar y comparar las funcionalidades principales de cada
         aplicación.
 
-    2.  Analizar la experiencia de usuario (facilidad de uso y diseño) de
+2.  Analizar la experiencia de usuario (facilidad de uso y diseño) de
         cada plataforma.
 
-    3.  Examinar los modelos de negocio y las opciones de suscripción de
+3.  Examinar los modelos de negocio y las opciones de suscripción de
         cada aplicación.
 
-    4.  Determinar los puntos fuertes y débiles de cada aplicación.
+4.  Determinar los puntos fuertes y débiles de cada aplicación.
 
-    5.  Reconocer las características innovadoras y diferenciadoras que
+5.  Reconocer las características innovadoras y diferenciadoras que
         ofrecen cada una.
 
-    6.  Tomar notas de cada una para poder crear la nuestra.
+6.  Tomar notas de cada una para poder crear la nuestra.
 
     **Metodología Utilizada**
 
