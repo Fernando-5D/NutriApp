@@ -230,17 +230,17 @@
     |Aspecto           |MyFitnessPal      |Cronometer         |YAZIO              |
     |----------------- |----------------- |------------------ |------------------ |
     |**Funcionalidades**| Registro de      |Registro detallado|Registro de        | 
-    |**principales**     | alimentos,       |de alimentos,     | alimentos, escaneo|
-    |                  | escaneo de       |enfoque en        | de códigos, planes|
-    |                  | códigos, base de |micronutrientes,  | de dieta,         |
-    |                  | datos enorme,    |dashboard         | seguimiento de    |
-    |                  | seguimiento de   |avanzado, tracking| ayuno             |
-    |                  | calorías y       |profesional,      | intermitente,     |
-    |                  | macros, planes de|recetas integradas|                   |
-    |                  | escaneo de código|                  |                   |
+    |**principales**   | alimentos,       |de alimentos,      | alimentos, escaneo|
+    |                  | escaneo de       |enfoque en         | de códigos, planes|
+    |                  | códigos, base de |micronutrientes,   | de dieta,         |
+    |                  | datos enorme,    |dashboard          | seguimiento de    |
+    |                  | seguimiento de   |avanzado, tracking | ayuno             |
+    |                  | calorías y       |profesional,       | intermitente,     |
+    |                  | macros, planes de|recetas integradas |                   |
+    |                  | escaneo de código|                   |                   |
     |                  | dieta básicos    |                   |                   | 
     |                  |                  |                   |                   |
-    |                  |                  |                   |                   |
+    |----------------- |------------------| ----------------- | ----------------- |
     |                  |                  |                   |                   |
     |**Experiencia de**|Fácil de usar,    |Interfaz orientada |Muy amigable,      |
     |**usuario**       | interfaz rápida, | a datos, más      | onboarding guiado,|
