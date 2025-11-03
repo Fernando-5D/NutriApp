@@ -229,7 +229,7 @@
     
     |Aspecto           |MyFitnessPal      |Cronometer         |YAZIO              |
     |----------------- |----------------- |------------------ |------------------ |
-    |**Funcionalidades**| Registro de      |Registro detallado|Registro de        | 
+    |**Funcionalidades**| Registro de     |Registro detallado | Registro de        | 
     |**principales**   | alimentos,       |de alimentos,      | alimentos, escaneo|
     |                  | escaneo de       |enfoque en         | de códigos, planes|
     |                  | códigos, base de |micronutrientes,   | de dieta,         |
@@ -240,7 +240,7 @@
     |                  | escaneo de código|                   |                   |
     |                  | dieta básicos    |                   |                   | 
     |                  |                  |                   |                   |
-    |----------------- |------------------| ----------------- | ----------------- |
+    |                  |                  |                   |                   |
     |                  |                  |                   |                   |
     |**Experiencia de**|Fácil de usar,    |Interfaz orientada |Muy amigable,      |
     |**usuario**       | interfaz rápida, | a datos, más      | onboarding guiado,|
@@ -276,7 +276,7 @@
     |                  | logging          | enfoque           | experiencia       |
     |                  |                  | profesional       | moderna y         |
     |                  |                  |                   | accesible         |
-    |  :-----------    |------------------|-------------------|-------------------|
+    |------------------|------------------|-------------------|-------------------|
 
     **Diseño y Resultados de la Encuesta**
 
