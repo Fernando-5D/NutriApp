@@ -38,38 +38,41 @@
           aria-current="true"></button>
         <button type="button" data-bs-target="#carrusel" data-bs-slide-to="1"></button>
         <button type="button" data-bs-target="#carrusel" data-bs-slide-to="2"></button>
-        <button type="button" data-bs-target="#carrusel" data-bs-slide-to="3"></button>
-        <button type="button" data-bs-target="#carrusel" data-bs-slide-to="4"></button>
       </div>
 
       <div class="carousel-inner">
-        {% for r in recetas.recipes %}
-        {% if r == recetas.recipes[0] %}
         <div class="carousel-item active" data-bs-interval="5000">
           <a href="/">
-            <img src="{% if r.image and r.image != "" %}{{ r.image }}{% else %}/static/img/menu.png{% endif %}"
-              style="width: 1400px; height: 525px;" alt="{{ r.title }}">
+            <img src="static/img/sinImagen.png" class="bg-secondary-subtle" style="width: 1400px; height: 525px;">
 
             <div class="carousel-caption">
               <h5 class="d-inline-flex text-capitalize p-2 rounded rounded-3"
-                style="background-color: rgba(0, 0, 0, .25);">{{ r.title }}</h5>
+                style="background-color: rgba(0, 0, 0, .25);">Imagen 1</h5>
             </div>
           </a>
         </div>
-        {% else %}
+
         <div class="carousel-item" data-bs-interval="5000">
           <a href="/">
-            <img src="{% if r.image and r.image != "" %}{{ r.image }}{% else %}/static/img/menu.png{% endif %}"
-              style="width: 1400px; height: 525px;" alt="{{ r.title }}">
+            <img src="static/img/sinImagen.png" class="bg-secondary-subtle" style="width: 1400px; height: 525px;">
 
             <div class="carousel-caption">
               <h5 class="d-inline-flex text-capitalize p-2 rounded rounded-3"
-                style="background-color: rgba(0, 0, 0, .25);">{{ r.title }}</h5>
+                style="background-color: rgba(0, 0, 0, .25);">Imagen 2</h5>
             </div>
           </a>
         </div>
-        {% endif %}
-        {% endfor %}
+        
+        <div class="carousel-item" data-bs-interval="5000">
+          <a href="/">
+            <img src="static/img/sinImagen.png" class="bg-secondary-subtle" style="width: 1400px; height: 525px;">
+
+            <div class="carousel-caption">
+              <h5 class="d-inline-flex text-capitalize p-2 rounded rounded-3"
+                style="background-color: rgba(0, 0, 0, .25);">Imagen 3</h5>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
 
@@ -83,11 +86,12 @@
 
   <main>
     <div class="p-5">
+      {% block body %}
       <h2 class="text-center">Bienvenid@, Usuario!</h2>
 
       <div class="m-5">
         <h1>Recetas</h1>
-        <div class="row">
+        <div class="row ms-1 justify-content-evenly">
           <div class="col card">
             <p class="fs-1">test</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
@@ -120,7 +124,7 @@
 
       <div class="m-5">
         <h1>Ingredientes</h1>
-        <div class="row">
+        <div class="row ms-1 justify-content-evenly">
           <div class="col card">
             <p class="fs-1">test</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
@@ -153,7 +157,7 @@
 
       <div class="m-5">
         <h1>Productos</h1>
-        <div class="row">
+        <div class="row ms-1 justify-content-evenly">
           <div class="col card">
             <p class="fs-1">test</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
@@ -186,7 +190,7 @@
 
       <div class="m-5">
         <h1>Menus</h1>
-        <div class="row">
+        <div class="row ms-1 justify-content-evenly">
           <div class="col card">
             <p class="fs-1">test</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
@@ -216,12 +220,13 @@
           </div>
         </div>
       </div>
+      {% endblock body %}
     </div>
   </main>
 
   <footer>
-    <div class="border border-2">
-      <p class="py-3 text-center text-secondary">Luis Fernando Alvarez Zandate | Edgar Uriel Morales Torres</p>
+    <div class="bg-dark">
+      <p class="py-3 text-center text-light fw-semibold">Luis Fernando Alvarez Zandate | Edgar Uriel Morales Torres</p>
     </div>
   </footer>
 
