@@ -124,13 +124,11 @@ Integración con IA y rutinas de ayuno, interfaz moderna y accesible.
 | Aspecto | MyFitnessPal | Cronometer | YAZIO |
 |----------|---------------|-------------|--------|
 | **Funcionalidades principales** |Registro de alimentos, escaneo de códigos, base de datos enorme, seguimiento de calorías y macros, planes de dieta básicos| Registro detallado de alimentos, enfoque en micronutrientes, dashboard avanzado, tracking profesional, escaneo de códigos | Registro de alimentos, escaneo de códigos, planes de dieta, seguimiento de ayuno intermitente, recetas integradas |
-| **Experiencia de usuario (UX/UI)** | Rápida, informativa, curva media | Técnica, orientada a datos, curva alta | Muy amigable, diseño limpio |
-| **Modelo de negocio** | Freemium (Premium con análisis avanzados) | Gratuito con Gold/Pro | Freemium con PRO (IA y reportes) |
-| **Puntos fuertes** | Base de datos grande, comunidad activa | Precisión nutricional, herramientas pro | Interfaz moderna, reconocimiento por foto |
-| **Debilidades** | Calidad variable en entradas, Premium limitado | Curva alta, poca comunidad | Menos detalle técnico, funciones bloqueadas |
-| **Características innovadoras** | IA en registro, evolución constante | Análisis por nutrientes raros | IA, seguimiento de ayuno y recetas guiadas |
-
----
+| **Experiencia de usuario (UX/UI)** | Fácil de usar, interfaz rápida, información abundante, curva de aprendizaje media | Interfaz orientada a datos, más técnica, curva de aprendizaje alta | Muy amigable, onboarding guiado, fácil de usar, diseño moderno y limpio |
+| **Modelo de negocio** | Freemium (gratis con funciones básicas, Premium con análisis avanzados) | Gratuita con opción Gold/Pro (funciones avanzadas y para profesionales) | Freemium con PRO (más nutrientes, reconocimiento de comidas por foto, reportes) |
+| **Puntos fuertes** | Base de datos enorme, ecosistema maduro, registro rápido, comunidad amplia | Precisión nutricional, profundidad en micronutrientes, herramientas para profesionales | Experiencia de usuario amigable, registro rápido por foto, integración con ayuno intermitente |
+| **Debilidades** | Calidad variable de entradas comunitarias, algunas funciones detrás de Premium | Curva de aprendizaje alta, menos comunidad, menos recetas comerciales | Menos detalle en micronutrientes, funciones clave reservadas a PRO |
+| **Características innovadoras** |Evolución constante, mejoras en registro y uso de IA para facilitar logging | Búsqueda avanzada por nutrientes, reportes y gráficas de tendencias, enfoque profesional | IA para reconocimiento de comidas, seguimiento de ayuno guiado, experiencia moderna y accesible |
 
 ##  Diseño y Resultados de la Encuesta
 
@@ -178,8 +176,6 @@ Algunos ejemplos:
 - **Funciones valoradas**  
   <img src="static/img/readme/Preg5.png" width="300"/>
 
----
-
 ##  Análisis de Datos
 
 - **Experiencias previas:** En su mayoría negativas por pago obligatorio o dificultad de uso.  
@@ -198,8 +194,6 @@ Algunos ejemplos:
 Los usuarios buscan una aplicación **simple, confiable y práctica**, enfocada en mejorar la alimentación más que en perder peso.  
 Valoran recetas saludables, variadas y rápidas, junto con herramientas que regulen hábitos y calorías.  
 Además, prefieren interfaces **claras, limpias y efectivas**, que equilibren funcionalidad y usabilidad.
-
----
 
 ##  Conclusiones y Oportunidades
 
