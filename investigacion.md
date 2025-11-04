@@ -2,9 +2,9 @@
 
 ## Introducción
 
-La nutrición es un componente fundamental para mantener una vida saludable. En la actualidad, las aplicaciones móviles y web se han convertido en herramientas accesibles que permiten a los usuarios llevar un control detallado de su alimentación, seguimiento de calorías, macronutrientes y hábitos alimenticios.  
+La nutrición es un componente fundamental para mantener una vida. En la actualidad, las aplicaciones móviles y web se han convertido en herramientas accesibles que permiten a los usuarios llevar un control detallado de su alimentación, seguimiento de calorías, macronutrientes y hábitos alimenticios.  
 
-Esta investigación analiza tres aplicaciones de nutrición ampliamente utilizadas: **MyFitnessPal**, **Cronometer** y **YAZIO**, con el objetivo de evaluar sus funcionalidades, experiencia de usuario, modelo de negocio y características innovadoras, para inspirar el desarrollo de una nueva aplicación que combine sus fortalezas y resuelva sus debilidades.
+Esta investigación analiza tres aplicaciones de nutrición ampliamente utilizadas: **MyFitnessPal**, **Cronometer** y **YAZIO**, con el objetivo de evaluar sus funcionalidades, experiencia de usuario, modelo de negocio y características innovadoras para poder crear o tomar inspiración para crear una aplicación totalmente nueva que cubra sus debilidades y con los beneficios de esta misma en una sola.
 
 
 ##  Objetivos de la Investigación
@@ -22,45 +22,41 @@ La investigación se llevó a cabo mediante una revisión detallada de las aplic
 
 Se realizaron pruebas prácticas de uso en entornos móviles y web (instalación y revisión de videos informativos), evaluando aspectos como:
 
-- Facilidad para registrar alimentos  
+- La Facilidad para registrar alimentos  
 - Rapidez en la entrada de datos  
 - Precisión de la información nutricional  
 - Disponibilidad de planes y herramientas adicionales  
 
-También se analizaron:
-
-- Políticas de suscripción y funciones Premium  
-- Experiencia de usuario mediante reseñas y críticas  
-- Comparación de resultados en una tabla resumen  
-
+También se revisaron las políticas de suscripción y las funcionalidades reservadas a versiones de pago mediante videos, así como la experiencia de usuario a partir de la interfaz y el diseño de cada plataforma leyendo reseñas y buscando críticas. Los resultados se compararon en una tabla resumida para facilitar la visualización de diferencias y similitudes entre las aplicaciones.
 
 ##  Análisis de Aplicaciones
 
 ###  MyFitnessPal
 
 #### **Funcionalidades principales**
-1. Registro de alimentos con base de datos amplia, ingreso manual, escaneo de código de barras y creación de recetas.  
-2. Diario alimentario con seguimiento de calorías y nutrientes, con metas personalizadas.  
-3. Herramientas de planificación de comidas (más avanzadas en la versión Premium).
+1. Registro de alimentos con búsqueda en una base de datos muy amplia con millones de entradas, ingreso manual, escaneo de código de         barras y creación de recetas.  
+2. Diario alimentario con seguimientos de calorías y nutrientes, con opciones avanzadas como metas y objetivos el ganar o perder peso.  
+3. Herramientas de planificación de comidas y algunas automatizaciones en las versiones de paga.
 
 #### **Experiencia de usuario**
-Interfaz rápida y orientada al registro. Prioriza la velocidad, aunque puede resultar abrumadora para usuarios nuevos.  
-Diseño limpio, pero con abundante información.
+Interfaz orientada al registro rápido, esta busca priorizar la velocidad de entrada como favoritos, recientes o recetas, fácil para los usuarios que solo necesitan contar las calorías.
+El diseño es limpio, pero con mucha información, para los usuarios novatos puedes parecer abrumador al inicio al estar explorando todo.
 
 #### **Modelo de negocio**
-Freemium: funciones básicas gratuitas y suscripción Premium para análisis avanzados, métricas personalizadas y planificación.
+
+Modelo gratis y Premium: funcionalidad base gratuita, con una suscripción Premium que desbloquea análisis más avanzados, métricas personalizadas, y herramientas de planificación. Precios públicos de suscripción (mensual/anual) 
 
 #### **Puntos fuertes**
-- Base de datos enorme.  
-- Integración con wearables y comunidad activa.  
+- Base de datos enorme, muy útil para encontrar alimentos comerciales populares y recetas compartidas por la comunidad. 
+- Ecosistema maduro, integraciones con wearables y otras apps, comunidad amplia y recursos como blogs. 
 - Rapidez al registrar alimentos.
 
 #### **Debilidades**
-- Variabilidad en la calidad de las entradas comunitarias.  
-- Funciones útiles bloqueadas en Premium.
+- Calidad/fiabilidad variable de entradas comunitarias, al haber tantas entradas generadas por usuarios, la precisión nutricional puede variar.  
+- Algunas funciones útiles están detrás del Premium, lo que puede limitar análisis profundo en la versión gratuita. 
 
 #### **Características innovadoras**
-Uso creciente de IA en funciones como *Meal Scan* y mejoras UX.  
+Evolución constante hacia entradas más útiles mejoras en Meal Scan y funcionalidades impulsadas por IA/UX recientes. Esto permite inversión en simplificar el registro.
 
 <img src="static/img/readme/MyFitnnes.png" width="200"/>
 
@@ -68,26 +64,28 @@ Uso creciente de IA en funciones como *Meal Scan* y mejoras UX.
 ###  Cronometer
 
 #### **Funcionalidades principales**
-1. Registro de alimentos con enfoque en exactitud nutricional y análisis detallado de micro y macronutrientes.  
-2. Dashboard avanzado, herramientas profesionales (Cronometer Pro), y funciones como *Macro Scheduler*, *Fasting Timer* y *Oracle Nutrient Search*.
+1. Registro de alimentos con énfasis en exactitud nutricional: desglose muy detallado de macro y micronutrientes. Barcode scanner y base de datos verificada.  
+2. Dashboard con análisis y tendencias, herramientas para profesionales como Cronometer pro y funcionalidades avanzadas en la versión Gold como Macro Scheduler, Fasting Timer, Oracle Nutrient Search. 
 
 #### **Experiencia de usuario**
-Orientada a usuarios que valoran los datos y precisión. Ideal para deportistas o profesionales.  
-Curva de aprendizaje más alta, pero con integración de dispositivos biométricos.
+Interfaz orientada a usuarios que valoran datos como paneles con gráficas y tablas detalladas. No es una app simple, para quien solo cuenta calorías, pero es muy apreciada por usuarios que quieren control fino como deportistas y nutricionales.
+
+Buena integración con dispositivos y posibilidad de sincronizar biométricos.
 
 #### **Modelo de negocio**
-Modelo mixto: versión gratuita robusta y suscripción *Gold/Pro* con herramientas analíticas avanzadas.
+
+Modelo mixto: cuenta gratuita con funciones robustas (acceso a la base de datos, escáner, tracking básico) y suscripciones de pago como Gold (o Pro para profesionales) que desbloquean herramientas analíticas avanzadas, planificación y opciones para profesionales de la nutrición. 
 
 #### **Puntos fuertes**
-- Precisión y detalle en nutrientes.  
-- Opciones para profesionales y reportes avanzados.
+- Precisión y profundidad: es probablemente la app con mayor detalle en micronutrientes disponible al público general. Ideal para evaluaciones nutricionales serias. 
+- Opciones para profesionales (Pro) que facilitan análisis, manejo de clientes y exportes. 
 
 #### **Debilidades**
-- Curva de aprendizaje pronunciada.  
-- Comunidad menos activa que MyFitnessPal.
+- Curva de aprendizaje, la riqueza de datos puede intimidar a usuarios que solo buscan algo sencillo. 
+- Menos “masiva” en comunidad comparada con MyFitnessPal, por lo que algunos usuarios echan en falta entradas comunitarias o recetas populares.
 
 #### **Características innovadoras**
-Enfoque clínico en micronutrientes raros, reportes con tendencias y biomarcadores.  
+Enfoque en micronutrientes y en datos clínicos esto permite hacer búsquedas por nutrientes raros (como lysine, oxalate) y orientarse hacia la salud basada en biomarcadores. El producto también actualiza con widgets y reportes que resumen tendencias.
 
 <img src="static/img/readme/Cronometer.png" width="200"/>
 
