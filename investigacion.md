@@ -123,7 +123,7 @@ Integración con IA y rutinas de ayuno, interfaz moderna y accesible.
 
 | Aspecto | MyFitnessPal | Cronometer | YAZIO |
 |----------|---------------|-------------|--------|
-| **Funcionalidades principales** | Registro amplio, escaneo de código, seguimiento de calorías | Registro detallado, enfoque en micronutrientes, panel profesional | Registro, escaneo, planes de dieta, seguimiento de ayuno |
+| **Funcionalidades principales** |Registro de alimentos, escaneo de códigos, base de datos enorme, seguimiento de calorías y macros, planes de dieta básicos| Registro detallado de alimentos, enfoque en micronutrientes, dashboard avanzado, tracking profesional, escaneo de códigos | Registro de alimentos, escaneo de códigos, planes de dieta, seguimiento de ayuno intermitente, recetas integradas |
 | **Experiencia de usuario (UX/UI)** | Rápida, informativa, curva media | Técnica, orientada a datos, curva alta | Muy amigable, diseño limpio |
 | **Modelo de negocio** | Freemium (Premium con análisis avanzados) | Gratuito con Gold/Pro | Freemium con PRO (IA y reportes) |
 | **Puntos fuertes** | Base de datos grande, comunidad activa | Precisión nutricional, herramientas pro | Interfaz moderna, reconocimiento por foto |
