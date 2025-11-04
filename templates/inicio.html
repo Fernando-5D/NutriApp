@@ -13,80 +13,67 @@
 <body>
   <header>
     <div class="bg-success">
-      <div class="row m-0 py-1 ps-3">
-        <h2 class="col-9 text-light fw-bold">NutriApp</h2>
-        <a class="col-2 text-light text-end fw-semibold text-decoration-none mt-2" href="">Inicio de Sesion</a>
-
-        <div class="col-1 dropdown">
-          <button class="btn btn-success dropdown-toggle" style="width: 75px;" type="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <img src="static/img/menu.png" style="width: 30px;">
-          </button>
-
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="">Accion 1</a></li>
-            <li><a class="dropdown-item" href="">Accion 2</a></li>
-            <li><a class="dropdown-item" href="">Accion 3</a></li>
-          </ul>
-        </div>
+      <div class="row m-0 py-2 px-3">
+        <h2 class="col-10 text-light fw-bold">NutriApp</h2>
+        <a class="col-2 text-light text-end fw-semibold text-decoration-none mt-2 fs-5" href="">Inicio de Sesion</a>
       </div>
     </div>
-
-    <div id="carrusel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carrusel" data-bs-slide-to="0" class="active"
-          aria-current="true"></button>
-        <button type="button" data-bs-target="#carrusel" data-bs-slide-to="1"></button>
-        <button type="button" data-bs-target="#carrusel" data-bs-slide-to="2"></button>
-      </div>
-
-      <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="5000">
-          <a href="/">
-            <img src="static/img/sinImagen.png" class="bg-secondary-subtle" style="width: 1400px; height: 525px;">
-
-            <div class="carousel-caption">
-              <h5 class="d-inline-flex text-capitalize p-2 rounded rounded-3"
-                style="background-color: rgba(0, 0, 0, .25);">Imagen 1</h5>
-            </div>
-          </a>
-        </div>
-
-        <div class="carousel-item" data-bs-interval="5000">
-          <a href="/">
-            <img src="static/img/sinImagen.png" class="bg-secondary-subtle" style="width: 1400px; height: 525px;">
-
-            <div class="carousel-caption">
-              <h5 class="d-inline-flex text-capitalize p-2 rounded rounded-3"
-                style="background-color: rgba(0, 0, 0, .25);">Imagen 2</h5>
-            </div>
-          </a>
-        </div>
-        
-        <div class="carousel-item" data-bs-interval="5000">
-          <a href="/">
-            <img src="static/img/sinImagen.png" class="bg-secondary-subtle" style="width: 1400px; height: 525px;">
-
-            <div class="carousel-caption">
-              <h5 class="d-inline-flex text-capitalize p-2 rounded rounded-3"
-                style="background-color: rgba(0, 0, 0, .25);">Imagen 3</h5>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <nav class="nav bg-dark justify-content-evenly pt-2 pb-3">
-      <a href="" class="nav-item text-light text-decoration-none fw-semibold fs-4">Recetas</a>
-      <a href="" class="nav-item text-light text-decoration-none fw-semibold fs-4">Ingredientes</a>
-      <a href="" class="nav-item text-light text-decoration-none fw-semibold fs-4">Productos</a>
-      <a href="" class="nav-item text-light text-decoration-none fw-semibold fs-4">Menus</a>
-    </nav>
   </header>
 
   <main>
-    <div class="p-5">
+    <div>
       {% block body %}
+      <div id="carrusel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carrusel" data-bs-slide-to="0" class="active"
+            aria-current="true"></button>
+          <button type="button" data-bs-target="#carrusel" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#carrusel" data-bs-slide-to="2"></button>
+        </div>
+
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="5000">
+            <a href="/">
+              <img src="static/img/sinImagen.png" class="bg-secondary-subtle" style="width: 1400px; height: 525px;">
+
+              <div class="carousel-caption">
+                <h5 class="d-inline-flex text-capitalize p-2 rounded rounded-3"
+                  style="background-color: rgba(0, 0, 0, .25);">Imagen 1</h5>
+              </div>
+            </a>
+          </div>
+
+          <div class="carousel-item" data-bs-interval="5000">
+            <a href="/">
+              <img src="static/img/sinImagen.png" class="bg-secondary-subtle" style="width: 1400px; height: 525px;">
+
+              <div class="carousel-caption">
+                <h5 class="d-inline-flex text-capitalize p-2 rounded rounded-3"
+                  style="background-color: rgba(0, 0, 0, .25);">Imagen 2</h5>
+              </div>
+            </a>
+          </div>
+
+          <div class="carousel-item" data-bs-interval="5000">
+            <a href="/">
+              <img src="static/img/sinImagen.png" class="bg-secondary-subtle" style="width: 1400px; height: 525px;">
+
+              <div class="carousel-caption">
+                <h5 class="d-inline-flex text-capitalize p-2 rounded rounded-3"
+                  style="background-color: rgba(0, 0, 0, .25);">Imagen 3</h5>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <nav class="nav bg-dark justify-content-evenly pt-2 pb-3">
+        <a href="" class="nav-item text-light text-decoration-none fw-semibold fs-4">Recetas</a>
+        <a href="" class="nav-item text-light text-decoration-none fw-semibold fs-4">Ingredientes</a>
+        <a href="" class="nav-item text-light text-decoration-none fw-semibold fs-4">Productos</a>
+        <a href="" class="nav-item text-light text-decoration-none fw-semibold fs-4">Menus</a>
+      </nav>
+
       <h2 class="text-center">Bienvenid@, Usuario!</h2>
 
       <div class="m-5">
