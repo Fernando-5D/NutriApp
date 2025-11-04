@@ -58,7 +58,7 @@ Modelo gratis y Premium: funcionalidad base gratuita, con una suscripción Premi
 #### **Características innovadoras**
 Evolución constante hacia entradas más útiles mejoras en Meal Scan y funcionalidades impulsadas por IA/UX recientes. Esto permite inversión en simplificar el registro.
 
-<img src="static/img/readme/MyFitnnes.png" width="200"/>
+<img src="static/img/readme/MyFitnnes.png" width="400"/>
 
 
 ###  Cronometer
@@ -87,34 +87,35 @@ Modelo mixto: cuenta gratuita con funciones robustas (acceso a la base de datos,
 #### **Características innovadoras**
 Enfoque en micronutrientes y en datos clínicos esto permite hacer búsquedas por nutrientes raros (como lysine, oxalate) y orientarse hacia la salud basada en biomarcadores. El producto también actualiza con widgets y reportes que resumen tendencias.
 
-<img src="static/img/readme/Cronometer.png" width="200"/>
+<img src="static/img/readme/Cronometer.png" width="400"/>
 
 
 ###  YAZIO
 
 #### **Funcionalidades principales**
-1. Contador de calorías y macros, escáner de códigos, seguimiento de ayunos, recetas y planes personalizados.  
-2. Estadísticas de hábitos alimenticios y recetas integradas.
+1. Contador de calorías y macros con Food Diary, escáner de códigos de barras, seguimiento de ayunos intermitentes, recetas y planes de dieta para ganar peso o perder peso y alimentarse más sano. 
+2. Herramientas de análisis de hábitos alimenticios y unas estadísticas de consumo, oferta de recetas y una base de recetas integrada. 
 
 #### **Experiencia de usuario**
-Diseño moderno, simple y amigable. Excelente recepción en tiendas por su facilidad de uso y navegación guiada.
+
+Diseño enfocado en usabilidad, amigable, grandes botones y flujos guiados para establecer metas. Muy buena recepción en tiendas con valoraciones altas, lo que indica satisfacción de usuarios en términos de facilidad de uso. 
 
 #### **Modelo de negocio**
-Freemium con versión PRO que añade análisis detallado, reconocimiento de comidas por foto y más métricas.
+Freemium con PRO (suscripción) que añade mayor profundidad analítica más nutrientes, comparativas por comida, funciones Premium como reconocimiento de comidas por foto en versiones recientes. 
 
 #### **Puntos fuertes**
-- Experiencia de usuario pulida.  
-- Funcionalidades modernas como *AI Food Recognition*.  
+- Experiencia pulida para el usuario medio, ideal para quienes quieren un plan guiado como pérdida de peso, ayuno. Buen equilibrio entre simplicidad y funcionalidades útiles. 
+- Funcionalidades modernas como AI Food Recognition que es un registro por foto y muchas opciones de ayuno intermitente.
 - Enfoque en ayuno intermitente.
 
 #### **Debilidades**
-- Menor profundidad en micronutrientes que Cronometer.  
-- Funciones clave bloqueadas en PRO.
+- Para análisis nutricionales muy técnicos puede quedarse corto frente a Cronometer (menos profundidad en micronutrientes).
+- Algunas funcionalidades clave (AI Food Recognition, reportes detallados) están reservadas a PRO, por lo que el usuario gratuito obtiene una experiencia menos completa. 
 
 #### **Características innovadoras**
-Integración con IA y rutinas de ayuno, interfaz moderna y accesible.  
+Integración fuerte con rutinas de ayuno y uso de IA para reconocimiento de alimentos (facilita registro rápido y moderniza la experiencia). Hojas informativas y tutoriales muestran una apuesta por mantener la app simple y accesible. 
 
-<img src="static/img/readme/Yazio.png" width="200"/>
+<img src="static/img/readme/Yazio.png" width="400"/>
 
 
 ## Comparativa General
@@ -133,24 +134,29 @@ Integración con IA y rutinas de ayuno, interfaz moderna y accesible.
 ### **Diseño**
 
 #### **Justificación de Preguntas**
-Se incluyeron preguntas demográficas, de experiencia y preferencias para entender las necesidades del público objetivo.  
-Algunos ejemplos:
+- **Correo electrónico (opcional):** Tan solo sirve para la identidad del encuestado, aunque también puede ser anónimo. Ningún uso en concreto.
+-	**Edad:** Puede ser de utilidad para saber el promedio de edad del público que podría usar nuestra app.
+-	**Cuéntanos tus experiencias previas con las aplicaciones nutricionales (si las tienes):** Puede ayudarnos si tuvo alguna mala experiencia para saber qué es lo que busca en una app de este tipo.
+-	**¿Con que frecuencia usas apps nutricionales?:** Con esta podemos medir la frecuencia en la que los usuarios la usan, a su vez contextualizando sus opiniones y evaluando sus experiencias reales en este tipo de apps.
+-	**¿Con que propósito usarías (o no) una aplicación nutricional?:** Nos hace saber con qué razón el público usaría o que buscaría de una app nutricional.
+-	**¿Qué tipo de recetas te gustaría encontrar en una aplicación de nutrición?:** Nos dice el tipo de recetas que busca el público en una aplicación nutricional, sus características y condiciones.
+-	**¿Qué tan importante es para ti que las recetas incluyan información nutricional detallada (calorías, proteínas, grasas, carbohidratos, etc.) ?:** Nos hace saber la importancia que le da el público a la información nutricional, y si la prefiere simple o detallada.
+-	**¿Algún problema o defecto que hayas notado en apps nutricionales? Si es así, ¿Cuál fue?:** Es de utilidad para saber que defectos comunes tienen este tipo de apps, y así saber cómo resolverlos.
+-	**¿Qué aspectos y/o características valoras en una aplicación nutricional?:** Nos hace saber qué factores toman en cuenta los usuarios al momento de elegir una app nutricional para su comodidad.
+-	**¿Qué tan fácil te resulta usar una app de nutrición promedio (en cuanto a diseño, menús y navegación) ?:** De utilidad para saber qué tipo de diseño visual le gustaría al público, tanto en la estética, como la jerarquía de la app.
+-	**¿Te gustaría que la app incluyera recordatorios o notificaciones para ayudarte a seguir tus hábitos saludables?:** Para saber la preferencia de recordatorios o notificaciones para los usuarios.
+-	**¿Qué funciones y/o herramientas valoras en una app nutricional?:** Se les hace marcar 1 o más de las 4 opciones de funciones dentro de la app que les parezcan buenas, y así saber cuál conviene para los usuarios.
+-	**¿Qué mejorarías o agregarías en las apps nutricionales actuales para que fueran más útiles para ti?:** A diferencia de la pregunta posterior, en esta el público puede sugerir que agregar dentro de la app que les sea de utilidad y les convenga, a su vez cubriendo varias necesidades que talvez el público no sabía que tenía.
 
 
-- Edad y experiencias previas con apps.  
-- Frecuencia y propósito de uso.  
-- Tipos de recetas deseadas.  
-- Opiniones sobre información nutricional y facilidad de uso.  
-- Preferencias sobre recordatorios, funciones y mejoras sugeridas.
 
 
 ### **Metodología**
-
-- **Tipo de encuesta:** En línea (Google Forms).  
-- **Muestra:** 14 personas seleccionadas al azar.  
-- **Instrumento:** 13 preguntas abiertas y cerradas.  
-- **Periodo:** 25–26 de octubre de 2025.  
-- **Procedimiento:** Análisis estadístico básico con observaciones cualitativas.
+- **Tipo de Encuesta:** En línea mediante la herramienta Google Forms, un acceso sencillo y rápido para los encuestados. Este formato se eligió por su accesibilidad y porque permite llegar a resultados variados.
+- **Muestra:** Se encuestaron 14 personas seleccionadas al azar, para obtener una variedad de opiniones y experiencias sobre el uso de apps nutricionales.
+- **Instrumento:** La encuesta tuvo un total de 13 preguntas, mezclando preguntas abiertas y cerradas, ordenadas por: la información del encuestado, antecedentes, y opiniones y preferencias.
+- **Periodo de Aplicación:** 25 al 26 de octubre del 2025.
+- **Procedimiento:** Los datos se recolectaron automáticamente a través de Google Forms, y posteriormente se analizaron con las herramientas estadísticas básicas integradas en la plataforma, complementadas con observaciones y comparaciones de las respuestas abiertas.
 
 
 ##  Resultados
@@ -177,41 +183,40 @@ Algunos ejemplos:
 
 ##  Análisis de Datos
 
-- **Experiencias previas:** En su mayoría negativas por pago obligatorio o dificultad de uso.  
-- **Propósito de uso:** Mejorar alimentación y bajar de peso.  
-- **Recetas preferidas:** Proteicas, saludables, fáciles y rápidas.  
-- **Problemas comunes:** Pagos, complejidad, ingredientes poco accesibles y anuncios.  
-- **Aspectos valorados:** Simplicidad, limpieza visual, información detallada y gratuidad.  
-- **Sugerencias:**  
-  1. Medidas y sustitutos en recetas.  
-  2. Opciones fuera de casa.  
-  3. Recetas semanales personalizadas.  
-  4. Mayor personalización general.
+-	**Cuéntanos tus experiencias previas con las aplicaciones nutricionales (si las tienes):** Los resultados señalan que sus experiencias previas son mayormente negativas, estas siendo que requieren paga, son difíciles de usar, y que “restan en vez de sumar”, es decir, afectan la salud en vez de mejorarla.
+
+-	**¿Con que propósito usarías (o no) una aplicación nutricional?:** El resultado promedio señala que el propósito principal del público al entrar a una app nutricional es para mejorar su alimentación, seguido de este el bajar de peso y obtener información de los alimentos que consumen.
+
+-	**¿Qué tipo de recetas te gustaría encontrar en una aplicación de nutrición?:** Los resultados señalan que el público prefiere recetas mayormente proteicas, snacks o postres, y en cuanto a las demás son más una descripción de la comida en sí: saludables, fáciles, rápidas y sencillas, baja en calorías.
+
+-	**¿Algún problema o defecto que hayas notado en apps nutricionales? Si es así, ¿Cuál fue?:** Los resultados señalan que los problemas más comunes dentro de estas aplicaciones es que en su mayoría requieren paga y son complejas o difíciles de usar, después de estas siendo que las recetas contienen ciertos ingredientes o productos fuera del alcance del usuario, y que estas aplicaciones están llenas de anuncios.
+
+-	**¿Qué aspectos y/o características valoras en una aplicación nutricional?:** Los resultados señalan que, en su mayoría, el público prefiere antes que nada una buena estructuración general de la aplicación, tanto en su facilidad de uso, como en su simplicidad y limpieza. Después de eso, el público también busca que los alimentos tengan información detallada de los mismos, que la app sea gratuita y sin distracciones como anuncios.
+
+-	**¿Qué mejorarías o agregarías en las apps nutricionales actuales para que fueran más útiles para ti?:** Las funciones nuevas que el público sugirió fueron:
+
+1. Mostrar medidas y sustitutos de ingredientes dentro de las recetas.
+
+2. Recetas en caso de estar fuera de casa (posible solución: platillos de menús).
+
+3. Mostrar platillos diferentes cada semana, aleatorios o en base a los gustos y preferencias del usuario.
+
+4. Personalización en general.
+
 
 ##  Hallazgos Principales
-
-Los usuarios buscan una aplicación **simple, confiable y práctica**, enfocada en mejorar la alimentación más que en perder peso.  
-Valoran recetas saludables, variadas y rápidas, junto con herramientas que regulen hábitos y calorías.  
-Además, prefieren interfaces **claras, limpias y efectivas**, que equilibren funcionalidad y usabilidad.
+Se observa que los usuarios buscan una app nutricional saludable, práctica y confiable, enfocada principalmente en mejorar la alimentación más que solo en bajar de peso. Valoran especialmente que la app ofrezca recetas saludables, fáciles, rápidas y variadas, así como funciones que ayuden a regular las calorías y organizar los hábitos alimenticios. Además, destacan la importancia de que la app sea fácil de usar, limpia, llamativa y efectiva, lo cual refleja una preferencia por una experiencia sencilla pero completa.
 
 ##  Conclusiones y Oportunidades
 
 ### **Síntesis de Aprendizajes**
-Los usuarios prefieren apps **intuitivas, limpias y personalizables**, con recetas saludables y funciones de seguimiento integradas.  
-Se destaca la necesidad de simplicidad visual y flexibilidad.
+A partir del análisis de la encuesta y la revisión de aplicaciones nutricionales, se concluye que los usuarios buscan principalmente simplicidad y personalización. Valoran las apps que sean intuitivas, visualmente limpias y que ofrezcan recetas saludables y variadas, especialmente aquellas que se adapten a diferentes objetivos, como mejorar la alimentación o mantener el peso. También se identificó una preferencia por herramientas que integren seguimiento de calorías, organización de comidas y recordatorios prácticos.
 
 ### **Oportunidades Futuras**
-Crear una app precisa y dinámica con:
-- Recetas filtradas por tiempo, dificultad y objetivos.  
-- Integración con metas de bienestar general.  
-- Sistema visual de progreso y retroalimentación.
+Existe una oportunidad para crear una aplicación precisa, dinámica y llamativa, centrada en un enfoque más humano. Los usuarios podrían beneficiarse de funciones innovadoras como recetas filtradas por tiempo y dificultad, integración con metas de bienestar general (no solo calorías) y un sistema de retroalimentación visual que premie el progreso diario.
 
 ### **Recomendaciones**
-Desarrollar una app **funcional pero accesible**, con navegación clara, diseño atractivo y secciones bien organizadas.  
-Debe incluir:
-- Recetas saludables y sencillas.  
-- Planificación alimentaria flexible.  
-- Herramientas motivacionales y recordatorios inteligentes.
+Se recomienda desarrollar una app que mantenga un equilibrio entre lo funcional y lo accesible, priorizando una experiencia limpia, simple y atractiva. El diseño debería enfocarse en una navegación clara, con secciones organizadas. Es fundamental incluir recetas saludables y fáciles, además de herramientas que ayuden a planificar y regular la alimentación sin rigidez.
 
 
 
