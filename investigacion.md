@@ -138,6 +138,7 @@ Integración con IA y rutinas de ayuno, interfaz moderna y accesible.
 Se incluyeron preguntas demográficas, de experiencia y preferencias para entender las necesidades del público objetivo.  
 Algunos ejemplos:
 
+
 - Edad y experiencias previas con apps.  
 - Frecuencia y propósito de uso.  
 - Tipos de recetas deseadas.  
