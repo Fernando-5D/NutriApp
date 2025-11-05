@@ -12,7 +12,7 @@
 
 <body>
   <header>
-    <div style="background-color: rgb(77, 101, 67);">
+    <div class="bg-success fixed-top">
       <div class="row m-0 py-2 px-3">
         <h2 class="col-10 text-light fw-bold">NutriApp</h2>
         <a class="col-2 text-light text-end fw-semibold text-decoration-none mt-2 fs-5" href="">Inicio de Sesion</a>
@@ -21,7 +21,7 @@
   </header>
 
   <main>
-    <div>
+    <div class="mt-5 pt-2">
       {% block body %}
       <div id="carrusel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -34,7 +34,7 @@
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="5000">
             <a href="/">
-              <img src="static/img/sinImagen.png" class="bg-secondary-subtle" style="width: 1400px; height: 525px;">
+              <img src="static/img/sinImagen.png" class="bg-secondary-subtle" style="width: 1353px; height: 525px;">
 
               <div class="carousel-caption">
                 <h5 class="d-inline-flex text-capitalize p-2 rounded rounded-3"
@@ -45,7 +45,7 @@
 
           <div class="carousel-item" data-bs-interval="5000">
             <a href="/">
-              <img src="static/img/sinImagen.png" class="bg-secondary-subtle" style="width: 1400px; height: 525px;">
+              <img src="static/img/sinImagen.png" class="bg-secondary-subtle" style="width: 1353px; height: 525px;">
 
               <div class="carousel-caption">
                 <h5 class="d-inline-flex text-capitalize p-2 rounded rounded-3"
@@ -56,7 +56,7 @@
 
           <div class="carousel-item" data-bs-interval="5000">
             <a href="/">
-              <img src="static/img/sinImagen.png" class="bg-secondary-subtle" style="width: 1400px; height: 525px;">
+              <img src="static/img/sinImagen.png" class="bg-secondary-subtle" style="width: 1353px; height: 525px;">
 
               <div class="carousel-caption">
                 <h5 class="d-inline-flex text-capitalize p-2 rounded rounded-3"
@@ -74,136 +74,77 @@
         <a href="" class="nav-item text-light text-decoration-none fw-semibold fs-4">Menus</a>
       </nav>
 
-      <h2 class="text-center">Bienvenid@, Usuario!</h2>
+      <div class="p-5">
+        <h2 class="text-center">Bienvenid@, Usuario!</h2>
 
-      <div class="m-5">
-        <h1>Recetas</h1>
-        <div class="row ms-1 justify-content-evenly">
-          <div class="col card">
-            <p class="fs-1">test</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
-              obcaecati, commodi rem saepe, eum nemo eius beatae nesciunt qui error deserunt enim ea voluptatum
-              temporibus dolor?</p>
-          </div>
-
-          <div class="col card">
-            <p class="fs-1">test</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
-              obcaecati, commodi rem saepe, eum nemo eius beatae nesciunt qui error deserunt enim ea voluptatum
-              temporibus dolor?</p>
-          </div>
-
-          <div class="col card">
-            <p class="fs-1">test</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
-              obcaecati, commodi rem saepe, eum nemo eius beatae nesciunt qui error deserunt enim ea voluptatum
-              temporibus dolor?</p>
-          </div>
-
-          <div class="col card">
-            <p class="fs-1">test</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
-              obcaecati, commodi rem saepe, eum nemo eius beatae nesciunt qui error deserunt enim ea voluptatum
-              temporibus dolor?</p>
+        <div class="m-5">
+          <h1>Recetas</h1>
+          <div class="row m-1 ms-0">
+            {% for x in range(0, 4) %}
+            <div class="col card m-1">
+              <img src="static/img/sinImagen.png" class="card-img-top mt-2">
+              <div class="card-body mt-2">
+                <h2>Tarjeta</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi porro ea nulla quae,
+                  necessitatibus
+                  pariatur saepe qui aliquam perspiciatis vel beatae quo, consectetur deleniti illum consequatur iure
+                  reprehenderit eveniet nesciunt.</p>
+              </div>
+            </div>
+            {% endfor %}
           </div>
         </div>
-      </div>
 
-      <div class="m-5">
-        <h1>Ingredientes</h1>
-        <div class="row ms-1 justify-content-evenly">
-          <div class="col card">
-            <p class="fs-1">test</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
-              obcaecati, commodi rem saepe, eum nemo eius beatae nesciunt qui error deserunt enim ea voluptatum
-              temporibus dolor?</p>
-          </div>
-
-          <div class="col card">
-            <p class="fs-1">test</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
-              obcaecati, commodi rem saepe, eum nemo eius beatae nesciunt qui error deserunt enim ea voluptatum
-              temporibus dolor?</p>
-          </div>
-
-          <div class="col card">
-            <p class="fs-1">test</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
-              obcaecati, commodi rem saepe, eum nemo eius beatae nesciunt qui error deserunt enim ea voluptatum
-              temporibus dolor?</p>
-          </div>
-
-          <div class="col card">
-            <p class="fs-1">test</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
-              obcaecati, commodi rem saepe, eum nemo eius beatae nesciunt qui error deserunt enim ea voluptatum
-              temporibus dolor?</p>
+        <div class="m-5">
+          <h1>Ingredientes</h1>
+          <div class="row m-1 ms-0">
+            {% for x in range(0, 4) %}
+            <div class="col card m-1">
+              <img src="static/img/sinImagen.png" class="card-img-top mt-2">
+              <div class="card-body mt-2">
+                <h2>Tarjeta</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ut maxime assumenda quia tempora sit
+                  et. Sapiente consectetur ullam ipsum sed consequuntur soluta odio quam, nesciunt, ut omnis iste
+                  doloribus?</p>
+              </div>
+            </div>
+            {% endfor %}
           </div>
         </div>
-      </div>
 
-      <div class="m-5">
-        <h1>Productos</h1>
-        <div class="row ms-1 justify-content-evenly">
-          <div class="col card">
-            <p class="fs-1">test</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
-              obcaecati, commodi rem saepe, eum nemo eius beatae nesciunt qui error deserunt enim ea voluptatum
-              temporibus dolor?</p>
-          </div>
-
-          <div class="col card">
-            <p class="fs-1">test</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
-              obcaecati, commodi rem saepe, eum nemo eius beatae nesciunt qui error deserunt enim ea voluptatum
-              temporibus dolor?</p>
-          </div>
-
-          <div class="col card">
-            <p class="fs-1">test</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
-              obcaecati, commodi rem saepe, eum nemo eius beatae nesciunt qui error deserunt enim ea voluptatum
-              temporibus dolor?</p>
-          </div>
-
-          <div class="col card">
-            <p class="fs-1">test</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
-              obcaecati, commodi rem saepe, eum nemo eius beatae nesciunt qui error deserunt enim ea voluptatum
-              temporibus dolor?</p>
+        <div class="m-5">
+          <h1>Productos</h1>
+          <div class="row m-1 ms-0">
+            {% for x in range(0, 4) %}
+            <div class="col card m-1">
+              <img src="static/img/sinImagen.png" class="card-img-top mt-2">
+              <div class="card-body mt-2">
+                <h2>Tarjeta</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, minima est. Beatae dolore fugit
+                  doloribus fuga sed amet eveniet! Distinctio possimus maiores reprehenderit neque facilis. Voluptatibus
+                  qui nam id dolor!</p>
+              </div>
+            </div>
+            {% endfor %}
           </div>
         </div>
-      </div>
 
-      <div class="m-5">
-        <h1>Menus</h1>
-        <div class="row ms-1 justify-content-evenly">
-          <div class="col card">
-            <p class="fs-1">test</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
-              obcaecati, commodi rem saepe, eum nemo eius beatae nesciunt qui error deserunt enim ea voluptatum
-              temporibus dolor?</p>
-          </div>
-
-          <div class="col card">
-            <p class="fs-1">test</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
-              obcaecati, commodi rem saepe, eum nemo eius beatae nesciunt qui error deserunt enim ea voluptatum
-              temporibus dolor?</p>
-          </div>
-
-          <div class="col card">
-            <p class="fs-1">test</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
-              obcaecati, commodi rem saepe, eum nemo eius beatae nesciunt qui error deserunt enim ea voluptatum
-              temporibus dolor?</p>
-          </div>
-
-          <div class="col card">
-            <p class="fs-1">test</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptas quos. Ducimus distinctio
-              obcaecati, commodi rem saepe, eum nemo eius beatae nesciunt qui error deserunt enim ea voluptatum
-              temporibus dolor?</p>
+        <div class="m-5">
+          <h1>Menus</h1>
+          <div class="row m-1 ms-0">
+            {% for x in range(0, 4) %}
+            <div class="col card m-1">
+              <img src="static/img/sinImagen.png" class="card-img-top mt-2">
+              <div class="card-body mt-2">
+                <h2>Tarjeta</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, omnis nobis? Laudantium iusto
+                  voluptates
+                  velit amet ratione officiis esse adipisci sapiente dignissimos. Itaque voluptate dolorum voluptatum
+                  quas
+                  rerum iure sunt.</p>
+              </div>
+            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -212,8 +153,8 @@
   </main>
 
   <footer>
-    <div style="background-color: rgb(77, 101, 67);">
-      <p class="py-3 text-center text-light fw-semibold">Luis Fernando Alvarez Zandate | Edgar Uriel Morales Torres</p>
+    <div class="bg-success pt-3 pb-2">
+      <p class="text-center text-light fw-semibold">Luis Fernando Alvarez Zandate | Edgar Uriel Morales Torres</p>
     </div>
   </footer>
 
