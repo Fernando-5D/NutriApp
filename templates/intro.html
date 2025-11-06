@@ -1,45 +1,108 @@
-{% extends "inicio.html" %}
-
-{% block body %}
+{% extends "inicio.html" %} {% block body %}
 <div>
-    <div class="shadow p-5" style="height: 571px;">
-        <div class="row align-items-center m-5">
-            <div class="col me-2">
-                <h1 class="fw-bold">Confianza en cada bocado, buena alimentacion a tu lado</h1>
-                <p>¿Quieres mejorar tu alimentación y/o bajar de peso?, encuentra recetas saludables, regula tus
-                    calorías y organiza tus hábitos alimenticios con NutriShelf.</p>
+  <div class="shadow p-5" style="height: 571px">
+    <div class="row align-items-center m-5">
+      <div class="col col-lg-7 pe-5 me-2">
+        <h1 class="fw-bold">
+          Confianza en cada bocado, buena alimentacion a tu lado
+        </h1>
+        <p>
+          ¿Quieres mejorar tu alimentación y/o bajar de peso?, encuentra recetas
+          saludables, regula tus calorías y organiza tus hábitos alimenticios
+          con NutriShelf.
+        </p>
 
-                <a href="/registro">
-                    <button class="btn mt-3 text-light fs-4 fw-bold rounded rounded-3 py-2 px-3"
-                        style="background-color: rgb(140, 100, 65);">Empieza ahora</button>
-                </a>
-            </div>
+        <a href="/registro">
+          <button
+            class="btn mt-3 text-light fs-4 fw-bold rounded rounded-3 py-2 px-3"
+            style="background-color: rgb(140, 100, 65)"
+          >
+            Empieza ahora
+          </button>
+        </a>
+      </div>
 
-            <img src="static/img/intro1.jpg" class="col ms-2" style="width: 500px;">
-        </div>
+      <img
+        src="static/img/intro1.jpg"
+        class="col col-lg-5 ms-2"
+        style="width: 463px"
+      />
+    </div>
+  </div>
+
+  <div class="m-5 p-5">
+    <div class="row align-items-center">
+      <img
+        src="static/img/intro2.jpg"
+        class="col-5 me-2 me-lg-4"
+        style="width: 400px"
+      />
+      <div class="col-7 ms-2 ms-lg-4">
+        <h1 class="fw-bold">
+          Busca entre +5000 recetas que se adaptan a tus preferencias
+        </h1>
+        <p>
+          Y con nuestro motor de busqueda, podras filtrar las recetas por
+          dietas, intolerancias, tipos de receta, calorias, entre otras
+          caracteristicas.
+        </p>
+      </div>
     </div>
 
-    <div class="m-5 p-5">
-        <div class="row align-items-center">
-            <img src="static/img/intro2.jpg" class="col-5 me-2" style="width: 450px;">
-            <div class="col-7 ms-2">
-                <h1 class="fw-bold">Busca entre +5000 recetas que se adaptan a tus preferencias</h1>
-                <p>Y con nuestro motor de busqueda, podras filtrar las recetas por dietas, intolerancias, tipos de
-                    receta, calorias, entre otras caracteristicas.</p>
-            </div>
-        </div>
+    <div class="row align-items-center mt-5 pt-5">
+      <div class="col-8 me-2 me-lg-3">
+        <h1 class="fw-bold">
+          Elige entre más de +2500 ingredientes y +600k productos para llevar a
+          tu registro.
+        </h1>
+        <p>
+          Accede a un desglose por calorías y nutrientes, compara los tamaños de
+          las porciones y descubre cómo los alimentos que consumes refuerzan tus
+          objetivos.
+        </p>
+      </div>
 
-        <div class="row align-items-center mt-5 pt-5">
-            <div class="col-8 me-2">
-                <h1 class="fw-bold">Elige entre más de +2500 ingredientes y +600k productos para llevar a tu registro.</h1>
-                <p>Accede a un desglose por calorías y nutrientes, compara los tamaños de las porciones y descubre cómo los alimentos que consumes refuerzan tus objetivos.</p>
-            </div>
-
-            <div class="col-3 ms-5 row">
-                <img src="static/img/intro3_1.png" class="col" style="width: 1px;">
-                <img src="static/img/intro3_2.png" class="col" style="width: 1px;">
-            </div>
-        </div>
+      <div class="col-3 ms-5 row">
+        <img src="static/img/intro3_1.png" class="col" style="width: 1px" />
+        <img src="static/img/intro3_2.png" class="col" style="width: 1px" />
+      </div>
     </div>
+
+    <div class="mt-5 pt-5">
+      <h1 class="fw-bold text-center mb-3">Funciones</h1>
+      <div class="row rounded rounded-4 p-5" style="background-color: rgb(255, 134, 64)">
+        <div class="col-8 align-content-center">
+          <h2 class="text-light fw-bold">"What's on my Fridge?"</h2>
+          <p class="text-light fs-4 lh-sm ps-3 pe-1">
+            Registra los ingredientes que tienes en tu refrigerador por
+            unidades, a su vez mostrandote recetas en base a ellos, e incluso
+            si te faltan ingredientes, te indicara cuales tienes y cuales no.
+          </p>
+        </div>
+
+        <img src="static/img/intro4.png" class="col-4" style="width: 355px" />
+      </div>
+
+      <div class="row justify-content-between mt-2">
+        <div class="col-4 p-4 rounded rounded-4" style="width: 385px; background-color: rgb(255, 134, 64);">
+          <h2 class="text-light fw-bold">Test</h2>
+          <p class="text-light fs-5 lg-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima doloribus veritatis ipsum nisi quam dignissimos distinctio sit numquam, accusantium ut illo fugiat commodi iure exercitationem voluptatibus cupiditate? Tenetur, quasi perspiciatis.</p>
+          <img src="static/img/sinImagen.png" style="width: 330px;">
+        </div>
+
+        <div class="col-4 p-4 rounded rounded-4" style="width: 385px; background-color: rgb(255, 134, 64);">
+          <h2 class="text-light fw-bold">Test</h2>
+          <p class="text-light fs-5 lg-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima doloribus veritatis ipsum nisi quam dignissimos distinctio sit numquam, accusantium ut illo fugiat commodi iure exercitationem voluptatibus cupiditate? Tenetur, quasi perspiciatis.</p>
+          <img src="static/img/sinImagen.png" style="width: 330px;">
+        </div>
+
+        <div class="col-4 p-4 rounded rounded-4" style="width: 385px; background-color: rgb(255, 134, 64);">
+          <h2 class="text-light fw-bold">Test</h2>
+          <p class="text-light fs-5 lg-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima doloribus veritatis ipsum nisi quam dignissimos distinctio sit numquam, accusantium ut illo fugiat commodi iure exercitationem voluptatibus cupiditate? Tenetur, quasi perspiciatis.</p>
+          <img src="static/img/sinImagen.png" style="width: 330px;">
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock body %}

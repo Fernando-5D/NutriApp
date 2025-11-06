@@ -1,6 +1,9 @@
 # aviso nutrimental (azucares o sales altas en alimentos, productos o recetas)
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash, get_flashed_messages, redirect, url_for
 app = Flask(__name__)
+
+sesion = None
+usuarios = {}
 
 @app.route("/")
 def inicio():  
