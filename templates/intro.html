@@ -1,13 +1,45 @@
-{% extends 'inicio.html' %}
+{% extends "inicio.html" %}
 
 {% block body %}
 <div>
-    <div class="row bg-body-secondary p-5 align-items-center" style="height: 565px;">
-        <div class="col">
-            <h1 class="fw-bold">Confianza en cada bocado, buena alimentacion a tu lado</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque earum debitis nostrum expedita deserunt ipsa officia? Nemo ea voluptates cum ipsam possimus. Aspernatur nisi voluptas accusantium, in quae ab excepturi!</p>
+    <div class="shadow p-5" style="height: 571px;">
+        <div class="row align-items-center m-5">
+            <div class="col me-2">
+                <h1 class="fw-bold">Confianza en cada bocado, buena alimentacion a tu lado</h1>
+                <p>¿Quieres mejorar tu alimentación y/o bajar de peso?, encuentra recetas saludables, regula tus
+                    calorías y organiza tus hábitos alimenticios con NutriShelf.</p>
+
+                <a href="/registro">
+                    <button class="btn mt-3 text-light fs-4 fw-bold rounded rounded-3 py-2 px-3"
+                        style="background-color: rgb(140, 100, 65);">Empieza ahora</button>
+                </a>
+            </div>
+
+            <img src="static/img/intro1.jpg" class="col ms-2" style="width: 500px;">
         </div>
-        <img src="static/img/sinImagen.png" class="col">
+    </div>
+
+    <div class="m-5 p-5">
+        <div class="row align-items-center">
+            <img src="static/img/intro2.jpg" class="col-5 me-2" style="width: 450px;">
+            <div class="col-7 ms-2">
+                <h1 class="fw-bold">Busca entre +5000 recetas que se adaptan a tus preferencias</h1>
+                <p>Y con nuestro motor de busqueda, podras filtrar las recetas por dietas, intolerancias, tipos de
+                    receta, calorias, entre otras caracteristicas.</p>
+            </div>
+        </div>
+
+        <div class="row align-items-center mt-5 pt-5">
+            <div class="col-8 me-2">
+                <h1 class="fw-bold">Elige entre más de +2500 ingredientes y +600k productos para llevar a tu registro.</h1>
+                <p>Accede a un desglose por calorías y nutrientes, compara los tamaños de las porciones y descubre cómo los alimentos que consumes refuerzan tus objetivos.</p>
+            </div>
+
+            <div class="col-3 ms-5 row">
+                <img src="static/img/intro3_1.png" class="col" style="width: 1px;">
+                <img src="static/img/intro3_2.png" class="col" style="width: 1px;">
+            </div>
+        </div>
     </div>
 </div>
 {% endblock body %}
