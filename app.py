@@ -2,9 +2,6 @@
 from flask import Flask, render_template, request, flash, get_flashed_messages, redirect, url_for
 app = Flask(__name__)
 
-sesion = None
-usuarios = {}
-
 @app.route("/")
 def inicio():  
     return render_template("intro.html")
