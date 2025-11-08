@@ -40,10 +40,36 @@ def iniciandoSesion():
 @app.route("/registro")
 def registro():  
     return render_template("registro.html")
+  
+@app.route('/obtenerinfo', methods = ("GET", "POST"))
+def Obt():
+    error = []
+    if request.method == "POST":
+        NombreCompleto = request.form["NombreCompleto"]
+        email = request.form["email"]
+        Contra = request.form["Contra"]
+        ContraPru = request.form["ContraPru"]
+        Año = int(request.form["Año"])
 
-@app.route("/registrando")
-def registrando():  
-    return
+        if Contra != ContraPru:
+            error.append("Las contraseñas no coinciden")
+        elif Año > 2006:
+            error = "Eres menor de edad"
+        elif email in USUARIOS_REGISTRADOS:
+            error = "Este correo ya está registrado"
+
+        if error:
+            flash(error, "error")
+            return render_template("registrate.html")
+        else:
+            USUARIOS_REGISTRADOS[email] = {
+                'password': Contra,
+                'nombre': NombreCompleto,
+                'año': Año
+            }
+
+            flash(f"Registro exitoso para el usuario: {email}", "success")
+            return redirect(url_for("iniciaSes"))
 
 if __name__ == "__main__":
     app.run(debug=True)

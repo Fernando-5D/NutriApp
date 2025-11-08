@@ -12,21 +12,25 @@
 
 <body>
     <main>
-        <div class="m-5 p-5">
-            <div class="card">
+        <div class="m-5 p-5 d-flex justify-content-center">
+            <div class="card mt-5" style="width: 450px;">
                 <div class="card-body">
-                    <h1 class="py-3 text-center border-bottom">Inicio de Sesión</h1>
-                    <form action="/iniciandoSesion" method="post">
-                        <div>
-                            <div class="mb-3">
-                                <input type="email" class="form-control" name="correo" placeholder="Correo Electronico">
-                            </div>
+                    <h1 class="py-3 text-center border-bottom fw-bold">Inicio de Sesión</h1>
+                    <form class="mt-4" action="/iniciandoSesion" method="post">
+                        <div class="mb-2">
+                            <input type="email" class="form-control" name="correo" placeholder="Correo Electronico">
+                        </div>
 
-                            <div>
-                                <input type="password" class="form-control" name="passw" placeholder="Contraseña">
-                            </div>
+                        <input type="password" class="form-control" name="passw" placeholder="Contraseña">
+
+                        <div class="row-11 mt-3">
+                            <button class="form-control btn btn-success" type="submit">Ingresar</button>
                         </div>
                     </form>
+                    
+                    <a href="/registro" class="text-decoration-none">
+                        <p class="mt-4 text-center">¿No tienes una cuenta? Registrate aqui</p>
+                    </a>
                 </div>
             </div>
         </div>

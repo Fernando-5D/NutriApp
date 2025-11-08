@@ -1,107 +1,114 @@
 <!DOCTYPE html>
 <html lang="es-mx">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
-<body style="background-image: url('static/AlimFon.jpg'); background-repeat: no-repeat; background-size: cover; margin: 0; height: 100vh;">
-  <div class="container d-flex">
+<body
+    style="background-image: url('static/AlimFon.jpg'); background-repeat: no-repeat; background-size: cover; margin: 0; height: 100vh;">
+    <div class="container d-flex">
         <div class="card shadow-sm rounded-5 mt-3" style="width: 400px;">
             <div class="card-body rounded-3" style="background-color:rgb(255, 255, 255);">
                 <h3 class="text-center mt-4">NutriShelf</h3>
-            
-       
-                    
-            <div class="container text-center">
-                        <div class="row">
+                <div class="container text-center">
+                    <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="NombreCompleto" name="NombreCompleto" 
-                                placeholder="Nombre completo" required minlength="8" maxlength="50">
+                                <input type="text" class="form-control" id="NombreCompleto" name="NombreCompleto"
+                                    placeholder="Nombre completo" required minlength="8" maxlength="50">
                             </div>
-                
-                        </div>
                         </div>
                     </div>
-                  
-<div class="mb-3">
-    <label class="form-label">Género</label><br>
+                </div>
 
-    <input type="radio" class="form-check-input" id="female" name="Genero" value="female">
-    <label class="form-check-label" for="female">Femenino</label>
+                <div class="mb-3">
+                    <label class="form-label">Género</label><br>
 
-    <input type="radio" class="form-check-input" id="male" name="Genero" value="male">
-    <label class="form-check-label" for="male">Masculino</label>
+                    <input type="radio" class="form-check-input" id="female" name="Genero" value="female">
+                    <label class="form-check-label" for="female">Femenino</label>
 
-</div>
-                    <div class="mb-3">
-                                <label class="form-label">Fecha de nacimiento</label><br>
-                                <input type="date" class="form-control" id="fecha" name="fecha">
-                            </div>
+                    <input type="radio" class="form-check-input" id="male" name="Genero" value="male">
+                    <label class="form-check-label" for="male">Masculino</label>
 
-                    <div class="mb-3">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico" required >
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Fecha de nacimiento</label><br>
+                    <input type="date" class="form-control" id="fecha" name="fecha">
+                </div>
+
+                <div class="mb-3">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico"
+                        required>
+                </div>
+
+                <div class="mb-3">
+                    <input type="tel" class="form-control" id="tel" name="tel" placeholder="Numero de Telefono"
+                        required>
+                </div>
+
+                <p class="m-0 mb-1 mt-3 ms-1">Nivel de Actividad</p>
+                <div class="mx-1">
+                    <select class="form-select" name="actividad" required>
+                        <option selected disabled>Selecciona una opción</option>
+                        <option value="1.2">Sedentario</option>
+                        <option value="1.375">Actividad Ligera</option>
+                        <option value="1.55">Actividad Moderada</option>
+                        <option value="1.725">Actividad Alta</option>
+                    </select>
+                </div>
+
+                <div class="row">
+                    <div class="col-4">
+                        <p class="m-0 mb-1 ms-1">Peso (kg)</p>
+                        <div class="ms-1">
+                            <input class="form-control" name="peso" type="number" required>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <input type="tel" class="form-control" id="tel" name="tel" placeholder="Numero de Telefono" required >
-                    </div>
-                    <p class="m-0 mb-1 mt-3 ms-1">Nivel de Actividad</p>
-                        <div class="mx-1">
-                            <select class="form-select" name="actividad" required>
-                                <option selected disabled>Selecciona una opción</option>
-                                <option value="1.2">Sedentario</option>
-                                <option value="1.375">Actividad Ligera</option>
-                                <option value="1.55">Actividad Moderada</option>
-                                <option value="1.725">Actividad Alta</option>
-                            </select>
-                        </div>
-                    
-              <div class="row">
-                            <div class="col-4">
-                                <p class="m-0 mb-1 ms-1">Peso (kg)</p>
-                                <div class="ms-1">
-                                    <input class="form-control" name="peso" type="number" required>
-                                </div>
-                            </div>
 
-                            <div class="col-4">
-                                <p class="m-0 mb-1">Altura (cm)</p>
-                                <div class="">
-                                    <input class="form-control" name="altura" type="number" required>
-                                </div>
-                            </div>
-
-                            <div class="col-4">
-                                <p class="m-0 mb-1 me-1">Edad</p>
-                                <div class="me-1">
-                                    <input class="form-control" name="edad" type="number" required>
-                                </div>
-                            </div>
-                        </div>
-
-                    <div class="mb-3">
-                        <input type="password" class="form-control" id="Contra" name="Contra" placeholder="Contraseña" required minlength="8" maxlength="100">
+                    <div class="col-4">
+                        <p class="m-0 mb-1">Altura (cm)</p>
+                        <div>
+                            <input class="form-control" name="altura" type="number" required>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <input type="password" class="form-control" id="ContraPru" name="ContraPru" placeholder="Confirma tu Contraseña" required minlength="8" maxlength="100">
-                    </div>
-        
-                    
-                    
-                    <div class="text-center">
-                    <h5><a href="http://127.0.0.1:5000/iniciaSes">¿Ya tienes una cuenta?</a></h5>
-                    </div>
-                    
-                   
 
-                    <button type="submit" class="btn btn-success w-100" href="/">Registrarme</button>
+                    <div class="col-4">
+                        <p class="m-0 mb-1 me-1">Edad</p>
+                        <div class="me-1">
+                            <input class="form-control" name="edad" type="number" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="Contra" name="Contra" placeholder="Contraseña"
+                        required minlength="8" maxlength="100">
+                </div>
+
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="ContraPru" name="ContraPru"
+                        placeholder="Confirma tu Contraseña" required minlength="8" maxlength="100">
+                </div>
+
+                <div class="text-center">
+                    <h5><a href="/sesion">¿Ya tienes una cuenta?</a></h5>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100" href="/obtenerinfo">Registrarme</button>
                 </form>
             </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
