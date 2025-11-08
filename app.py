@@ -1,6 +1,8 @@
 # aviso nutrimental (azucares o sales altas en alimentos, productos o recetas)
-from flask import Flask, render_template, request, flash, get_flashed_messages, redirect, url_for
+from flask import Flask, render_template, request, flash, get_flashed_messages, redirect, url_for, session
 app = Flask(__name__)
+
+usuarios = {}
 
 @app.route("/")
 def inicio():  
@@ -17,7 +19,7 @@ def iniciandoSesion():
         if correo in usuarios:
             passw = request.form.get("passw")
             if passw == usuarios[correo].passw:
-                sesion = correo
+                session["correo"] = correo
             else:
                 flash("La contraseña es incorrecta.")
         else:
@@ -26,7 +28,7 @@ def iniciandoSesion():
         if get_flashed_messages():
             return redirect(url_for("sesion"))
         else:
-            return render_template("aqui la url de la plantilla principal")
+            return render_template("inicio.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
