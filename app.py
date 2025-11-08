@@ -19,21 +19,14 @@ def iniciandoSesion():
         if correo in usuarios:
             passw = request.form.get("passw")
             if passw == usuarios[correo].passw:
-                nombre = usuarios[correo].nombre
-                fechaNacim = usuarios[correo].fechaNacim
-                genero = usuarios[correo].genero
-                peso = usuarios[correo].peso
-                altura = usuarios[correo].altura
-                actFisica = usuarios[correo].actFisica
-                
-                session["nombre"] = nombre
-                session["fechaNacim"] = fechaNacim
-                session["genero"] = genero
-                session["peso"] = peso
-                session["altura"] = altura
-                session["actFisica"] = actFisica
-                session["correo"] = correo
-                session["passw"] = passw
+                session["nombre"] = usuarios[correo].nombre
+                session["fechaNacim"] = usuarios[correo].fechaNacim
+                session["genero"] = usuarios[correo].genero
+                session["peso"] = usuarios[correo].peso
+                session["altura"] = usuarios[correo].altura
+                session["actFisica"] = usuarios[correo].actFisica
+                session["correo"] = usuarios[correo].correo
+                session["passw"] = usuarios[correo].passw
             else:
                 flash("La contraseña es incorrecta.")
         else:
@@ -43,6 +36,14 @@ def iniciandoSesion():
             return redirect(url_for("sesion"))
         else:
             return render_template("inicio.html")
+
+@app.route("/registro")
+def registro():  
+    return render_template("registro.html")
+
+@app.route("/registrando")
+def registrando():  
+    return
 
 if __name__ == "__main__":
     app.run(debug=True)
