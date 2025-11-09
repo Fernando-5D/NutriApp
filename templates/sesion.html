@@ -10,7 +10,8 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
-<body style="background-image: url('static/img/AlimFon.jpg'); background-repeat: no-repeat; background-size: cover; margin: 0; height: 100vh;">
+<body
+    style="background-image: url('static/img/AlimFon.jpg'); background-repeat: no-repeat; background-size: cover; margin: 0; height: 100vh;">
     <main>
         <div class="m-5 p-5 d-flex justify-content-center">
             <div class="card mt-5 rounded-3 shadow-lg" style="width: 425px;">
@@ -25,13 +26,15 @@
                         <input type="password" class="form-control" name="passw" placeholder="Contraseña" minlength="8"
                             required>
 
-                        {% with error = get_flashed_messages() %}
-                            {% if error %}
-                                {% for err in error %}
-                                <div class="alert alert-danger mt-2" role="alert">{{ err }}</div>
-                                {% endfor %}
-                            {% endif %}
-                        {% endwith %}
+                        <div class="mt-2">
+                            {% with flashes = get_flashed_messages(with_categories=true) %}
+                                {% if flashes %}
+                                    {% for color, flash in flashes %}
+                                    <div class="alert alert-{{ color }} mt-1" role="alert">{{ flash }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endwith %}
+                        </div>
 
                         <div class="row-11 mt-4">
                             <button class="form-control btn btn-success fw-semibold" type="submit">Ingresar</button>
