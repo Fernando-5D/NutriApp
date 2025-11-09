@@ -2,6 +2,7 @@
 from flask import Flask, render_template, request, flash, get_flashed_messages, redirect, url_for, session
 app = Flask(__name__)
 
+app.config["SECRET_KEY"] = "nutrishelfporfavortrevinecesitoexcentar"
 usuarios = {}
 
 @app.route("/")
@@ -28,12 +29,12 @@ def iniciandoSesion():
                 session["correo"] = usuarios[correo].correo
                 session["passw"] = usuarios[correo].passw
             else:
-                flash("La contraseña es incorrecta.")
+                flash("La contraseña es incorrecta")
         else:
             flash("No se encontro el usuario, ingresaste el correo correctamente?")
         
         if get_flashed_messages():
-            return redirect(url_for("sesion"))
+            return render_template("sesion.html")
         else:
             return render_template("inicio.html")
 
