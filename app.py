@@ -1,4 +1,5 @@
 # aviso nutrimental (azucares o sales altas en alimentos, productos o recetas)
+import datetime
 from flask import Flask, render_template, request, flash, get_flashed_messages, redirect, url_for, session
 app = Flask(__name__)
 
@@ -21,11 +22,12 @@ def iniciandoSesion():
             passw = request.form.get("passw")
             if passw == usuarios[correo].passw:
                 session["nombre"] = usuarios[correo].nombre
-                session["fechaNacim"] = usuarios[correo].fechaNacim
                 session["genero"] = usuarios[correo].genero
+                session["fechaNacim"] = usuarios[correo].fechaNacim
+                session["edad"] = usuarios[correo].edad
+                session["actFisica"] = usuarios[correo].actFisica
                 session["peso"] = usuarios[correo].peso
                 session["altura"] = usuarios[correo].altura
-                session["actFisica"] = usuarios[correo].actFisica
                 session["correo"] = usuarios[correo].correo
                 session["passw"] = usuarios[correo].passw
             else:
@@ -36,41 +38,63 @@ def iniciandoSesion():
         if get_flashed_messages():
             return render_template("sesion.html")
         else:
-            return render_template("inicio.html")
+            return redirect(url_for(""))
 
 @app.route("/registro")
 def registro():  
     return render_template("registro.html")
   
-@app.route('/obtenerinfo', methods = ("GET", "POST"))
-def Obt():
+@app.route('/registrando', methods = ("GET", "POST"))
+def registrando():
     error = []
     if request.method == "POST":
-        NombreCompleto = request.form["NombreCompleto"]
-        email = request.form["email"]
-        Contra = request.form["Contra"]
-        ContraPru = request.form["ContraPru"]
-        Año = int(request.form["Año"])
-
-        if Contra != ContraPru:
-            error.append("Las contraseñas no coinciden")
-        elif Año > 2006:
-            error = "Eres menor de edad"
-        elif email in USUARIOS_REGISTRADOS:
-            error = "Este correo ya está registrado"
+        nombre = request.form.get("nombre")
+        genero = request.form.get("genero")
+        fechaNacim = datetime.strptime(request.form["fechaNac"], '%Y-%m-%d').date()
+        actFisica = request.form.get("actFisica")
+        peso = request.form.get("peso")
+        altura = request.form.get("altura")
+        correo = request.form.get("correo")
+        passw = request.form.get("passw")
+        passwC = request.form.get("passwC")
+        
+        hoy = date.today()
+        edad = None
+        if fechaNacim <= hoy:
+            edad = hoy.year - fechaNacim.year
+            if hoy.day < fechaNacim.day and hoy.month < fechaNacim.month:
+                edad -= 1
+        else:
+            error.append("La fecha no puede ser futura")
+        
+        if not actFisica:
+            error.append("Selecciona tu nivel de actividad fisica")
+        
+        if usuarios[correo]:
+            error.append("El correo ingresado ya esta siendo usado por otra cuenta")
+        
+        if passwC != passw:
+            error.append("La confirmacion de la contraseña no coincide")
 
         if error:
-            flash(error, "error")
+            for err in error:
+                flash(err)
             return render_template("registrate.html")
         else:
-            USUARIOS_REGISTRADOS[email] = {
-                'password': Contra,
-                'nombre': NombreCompleto,
-                'año': Año
+            usuarios[correo] = {
+                "nombre": nombre,
+                "genero": genero,
+                "fechaNacim": fechaNacim,
+                "edad": edad,
+                "actFisica": actFisica,
+                "peso": peso,
+                "altura": altura,
+                "correo": correo,
+                "passw": passw
             }
 
             flash(f"Registro exitoso para el usuario: {email}", "success")
-            return redirect(url_for("iniciaSes"))
+            return redirect(url_for("sesion"))
 
 if __name__ == "__main__":
     app.run(debug=True)
