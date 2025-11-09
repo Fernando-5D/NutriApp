@@ -30,7 +30,7 @@
                             {% with flashes = get_flashed_messages(with_categories=true) %}
                                 {% if flashes %}
                                     {% for color, flash in flashes %}
-                                    <div class="alert alert-{{ color }} mt-1" role="alert">{{ flash }}</div>
+                                    <div class="alert alert-{{ color }} mb-1" role="alert">{{ flash }}</div>
                                     {% endfor %}
                                 {% endif %}
                             {% endwith %}
