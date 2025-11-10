@@ -8,7 +8,20 @@ usuarios = {}
 
 @app.route("/")
 def inicio():  
-    return render_template("intro.html")
+    if session.get("correo"):
+        return render_template("inicio.html")
+    else:
+        return render_template("intro.html")
+    
+@app.route("/perfil")
+def perfil():
+    nombre = session["nombre"]
+    correo = session["correo"]
+    return render_template("perfil.html", nombre = nombre, correo = correo)
+
+@app.route("/guardarCambiosPerfil")
+def guardarCambiosPerfil():  
+    return
 
 @app.route("/sesion")
 def sesion():  
@@ -43,7 +56,7 @@ def iniciandoSesion():
 @app.route("/registro")
 def registro():  
     return render_template("registro.html")
-  
+
 @app.route('/registrando', methods = ("GET", "POST"))
 def registrando():
     error = []
