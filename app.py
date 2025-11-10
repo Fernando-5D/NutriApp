@@ -38,7 +38,7 @@ def iniciandoSesion():
         if get_flashed_messages():
             return render_template("sesion.html")
         else:
-            return redirect(url_for(""))
+            return redirect(url_for("intro"))
 
 @app.route("/registro")
 def registro():  
