@@ -9,26 +9,92 @@ usuarios = {}
 @app.route("/")
 def inicio():  
     if session.get("correo"):
-        return render_template("inicio.html", hoy = hoy)
+        return render_template("inicio.html")
     else:
         return render_template("intro.html")
     
 @app.route("/perfil")
 def perfil():
+    
     nombre = session["nombre"]
     correo = session["correo"]
     genero = session["genero"]
     fechaNacim = session["fechaNacim"]
-    actFisica = session["actFisica"]
-    edad = session["edad"]
     peso = session["peso"]
     altura = session["altura"]
     correo = session["correo"]
-    return render_template("perfil.html", nombre = nombre, correo = correo, genero = genero, fechaNacim=fechaNacim , actFisica=actFisica , edad= edad , peso=peso, altura=altura, correo = correo)
+    actFisica = session["actFisica"]
+    
+    
+    if actFisica == "1.2":
+        text = "Sedentario (Nada)"
+    elif actFisica == "1.375":
+        text = "Actividad Ligera"
+    elif actFisica == "1.55":
+        text = "Actividad Moderada"
+    elif actFisica == "1.725":
+        text = "Actividad Alta"
+    else:
+        text= "Desconocido"
 
-@app.route("/guardarCambiosPerfil")
+    return render_template("perfil.html", nombre = nombre,  genero = genero, fechaNacim=fechaNacim , peso=peso, altura=altura, correo = correo, text=text ,
+        actFisica=actFisica)
+
+
+@app.route("/editarPerfil")
+def editarPerfil():
+    if not session.get("correo"):
+        return redirect(url_for("sesion"))
+
+    return render_template("editarPerfil.html", nombre=session["nombre"], correo=session["correo"], genero=session["genero"], fechaNacim=session["fechaNacim"],peso=session["peso"], altura=session["altura"],actFisica=session["actFisica"]
+    )
+
+@app.route("/guardarCambiosPerfil",methods=["POST"])
 def guardarCambiosPerfil():  
-    return
+
+    correo = session["correo"] 
+
+    nombre = request.form.get("nombre")
+    genero = request.form.get("genero")
+    fechaNacim = request.form.get("fechaNacim")
+    peso = request.form.get("peso")
+    altura = request.form.get("altura")
+    actFisica = request.form.get("actFisica")
+
+    usuarios[correo]["nombre"] = nombre
+    usuarios[correo]["genero"] = genero
+    usuarios[correo]["fechaNacim"] = fechaNacim
+    usuarios[correo]["peso"] = peso
+    usuarios[correo]["altura"] = altura
+    usuarios[correo]["actFisica"] = actFisica
+
+
+    session["nombre"] = nombre
+    session["genero"] = genero
+    session["fechaNacim"] = fechaNacim
+    session["peso"] = peso
+    session["altura"] = altura
+    session["actFisica"] = actFisica
+
+    flash("Cambios guardados exitosamente", "success")
+    return redirect(url_for("perfil"))
+
+
+@app.route("/eliminarCuenta", methods=["POST"])
+def eliminarCuenta():
+
+    correo = session.get("correo")
+    if not correo:
+        return redirect(url_for("sesion"))
+
+    if correo in usuarios:
+        del usuarios[correo]
+    session.clear()
+
+    flash("Tu cuenta ha sido eliminada exitosamente.", "success")
+    return redirect(url_for("registro"))
+
+
 
 @app.route("/cerrarSes")
 def cerrarSes():
@@ -69,12 +135,11 @@ def iniciandoSesion():
 def registro():  
     return render_template("registro.html")
 
-hoy = date.today()
 @app.route('/registrando', methods = ("GET", "POST"))
 def registrando():
     error = []
     if request.method == "POST":
-        nombre = request.form.get("nombre").strip()
+        nombre = request.form.get("nombre")
         genero = request.form.get("genero")
         fechaNacim = datetime.strptime(request.form["fechaNacim"], '%Y-%m-%d').date()
         actFisica = request.form.get("actFisica")
@@ -84,6 +149,7 @@ def registrando():
         passw = request.form.get("passw")
         passwC = request.form.get("passwC")
         
+        hoy = date.today()
         edad = None
         if fechaNacim <= hoy:
             edad = hoy.year - fechaNacim.year
@@ -123,5 +189,6 @@ def registrando():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
