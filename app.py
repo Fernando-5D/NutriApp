@@ -30,6 +30,11 @@ def perfil():
 def guardarCambiosPerfil():  
     return
 
+@app.route("/cerrarSes")
+def cerrarSes():
+    session.clear()  
+    return redirect(url_for("sesion"))  
+
 @app.route("/sesion")
 def sesion():  
     return render_template("sesion.html")
@@ -118,4 +123,5 @@ def registrando():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
