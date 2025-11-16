@@ -30,6 +30,21 @@ def perfil():
 def guardarCambiosPerfil():  
     return
 
+
+@app.route("/eliminarCuenta", methods=["POST"])
+def eliminarCuenta():
+
+    correo = session.get("correo")
+    if not correo:
+        return redirect(url_for("sesion"))
+
+    if correo in usuarios:
+        del usuarios[correo]
+    session.clear()
+
+    flash("Tu cuenta ha sido eliminada exitosamente.", "success")
+    return redirect(url_for("registro"))
+
 @app.route("/cerrarSes")
 def cerrarSes():
     session.clear()  
@@ -123,5 +138,6 @@ def registrando():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
