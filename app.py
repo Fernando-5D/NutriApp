@@ -17,11 +17,23 @@ def inicio():
 def perfil():
     nombre = session["nombre"]
     correo = session["correo"]
-    return render_template("perfil.html", nombre = nombre, correo = correo)
+    genero = session["genero"]
+    fechaNacim = session["fechaNacim"]
+    actFisica = session["actFisica"]
+    edad = session["edad"]
+    peso = session["peso"]
+    altura = session["altura"]
+    correo = session["correo"]
+    return render_template("perfil.html", nombre = nombre, correo = correo, genero = genero, fechaNacim=fechaNacim , actFisica=actFisica , edad= edad , peso=peso, altura=altura, correo = correo)
 
 @app.route("/guardarCambiosPerfil")
 def guardarCambiosPerfil():  
     return
+
+@app.route("/cerrarSes")
+def cerrarSes():
+    session.clear()  
+    return redirect(url_for("sesion"))  
 
 @app.route("/sesion")
 def sesion():  
@@ -111,3 +123,5 @@ def registrando():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
