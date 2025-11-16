@@ -9,7 +9,7 @@ usuarios = {}
 @app.route("/")
 def inicio():  
     if session.get("correo"):
-        return render_template("inicio.html")
+        return render_template("inicio.html", hoy = hoy)
     else:
         return render_template("intro.html")
     
@@ -57,11 +57,12 @@ def iniciandoSesion():
 def registro():  
     return render_template("registro.html")
 
+hoy = date.today()
 @app.route('/registrando', methods = ("GET", "POST"))
 def registrando():
     error = []
     if request.method == "POST":
-        nombre = request.form.get("nombre")
+        nombre = request.form.get("nombre").strip()
         genero = request.form.get("genero")
         fechaNacim = datetime.strptime(request.form["fechaNacim"], '%Y-%m-%d').date()
         actFisica = request.form.get("actFisica")
@@ -71,7 +72,6 @@ def registrando():
         passw = request.form.get("passw")
         passwC = request.form.get("passwC")
         
-        hoy = date.today()
         edad = None
         if fechaNacim <= hoy:
             edad = hoy.year - fechaNacim.year
