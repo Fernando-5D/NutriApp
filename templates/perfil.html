@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block main %}
-<div class="my-5 py-5 container">
-    <div class="row justify-content-center">
+<div class="mt-5 py-5 container">
+    <div class="row mt-5 justify-content-center">
         <div class="col-md-10">
             <div class="card shadow-sm p-4">
                 <div class="row g-4 align-items-center">
@@ -46,7 +46,7 @@
                             <form action="{{ url_for('eliminarCuenta') }}" method="POST">
                                 <button class="btn btn-danger ms-2">Eliminar cuenta</button>
                             </form>
-                            <a href="{{ url_for('editarPerfil') }}" class="btn btn-primary me-2">Editar perfil</a>
+                            <a href="{{ url_for('editarPerfil') }}" class="btn btn-primary ms-2">Editar perfil</a>
                         </div>
                     </div>
                 </div>
@@ -55,3 +55,6 @@
     </div>
 </div>
 {% endblock main %}
+
+{% block footer %}
+{% endblock footer %}

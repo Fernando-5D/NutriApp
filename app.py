@@ -54,25 +54,25 @@ def editarPerfil():
 
 @app.route("/guardarCambiosPerfil",methods=["POST"])
 def guardarCambiosPerfil():  
-    correo = session["correo"] 
+    correo = session.get("correo")
 
     nombre = request.form.get("nombre")
     genero = request.form.get("genero")
-    fechaNacim = request.form.get("fechaNacim")
+    fechaNacim = datetime.strptime(request.form["fechaNacim"], '%Y-%m-%d').date()
     peso = request.form.get("peso")
     altura = request.form.get("altura")
     actFisica = request.form.get("actFisica")
 
     usuarios[correo]["nombre"] = nombre
     usuarios[correo]["genero"] = genero
-    usuarios[correo]["fechaNacim"] = fechaNacim
+    usuarios[correo]["fechaNacim"] = str(fechaNacim)
     usuarios[correo]["peso"] = peso
     usuarios[correo]["altura"] = altura
     usuarios[correo]["actFisica"] = actFisica
 
     session["nombre"] = nombre
     session["genero"] = genero
-    session["fechaNacim"] = fechaNacim
+    session["fechaNacim"] = str(fechaNacim)
     session["peso"] = peso
     session["altura"] = altura
     session["actFisica"] = actFisica
@@ -83,7 +83,6 @@ def guardarCambiosPerfil():
 
 @app.route("/eliminarCuenta", methods=["POST"])
 def eliminarCuenta():
-
     correo = session.get("correo")
     if not correo:
         return redirect(url_for("sesion"))

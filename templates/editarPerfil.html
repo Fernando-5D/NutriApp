@@ -1,17 +1,14 @@
 {% extends 'base.html' %}
 
 {% block main %}
-<div class="container">
+<div class="container mt-5 py-5">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card shadow-sm p-4">
-
                 <form method="POST" action="{{ url_for('guardarCambiosPerfil') }}">
-
                     <h2 class="text-center mb-4">Editar perfil</h2>
 
                     <div class="row">
-
                         <div class="col-md-6 mb-3">
                             <label><strong>Nombre:</strong></label>
                             <input type="text" class="form-control" name="nombre" value="{{ nombre }}">
@@ -59,15 +56,13 @@
                             <button type="submit" class="btn btn-success me-2">Guardar cambios</button>
                             <a href="{{ url_for('perfil') }}" class="btn btn-secondary">Cancelar</a>
                         </div>
-
                     </div>
-
                 </form>
-
             </div>
         </div>
     </div>
 </div>
 {% endblock %}
 
-
+{% block footer %}
+{% endblock footer %}
