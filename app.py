@@ -145,8 +145,8 @@ def registrando():
         genero = request.form.get("genero")
         fechaNacim = datetime.strptime(request.form["fechaNacim"], '%Y-%m-%d').date()
         actFisica = request.form.get("actFisica")
-        peso = request.form.get("peso")
-        altura = request.form.get("altura")
+        peso = float(request.form.get("peso"))
+        altura = float(request.form.get("altura"))
         correo = request.form.get("correo")
         passw = request.form.get("passw")
         passwC = request.form.get("passwC")
@@ -161,6 +161,12 @@ def registrando():
         
         if not actFisica:
             error.append("Selecciona tu nivel de actividad fisica")
+        
+        if peso <= 0:
+            error.append("El peso no puede ser menor a 1kg")
+            
+        if altura <= 0:
+            error.append("La altura no puede ser menor a 1cm")
         
         if usuarios.get(correo):
             error.append("El correo ingresado ya esta siendo usado por otra cuenta")
