@@ -10,7 +10,7 @@
     </nav>
 
     <div class="mx-5 p-5">
-        <h3 class="text-center">
+        <h2 class="text-center">
             {% if cumple %}
             Feliz cumpleaños, 
             {% else %}
@@ -25,12 +25,10 @@
                 {% endif %}
             {% endif %}
 
-            {% if session.get("nombre") %}
-            {{ session.get("nombre") }}!
-            {% else %}
-            Usuario!
-            {% endif %}
-        </h3>
+            {{ session.get("nombre") }}! {% if not cumple %}👋{% else %}🎉{% endif %}
+        </h2>
+
+        
 
         <div class="m-5">
             <div class="d-flex flex-row">

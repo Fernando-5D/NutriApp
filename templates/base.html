@@ -16,7 +16,10 @@
       <div class="row m-0 py-2 px-3">
         {% if session.get("correo") %}
         <h2 class="col-10 text-light fw-bold">NutriShelf</h2>
-        <a class="col-2 text-light text-end fw-semibold text-decoration-none mt-2 fs-5" href="/perfil">Perfil</a>
+        <a class="col-2 text-light text-end fw-semibold text-decoration-none fs-5 align-content-center" href="/perfil">
+          {{ session.get("nombre") }}
+          <img src="static/img/logo1.png" class="ms-2 rounded-5" style="width: 38px;">
+        </a>
         {% else %}
         <h2 class="col-9 text-light fw-bold">NutriShelf</h2>
         <a class="col-1 text-light text-end fw-semibold text-decoration-none mt-2 fs-5" href="/registro">Registrate</a>
