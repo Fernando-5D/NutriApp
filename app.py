@@ -20,25 +20,29 @@ def inicio():
     
 @app.route("/perfil")
 def perfil():
-    nombre = session["nombre"]
-    correo = session["correo"]
-    genero = session["genero"]
-    fechaNacim = session["fechaNacim"]
-    peso = session["peso"]
-    altura = session["altura"]
-    correo = session["correo"]
-    actFisica = session["actFisica"]
+    nombre = session.get("nombre")
+    genero = session.get("genero")
+    fechaNacim = session.get("fechaNacim")
+    peso = session.get("peso")
+    altura = session.get("altura")
+    correo = session.get("correo")
+    actFisica = session.get("actFisica")
     
     if actFisica == "1.2":
-        text = "Sedentario (Nada)"
+        actFisica = "Sedentario (Nada)"
     elif actFisica == "1.375":
-        text = "Actividad Ligera"
+        actFisica = "Actividad Ligera"
     elif actFisica == "1.55":
-        text = "Actividad Moderada"
+        actFisica = "Actividad Moderada"
     elif actFisica == "1.725":
-        text = "Actividad Alta"
+        actFisica = "Actividad Alta"
+    
+    if genero == "5":
+        genero = "Hombre"
+    elif genero == "-161":
+        genero = "Mujer"
 
-    return render_template("perfil.html", nombre = nombre,  genero = genero, fechaNacim=fechaNacim , peso=peso, altura=altura, correo = correo, text=text , actFisica=actFisica)
+    return render_template("perfil.html", nombre = nombre,  genero = genero, fechaNacim=fechaNacim , peso=peso, altura=altura, correo = correo, actFisica=actFisica)
 
 
 @app.route("/editarPerfil")
@@ -50,7 +54,6 @@ def editarPerfil():
 
 @app.route("/guardarCambiosPerfil",methods=["POST"])
 def guardarCambiosPerfil():  
-
     correo = session["correo"] 
 
     nombre = request.form.get("nombre")
@@ -66,7 +69,6 @@ def guardarCambiosPerfil():
     usuarios[correo]["peso"] = peso
     usuarios[correo]["altura"] = altura
     usuarios[correo]["actFisica"] = actFisica
-
 
     session["nombre"] = nombre
     session["genero"] = genero
