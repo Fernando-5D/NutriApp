@@ -52,36 +52,37 @@ def editarPerfil():
 
     return render_template("editarPerfil.html", nombre=session["nombre"], correo=session["correo"], genero=session["genero"], fechaNacim=session["fechaNacim"],peso=session["peso"], altura=session["altura"],actFisica=session["actFisica"])
 
-@app.route("/guardarCambiosPerfil",methods=["POST"])
+@app.route("/guardarCambiosPerfil", methods = ("GET", "POST"))
 def guardarCambiosPerfil():  
-    correo = session.get("correo")
+    if request.method == "POST":
+        correo = session.get("correo")
 
-    nombre = request.form.get("nombre")
-    genero = request.form.get("genero")
-    fechaNacim = datetime.strptime(request.form["fechaNacim"], '%Y-%m-%d').date()
-    peso = request.form.get("peso")
-    altura = request.form.get("altura")
-    actFisica = request.form.get("actFisica")
+        nombre = request.form.get("nombre")
+        genero = request.form.get("genero")
+        fechaNacim = datetime.strptime(request.form["fechaNacim"], '%Y-%m-%d').date()
+        peso = request.form.get("peso")
+        altura = request.form.get("altura")
+        actFisica = request.form.get("actFisica")
 
-    usuarios[correo]["nombre"] = nombre
-    usuarios[correo]["genero"] = genero
-    usuarios[correo]["fechaNacim"] = str(fechaNacim)
-    usuarios[correo]["peso"] = peso
-    usuarios[correo]["altura"] = altura
-    usuarios[correo]["actFisica"] = actFisica
+        usuarios[correo]["nombre"] = nombre
+        usuarios[correo]["genero"] = genero
+        usuarios[correo]["fechaNacim"] = str(fechaNacim)
+        usuarios[correo]["peso"] = peso
+        usuarios[correo]["altura"] = altura
+        usuarios[correo]["actFisica"] = actFisica
 
-    session["nombre"] = nombre
-    session["genero"] = genero
-    session["fechaNacim"] = str(fechaNacim)
-    session["peso"] = peso
-    session["altura"] = altura
-    session["actFisica"] = actFisica
+        session["nombre"] = nombre
+        session["genero"] = genero
+        session["fechaNacim"] = str(fechaNacim)
+        session["peso"] = peso
+        session["altura"] = altura
+        session["actFisica"] = actFisica
 
-    flash("Cambios guardados exitosamente", "success")
-    return redirect(url_for("perfil"))
+        flash("Cambios guardados exitosamente", "success")
+        return redirect(url_for("perfil"))
 
 
-@app.route("/eliminarCuenta", methods=["POST"])
+@app.route("/eliminarCuenta")
 def eliminarCuenta():
     correo = session.get("correo")
     if not correo:
