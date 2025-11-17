@@ -1,66 +1,57 @@
 {% extends 'base.html' %}
 
 {% block main %}
-    <div class="my-5 py-5 container">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <div class="card shadow-sm p-4">
-                    <div class="row g-4 align-items-center">
-
-
-                        <div class="col-md-4 d-flex flex-column align-items-center text-center">
-                            <img src="static/img/logo2.png" class="rounded-circle mb-3" width="140" height="140"
-                                alt="Foto">
-                            <h1 class="text-center fw-bold">{{ nombre }}</h1>
-                        </div>
-
-
-                        <div class="col-md-8">
-                            <div class="row">
-
-
-                                <div class="col-md-6">
-                                    <h5><strong>Gmail:</strong>
-                                        <p>{{ correo }}</p>
-                                    </h5>
-                                    <h5><strong>Genero:</strong>
-                                        <p>{{ genero }}</p>
-                                    </h5>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <h5><strong>Fecha de nacimiento:</strong>
-                                        <p>{{ fechaNacim }}</p>
-                                    </h5>
-                                    <h5><strong>Actividad Fisica:</strong>
-                                        <p>{{ text }} </p>
-                                    </h5>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <h5><strong>Altura (cm):</strong>
-                                        <p>{{ altura }} </p>
-                                    </h5>
-                                    <h5><strong>Peso (kg):</strong>
-                                        <p>{{ peso }}</p>
-                                    </h5>
-                                </div>
-
-                    <div class="d-flex mt-3 ml-2">
-            <a href="{{ url_for('cerrarSes') }}" class="btn btn-danger"> Cerrar sesión</a>
-            <form action="{{ url_for('eliminarCuenta') }}" method="POST">
-                <button class="btn btn-danger ms-2">Eliminar cuenta</button>
-            </form> 
-            <a href="{{ url_for('editarPerfil') }}" class="btn btn-primary me-2">Editar perfil</a>
+<div class="my-5 py-5 container">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow-sm p-4">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-4 d-flex flex-column align-items-center text-center">
+                        <img src="static/img/logo2.png" class="rounded-circle mb-3" width="140" height="140" alt="Foto">
+                        <h1 class="text-center fw-bold">{{ nombre }}</h1>
                     </div>
 
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5><strong>Gmail:</strong>
+                                    <p>{{ correo }}</p>
+                                </h5>
+                                <h5><strong>Genero:</strong>
+                                    <p>{{ genero }}</p>
+                                </h5>
+                            </div>
 
+                            <div class="col-md-6">
+                                <h5><strong>Fecha de nacimiento:</strong>
+                                    <p>{{ fechaNacim }}</p>
+                                </h5>
+                                <h5><strong>Actividad Fisica:</strong>
+                                    <p>{{ text }} </p>
+                                </h5>
+                            </div>
 
+                            <div class="col-md-6">
+                                <h5><strong>Altura (cm):</strong>
+                                    <p>{{ altura }} </p>
+                                </h5>
+                                <h5><strong>Peso (kg):</strong>
+                                    <p>{{ peso }}</p>
+                                </h5>
+                            </div>
+                        </div>
+
+                        <div class="d-flex mt-3 ml-2">
+                            <a href="{{ url_for('cerrarSes') }}" class="btn btn-danger"> Cerrar sesión</a>
+                            <form action="{{ url_for('eliminarCuenta') }}" method="POST">
+                                <button class="btn btn-danger ms-2">Eliminar cuenta</button>
+                            </form>
+                            <a href="{{ url_for('editarPerfil') }}" class="btn btn-primary me-2">Editar perfil</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+</div>
 {% endblock main %}
-
