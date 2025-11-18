@@ -1,20 +1,38 @@
 # aviso nutrimental (azucares o sales altas en alimentos, productos o recetas)
+import requests
 from datetime import datetime, date
 from flask import Flask, render_template, request, flash, get_flashed_messages, redirect, url_for, session
 app = Flask(__name__)
 
-app.config["SECRET_KEY"] = "nutrishelfporfavortrevinecesitoexcentar"
+app.config["SECRET_KEY"] = "nutrishelfporfavortreviñonecesitoexcentar"
 usuarios = {}
+
+params = {
+    "apiKey": "cdea8d91f93441d8a0332ff3ad59725d"
+}
+
+hoy = date.today()
+nutridatoDiario = {
+    "texto": None,
+    "fecha": None
+}
 
 @app.route("/")
 def inicio():    
     if session.get("correo"):
+        if nutridatoDiario["fecha"] != hoy:
+            trivia = requests.get("https://api.spoonacular.com/food/trivia/random", params=params)
+            if trivia.status_code == 200:
+                trivia = trivia.json()
+                nutridatoDiario["texto"] = trivia["text"]
+                nutridatoDiario["fecha"] = hoy
+                
         cumple = False
         fechaNacim = datetime.strptime(session.get("fechaNacim"), '%Y-%m-%d').date()
         if hoy.month == fechaNacim.month and hoy.day == fechaNacim.day:
             cumple = True
             
-        return render_template("inicio.html", cumple = cumple)
+        return render_template("inicio.html", nutridato=nutridatoDiario["texto"], cumple=cumple)
     else:
         return render_template("intro.html")
     
@@ -22,12 +40,31 @@ def inicio():
 def perfil():
     nombre = session.get("nombre")
     genero = session.get("genero")
-    fechaNacim = session.get("fechaNacim")
+    fechaNacim = datetime.strptime(session.get("fechaNacim"), "%Y-%m-%d").date().strftime("%d-%B-%Y")
     peso = session.get("peso")
     altura = session.get("altura")
     correo = session.get("correo")
     actFisica = session.get("actFisica")
     
+    meses = {
+        "January": "Enero",
+        "February": "Febrero",
+        "March": "Marzo",
+        "April": "Abril",
+        "May": "Mayo",
+        "June": "Junio",
+        "July": "Julio",
+        "August": "Agosto",
+        "September": "Septiembre",
+        "October": "Octubre",
+        "November": "Noviembre",
+        "December": "Diciembre"
+    }
+    
+    fechaNacim = fechaNacim.split("-")
+    fechaNacim[1] = meses[fechaNacim[1]]
+    fechaNacim = " de ".join(fechaNacim)
+        
     if actFisica == "1.2":
         actFisica = "Sedentario (Nada)"
     elif actFisica == "1.375":
@@ -43,7 +80,6 @@ def perfil():
         genero = "Mujer"
 
     return render_template("perfil.html", nombre = nombre,  genero = genero, fechaNacim=fechaNacim , peso=peso, altura=altura, correo = correo, actFisica=actFisica)
-
 
 @app.route("/editarPerfil")
 def editarPerfil():
@@ -81,8 +117,7 @@ def guardarCambiosPerfil():
         flash("Cambios guardados exitosamente", "success")
         return redirect(url_for("perfil"))
 
-
-@app.route("/eliminarCuenta")
+@app.route("/eliminarCuenta", methods = ("GET", "POST"))
 def eliminarCuenta():
     correo = session.get("correo")
     if not correo:
@@ -93,7 +128,7 @@ def eliminarCuenta():
     session.clear()
 
     flash("Tu cuenta ha sido eliminada exitosamente.", "success")
-    return redirect(url_for("registro"))
+    return redirect(url_for("sesion"))
 
 
 
@@ -116,7 +151,6 @@ def iniciandoSesion():
                 session["nombre"] = usuarios[correo]["nombre"]
                 session["genero"] = usuarios[correo]["genero"]
                 session["fechaNacim"] = str(usuarios[correo]["fechaNacim"])
-                session["edad"] = usuarios[correo]["edad"]
                 session["actFisica"] = usuarios[correo]["actFisica"]
                 session["peso"] = usuarios[correo]["peso"]
                 session["altura"] = usuarios[correo]["altura"]
@@ -136,7 +170,6 @@ def iniciandoSesion():
 def registro():  
     return render_template("registro.html")
 
-hoy = date.today()
 @app.route('/registrando', methods = ("GET", "POST"))
 def registrando():
     error = []
@@ -151,12 +184,7 @@ def registrando():
         passw = request.form.get("passw")
         passwC = request.form.get("passwC")
         
-        edad = None
-        if fechaNacim <= hoy:
-            edad = hoy.year - fechaNacim.year
-            if hoy.day < fechaNacim.day and hoy.month < fechaNacim.month:
-                edad -= 1
-        else:
+        if fechaNacim > hoy:
             error.append("La fecha no puede ser futura")
         
         if not actFisica:
@@ -182,8 +210,7 @@ def registrando():
             usuarios[correo] = {
                 "nombre": nombre,
                 "genero": genero,
-                "fechaNacim": fechaNacim,
-                "edad": edad,
+                "fechaNacim": str(fechaNacim),
                 "actFisica": actFisica,
                 "peso": peso,
                 "altura": altura,

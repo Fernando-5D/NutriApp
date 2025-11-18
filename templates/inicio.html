@@ -2,7 +2,7 @@
 
 {% block main %}
 <div class="pt-2">
-    <nav class="nav justify-content-evenly py-3 mt-5" style="background-color: rgb(75, 53, 39);">
+    <nav class="nav justify-content-evenly py-3 mt-5" style="background-color: rgb(94, 71, 57);">
         <a href="/recetas" class="nav-item text-light text-decoration-none fw-semibold fs-4">Recetas</a>
         <a href="/ingredientes" class="nav-item text-light text-decoration-none fw-semibold fs-4">Ingredientes</a>
         <a href="/productos" class="nav-item text-light text-decoration-none fw-semibold fs-4">Productos</a>
@@ -10,25 +10,26 @@
     </nav>
 
     <div class="mx-5 p-5">
-        <h2 class="text-center">
-            {% if cumple %}
-            Feliz cumpleaños, 
-            {% else %}
-                {% if session.get("genero") %}
-                    {% if session.get("genero") == "5" %}
-                    Bienvenido,
-                    {% elif session.get("genero") == "-161" %}
-                    Bienvenida,
-                    {% endif %}
+        <h5 class="text-center mb-5">Nutridato del Dia 💡: {{ nutridato }}</h5>
+        <div class="text-center">
+            <h3>
+                {% if cumple %}
+                Feliz cumpleaños,
                 {% else %}
-                Bienvenid@,
+                    {% if session.get("genero") %}
+                        {% if session.get("genero") == "5" %}
+                        Bienvenido,
+                        {% elif session.get("genero") == "-161" %}
+                        Bienvenida,
+                        {% endif %}
+                    {% endif %}
                 {% endif %}
-            {% endif %}
 
-            {{ session.get("nombre") }}! {% if not cumple %}👋{% else %}🎉{% endif %}
-        </h2>
+                {{ session.get("nombre") }}! {% if not cumple %}👋{% else %}🎉{% endif %}
+            </h3>
 
-        
+            <h5>¿Que haras hoy?</h5>
+        </div>
 
         <div class="m-5">
             <div class="d-flex flex-row">
