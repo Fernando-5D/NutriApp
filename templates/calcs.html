@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="m-5 p-5">
+    <div class="mt-4 mb-5 text-center">
+        <h1>Calculadoras Nutricionales</h1>
+        <p class="fs-5">Usa nuestros 4 tipos de calculadoras nutricionales para aprender sobre las caracteristicas y necesidades de tu cuerpo...</p>
+    </div>
+
+    <div class="my-3 mx-5 rounded-4 p-5 row align-items-center" style="background-color: rgb(255, 134, 64);">
+        <div class="col-9">
+            <h2 class="text-light fw-bold">Calculadora de Índice de Masa Corporal (IMC) y Peso Corporal Ideal</h2>
+            <p class="text-light fs-5">Evalua tu rango de peso y encuentra tu peso ideal en base a diversas caracteristicas de tu cuerpo.</p>
+            <a href="/calcs/calcImc" class="btn btn-dark fw-semibold mt-3 fs-5 text-decoration-none">Entrar</a>
+        </div>
+
+        <div class="col-3 text-center">
+            <img src="static/img/bascula.png" style="width: 75px;" alt="bascula medica">
+        </div>
+    </div>
+
+    <div class="my-3 mx-5 rounded-4 p-5 row align-items-center" style="background-color: rgb(255, 80, 80);">
+        <div class="col-9">
+            <h2 class="text-light fw-bold"> Calculadora de Tasa Metabólica Basal (TMB)</h2>
+            <p class="text-light fs-5">Conoce el minimo de calórias que tu cuerpo necesita para funcionar de forma correcta.</p>
+            <a href="/calcs/calcTmb" class="btn btn-dark fw-semibold mt-3 fs-5 text-decoration-none">Entrar</a>
+        </div>
+
+        <div class="col-3 text-center">
+            <img src="static/img/platillo.png" style="width: 225px;" alt="bascula medica">
+        </div>
+    </div>
+
+    <div class="my-3 mx-5 rounded-4 p-5 row align-items-center" style="background-color: rgb(255, 199, 46);">
+        <div class="col-9">
+            <h2 class="text-light fw-bold">Calculadora de Gasto Calórico Total (GCT)</h2>
+            <p class="text-light fs-5">Aprende sobre el total de calorias que tu cuerpo quema al dia para mantener funciones vitales, realizar actividad física y digerir alimentos.</p>
+            <a href="/calcs/calcGct" class="btn btn-dark fw-semibold mt-3 fs-5 text-decoration-none">Entrar</a>
+        </div>
+
+        <div class="col-3 text-center">
+            <img src="static/img/caminadora.png" style="width: 200px;" alt="bascula medica">
+        </div>
+    </div>
+
+    <div class="my-3 mx-5 rounded-4 p-5 row align-items-center" style="background-color: rgb(64, 163, 255);">
+        <div class="col-8">
+            <h2 class="text-light fw-bold">Calculadora de Macronutrientes</h2>
+            <p class="text-light fs-5">Conoce los nutrientes que necesitas en grandes cantidades para obtener energia y realizar funciones vitales.</p>
+            <a href="/calcs/calcMacros" class="btn btn-dark fw-semibold mt-3 fs-5 text-decoration-none">Entrar</a>
+        </div>
+
+        <div class="col-4 text-center">
+            <img src="static/img/macros.webp" style="width: 300px;" alt="bascula medica">
+        </div>
+    </div>
+</div>
+{% endblock main %}

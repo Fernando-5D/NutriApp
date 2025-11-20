@@ -36,6 +36,26 @@ def inicio():
     else:
         return render_template("intro.html")
     
+@app.route("/calcs")
+def calcs():
+    return render_template("calcs.html")
+
+@app.route("/calcs/calcImc")
+def calcImc():
+    return render_template("calcImc.html")
+
+@app.route("/calcs/calcTmb")
+def calcTmb():
+    return render_template("calcTmb.html")
+
+@app.route("/calcs/calcGct")
+def calcGct():
+    return render_template("calcGct.html")
+
+@app.route("/calcs/calcMacros")
+def calcMacros():
+    return render_template("calcMacros.html")
+    
 @app.route("/perfil")
 def perfil():
     nombre = session.get("nombre")
@@ -81,7 +101,7 @@ def perfil():
 
     return render_template("perfil.html", nombre = nombre,  genero = genero, fechaNacim=fechaNacim , peso=peso, altura=altura, correo = correo, actFisica=actFisica)
 
-@app.route("/editarPerfil")
+@app.route("/perfil/editarPerfil")
 def editarPerfil():
     if not session.get("correo"):
         return redirect(url_for("sesion"))
