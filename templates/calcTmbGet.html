@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="row justify-content-center mt-5 pt-4">
+    <div class="card mt-5 shadow-lg p-0" style="width: 625px;">
+        <div class="card-header" style="background-color: rgb(255, 80, 80);">
+            <h4 class="text-center text-light">Calculadora de Tasa Metabólica Basal (TMB) y Gasto Metabolico Basal (GET)</h4>
+        </div>
+
+        <div class="card-body px-4 py-3">
+            <form class="form" action="/resultado" method="post">
+                <div class="row">
+                    <div class="col-4">
+                        <p class="m-0 mb-1 ms-1">Peso (kg)</p>
+                        <div class="ms-1">
+                            <input class="form-control" name="peso" type="number" step="any" value="{{ peso }}" required>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <p class="m-0 mb-1">Altura (cm)</p>
+                        <div class="">
+                            <input class="form-control" name="altura" type="number" step="any" value="{{ altura }}" required>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <p class="m-0 mb-1 me-1">Edad</p>
+                        <div class="me-1">
+                            <input class="form-control" name="edad" type="number" value="{{ edad }}" required>
+                        </div>
+                    </div>
+                </div>
+
+
+                <p class="m-0 mb-1 mt-3 ms-1">Género</p>
+                <div class="row">
+                    <div class="col row border rounded mx-0 ms-3 me-2 px-0">
+                        <p class="col-10 m-0 my-2">Hombre</p>
+                        <div class="col-2 m-0 my-2">
+                            <input class="form-radio" name="genero" type="radio" value="5" required
+                                {% if genero == "5" %}checked{% endif %}>
+                        </div>
+                    </div>
+
+                    <div class="col row border rounded mx-0 me-3 ms-2 px-0">
+                        <p class="col-10 m-0 my-2">Mujer</p>
+                        <div class="col-2 m-0 my-2">
+                            <input class="form-radio" name="genero" type="radio" value="-161" required
+                                {% if genero == "-161" %}checked{% endif %}>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="m-0 mb-1 mt-3 ms-1">Nivel de Actividad</p>
+                <div class="mx-1">
+                    <select class="form-select" name="actividad" required>
+                        <option selected disabled>Selecciona una opción</option>
+                        <option value="1.2" {% if actFisica == "1.2" %}selected{% endif %}>Sedentario</option>
+                        <option value="1.375" {% if actFisica == "1.375" %}selected{% endif %}>Actividad Ligera</option>
+                        <option value="1.55" {% if actFisica == "1.55" %}selected{% endif %}>Actividad Moderada</option>
+                        <option value="1.725" {% if actFisica == "1.725" %}selected{% endif %}>Actividad Alta</option>
+                    </select>
+                </div>
+
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-danger alert-dismissible fade show mt-3 mx-1" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+
+                <div class="row px-3 mt-2">
+                    <button type="submit" class="btn text-light fw-semibold mt-3" style="background-color: rgb(255, 80, 80);">Calcular</button>
+                </div>
+            </form>
+
+            {% block resultado %}
+            {% endblock resultado %}
+        </div>
+    </div>
+</div>
+{% endblock main %}
+
+{% block footer %}
+{% endblock footer %}

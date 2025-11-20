@@ -44,9 +44,21 @@ def calcs():
 def calcImc():
     return render_template("calcImc.html")
 
-@app.route("/calcs/calcTmb")
-def calcTmb():
-    return render_template("calcTmb.html")
+@app.route("/calcs/calcTmbGet")
+def calcTmbGet():
+    if session.get("correo"):
+        peso = session.get("peso")
+        altura = session.get("altura")
+        fechaNacim = datetime.strptime(session.get("fechaNacim"), "%Y-%m-%d").date()
+        genero = session.get("genero")
+        actFisica = session.get("actFisica")
+        
+        edad = hoy.year - fechaNacim.year
+        if (hoy.month, hoy.day) < (fechaNacim.month, fechaNacim.day):
+            edad -= 1
+        
+        return render_template("calcTmbGet.html", peso=peso, altura=altura, edad=edad, genero=genero, actFisica=actFisica)
+    return render_template("calcTmbGet.html")
 
 @app.route("/calcs/calcGct")
 def calcGct():
