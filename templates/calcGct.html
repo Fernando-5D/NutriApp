@@ -1,15 +1,14 @@
 {% extends "base.html" %}
 
 {% block main %}
-<div class="row justify-content-center mt-5 mb-4 mx-5 px-5">
-    <div class="card mt-5 shadow p-0" style="width: 625px;">
-        <div class="card-header" style="background-color: rgb(255, 80, 80);">
-            <h4 class="text-center text-light">Calculadora de Tasa Metabólica Basal (TMB) y Gasto Metabolico Basal (GET)
-            </h4>
+<div class="row justify-content-center mt-4 mb-4 mx-5 px-5">
+    <div class="card mt-5 shadow-sm p-0" style="width: 625px;">
+        <div class="card-header" style="background-color: rgb(255, 199, 46);">
+            <h4 class="text-center text-light">Calculadora de Gasto Calórico Total (GCT)</h4>
         </div>
 
         <div class="card-body px-4 py-3">
-            <form class="form" action="/calcs/calcTmbGet/result" method="post">
+            <form class="form" action="/calcs/calcGct/result" method="post">
                 <div class="row">
                     <div class="col-4">
                         <p class="m-0 mb-1 ms-1">Peso (kg)</p>
@@ -80,61 +79,12 @@
 
                 <div class="row px-3 mt-2">
                     <button type="submit" class="btn text-light fw-semibold mt-3"
-                        style="background-color: rgb(255, 80, 80);">Calcular</button>
+                        style="background-color: rgb(255, 199, 46);">Calcular</button>
                 </div>
             </form>
 
             {% block resultado %}
             {% endblock resultado %}
-        </div>
-    </div>
-
-    <div class="mx-5 px-5 mt-5 pt-5">
-        <div class="accordion accordion-flush" id="accordionFlushExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed text-light fw-semibold" type="button" 
-                        style="background-color: rgb(255, 80, 80);" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" 
-                        aria-controls="flush-collapseOne">
-                        Accordion Item #1
-                    </button>
-                </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate
-                        the <code>.accordion-flush</code> class. This is the first item’s accordion body.</div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed text-light fw-semibold" type="button" 
-                        style="background-color: rgb(255, 80, 80);" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" 
-                        aria-controls="flush-collapseTwo">
-                        Accordion Item #2
-                    </button>
-                </h2>
-                <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate
-                        the <code>.accordion-flush</code> class. This is the second item’s accordion body. Let’s imagine
-                        this being filled with some actual content.</div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed text-light fw-semibold" type="button" 
-                        style="background-color: rgb(255, 80, 80);" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false
-                        " aria-controls="flush-collapseThree">
-                        Accordion Item #3
-                    </button>
-                </h2>
-                <div id="flush-collapseThree" class="accordion-collapse collapse"
-                    data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate
-                        the <code>.accordion-flush</code> class. This is the third item’s accordion body. Nothing more
-                        exciting happening here in terms of content, but just filling up the space to make it look, at
-                        least at first glance, a bit more representative of how this would look in a real-world
-                        application.</div>
-                </div>
-            </div>
         </div>
     </div>
 </div>

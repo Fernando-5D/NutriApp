@@ -44,8 +44,34 @@ def calcs():
 def calcImc():
     return render_template("calcImc.html")
 
-@app.route("/calcs/calcTmbGet")
-def calcTmbGet():
+@app.route("/calcs/calcTmb")
+def calcTmb():
+    if session.get("correo"):
+        peso = session.get("peso")
+        altura = session.get("altura")
+        fechaNacim = datetime.strptime(session.get("fechaNacim"), "%Y-%m-%d").date()
+        genero = session.get("genero")
+        
+        edad = hoy.year - fechaNacim.year
+        if (hoy.month, hoy.day) < (fechaNacim.month, fechaNacim.day):
+            edad -= 1
+        
+        return render_template("calcTmb.html", peso=peso, altura=altura, edad=edad, genero=genero)
+    return render_template("calcTmb.html")
+
+@app.route("/calcs/calcTmb/result", methods = ("GET", "POST"))
+def resultTmb():
+    if request.method == "POST":
+        peso = float(request.form.get("peso"))
+        altura = float(request.form.get("altura"))
+        edad = float(request.form.get("edad"))
+        genero = float(request.form.get("genero"))
+            
+        tmb = (10 * peso) + (6.25 * altura) - (5 * edad) + genero
+        return render_template("resultTmb.html", tmb=tmb)
+    
+@app.route("/calcs/calcGct")
+def calcGct():
     if session.get("correo"):
         peso = session.get("peso")
         altura = session.get("altura")
@@ -57,31 +83,25 @@ def calcTmbGet():
         if (hoy.month, hoy.day) < (fechaNacim.month, fechaNacim.day):
             edad -= 1
         
-        return render_template("calcTmbGet.html", peso=peso, altura=altura, edad=edad, genero=genero, actFisica=actFisica)
-    return render_template("calcTmbGet.html")
+        return render_template("calcGct.html", peso=peso, altura=altura, edad=edad, genero=genero, actFisica=actFisica)
+    return render_template("calcGct.html")
 
-@app.route("/calcs/calcTmbGet/result", methods = ("GET", "POST"))
-def resultTmbGet():
+@app.route("/calcs/calcGct/result", methods = ("GET", "POST"))
+def resultGct():
     if request.method == "POST":
         peso = float(request.form.get("peso"))
         altura = float(request.form.get("altura"))
         edad = float(request.form.get("edad"))
         genero = float(request.form.get("genero"))
-        actFisica = float(request.form.get("actFisica"))
+        actFisica = request.form.get("actFisica")
         
         if actFisica == None:
-            flash("Nivel de actividad invalido")
-    
-        if get_flashed_messages():
-            return render_template("calcTmbGet.html", peso=peso, altura=altura, edad=edad, genero=genero, actFisica=actFisica)
-        else:
+            flash("Selecciona tu nivel de actividad fisica", "danger")
+            return render_template("calcGct.html", peso=peso, altura=altura, edad=edad, genero=genero, actFisica=actFisica)
+        else:     
             tmb = (10 * peso) + (6.25 * altura) - (5 * edad) + genero
-            get = tmb * actFisica
-            return render_template("resultTmbGet.html", tmb=tmb, get=get)
-
-@app.route("/calcs/calcGct")
-def calcGct():
-    return render_template("calcGct.html")
+            gct = tmb * float(actFisica)
+            return render_template("resultGct.html", gct=gct)
 
 @app.route("/calcs/calcMacros")
 def calcMacros():

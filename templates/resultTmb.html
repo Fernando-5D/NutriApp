@@ -1,0 +1,19 @@
+{% extends "calcTmb.html" %}
+
+{% block resultado %}
+<div>
+    <div class="border mx-2 my-4"></div>
+
+    <div class="row ms-1 mt-2">
+        <h5 class="col-11 p-0">Resultados del Calculo</h5>
+        <a class="col-1" href="/calcs/calcTmb">
+            <button type="button" class="btn-close" aria-label="Close"></button>
+        </a>
+    </div>
+
+    <div class="ms-1 border border-danger rounded bg-danger-subtle">
+        <p class="text-center m-0 mt-2 fw-semibold">Tasa Metabólica Basal (TMB)</p>
+        <h3 class="text-center text-danger fw-bold">{{ tmb }}</h3>
+    </div>
+</div>
+{% endblock resultado %}
