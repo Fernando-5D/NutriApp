@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block main %}
-<div class="row justify-content-center mt-5 mb-4 mx-5 px-5">
+<div class="row justify-content-center mt-4 mb-4 mx-5 px-5">
     <div class="card mt-5 shadow-sm p-0" style="width: 625px;">
-        <div class="card-header" style="background-color: rgb(255, 80, 80);">
-            <h4 class="text-center text-light">Calculadora de Tasa Metabólica Basal (TMB)</h4>
+        <div class="card-header" style="background-color: rgb(134, 238, 120);">
+            <h4 class="text-center text-light">Calculadora de Macronutrientes</h4>
         </div>
 
         <div class="card-body px-4 py-3">
-            <form class="form" action="/calcs/calcTmb/result" method="post">
+            <form class="form" action="/calcs/calcMacros/result" method="post">
                 <div class="row">
                     <div class="col-4">
                         <p class="m-0 mb-1 ms-1">Peso (kg)</p>
@@ -55,6 +55,36 @@
                     </div>
                 </div>
 
+                <p class="m-0 mb-1 mt-3 ms-1">Nivel de Actividad</p>
+                <div class="mx-1">
+                    <select class="form-select" name="actFisica" required>
+                        <option selected disabled>Selecciona una opción</option>
+                        <option value="1.2" {% if actFisica=="1.2" %}selected{% endif %}>Sedentario</option>
+                        <option value="1.375" {% if actFisica=="1.375" %}selected{% endif %}>Actividad Ligera</option>
+                        <option value="1.55" {% if actFisica=="1.55" %}selected{% endif %}>Actividad Moderada</option>
+                        <option value="1.725" {% if actFisica=="1.725" %}selected{% endif %}>Actividad Alta</option>
+                    </select>
+                </div>
+
+                <p class="m-0 mb-1 mt-3 ms-1">Porcentaje de Macros</p>
+                <div class="row">
+                    <div class="col row border rounded-2 p-0 ms-3 me-2">
+                        <p class="col-5 mt-1">Proteinas:</p>
+                        <p class="col-1">%</p>
+                        <input type="number" class="col-5" minlength="10" maxlength="35" name="proteinas">
+                    </div>
+                    <div class="col row border rounded-2 p-0 mx-3">
+                        <p class="col-5 mt-1">Grasas:</p>
+                        <p class="col-1">%</p>
+                        <input type="number" class="col-5" minlength="20" maxlength="35" name="grasas">
+                    </div>
+                    <div class="col row border rounded-2 p-0 me-3 ms-2">
+                        <p class="col-5 mt-1">Carbs:</p>
+                        <p class="col-1">%</p>
+                        <input type="number" class="col-5" minlength="45" maxlength="65" name="carbs">
+                    </div>
+                </div>
+
                 {% with messages = get_flashed_messages() %}
                 {% if messages %}
                 {% for message in messages %}
@@ -68,7 +98,7 @@
 
                 <div class="row px-3 mt-2">
                     <button type="submit" class="btn text-light fw-semibold mt-3"
-                        style="background-color: rgb(255, 80, 80);">Calcular</button>
+                        style="background-color: rgb(134, 238, 120);">Calcular</button>
                 </div>
             </form>
 
