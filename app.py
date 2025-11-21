@@ -42,7 +42,32 @@ def calcs():
 
 @app.route("/calcs/calcImc")
 def calcImc():
-    return render_template("calcImc.html")
+    return render_template("calIMC.html")
+
+
+@app.route("/resultIMC", methods = ("GET", "POST"))
+def resultado():
+    if request.method == "POST":
+        peso = float(request.form.get("peso"))
+        altura = float(request.form.get("altura"))
+        IMC=round(peso/(altura*altura), 2)
+
+
+        if IMC<18.5:
+            clasificacion="Bajo peso"
+            return render_template("calIMC.html",clasificacion=clasificacion, IMC=IMC)
+        elif 18.5 <= IMC <= 24.9:
+            clasificacion="Peso Saludable"
+            return render_template("calIMC.html",clasificacion=clasificacion, IMC=IMC)
+        elif 25.0 <= IMC <= 29.9:
+            clasificacion="Sobre Peso"
+            return render_template("calIMC.html",clasificacion=clasificacion, IMC=IMC)
+        elif 30.0 <= IMC <= 39.9:
+            clasificacion="Obesidad"
+            return render_template("calIMC.html"",clasificacion=clasificacion, IMC=IMC)
+    
+    return render_template("calIMC.html"",clasificacion=clasificacion, IMC=IMC)
+
 
 @app.route("/calcs/calcTmb")
 def calcTmb():
@@ -292,3 +317,4 @@ def registrando():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
