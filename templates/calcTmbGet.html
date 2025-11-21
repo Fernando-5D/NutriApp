@@ -1,33 +1,37 @@
 {% extends "base.html" %}
 
 {% block main %}
-<div class="row justify-content-center mt-5 pt-4">
-    <div class="card mt-5 shadow-lg p-0" style="width: 625px;">
+<div class="row justify-content-center mt-5 mb-4 mx-5 px-5">
+    <div class="card mt-5 shadow p-0" style="width: 625px;">
         <div class="card-header" style="background-color: rgb(255, 80, 80);">
-            <h4 class="text-center text-light">Calculadora de Tasa Metabólica Basal (TMB) y Gasto Metabolico Basal (GET)</h4>
+            <h4 class="text-center text-light">Calculadora de Tasa Metabólica Basal (TMB) y Gasto Metabolico Basal (GET)
+            </h4>
         </div>
 
         <div class="card-body px-4 py-3">
-            <form class="form" action="/resultado" method="post">
+            <form class="form" action="/calcs/calcTmbGet/result" method="post">
                 <div class="row">
                     <div class="col-4">
                         <p class="m-0 mb-1 ms-1">Peso (kg)</p>
                         <div class="ms-1">
-                            <input class="form-control" name="peso" type="number" step="any" value="{{ peso }}" required>
+                            <input class="form-control" name="peso" type="number" minlength="1" step="any"
+                                value="{{ peso }}" required>
                         </div>
                     </div>
 
                     <div class="col-4">
                         <p class="m-0 mb-1">Altura (cm)</p>
                         <div class="">
-                            <input class="form-control" name="altura" type="number" step="any" value="{{ altura }}" required>
+                            <input class="form-control" name="altura" type="number" minlength="1" step="any"
+                                value="{{ altura }}" required>
                         </div>
                     </div>
 
                     <div class="col-4">
                         <p class="m-0 mb-1 me-1">Edad</p>
                         <div class="me-1">
-                            <input class="form-control" name="edad" type="number" value="{{ edad }}" required>
+                            <input class="form-control" name="edad" type="number" minlength="1" value="{{ edad }}"
+                                required>
                         </div>
                     </div>
                 </div>
@@ -38,28 +42,28 @@
                     <div class="col row border rounded mx-0 ms-3 me-2 px-0">
                         <p class="col-10 m-0 my-2">Hombre</p>
                         <div class="col-2 m-0 my-2">
-                            <input class="form-radio" name="genero" type="radio" value="5" required
-                                {% if genero == "5" %}checked{% endif %}>
+                            <input class="form-radio" name="genero" type="radio" value="5" required {% if genero=="5"
+                                %}checked{% endif %}>
                         </div>
                     </div>
 
                     <div class="col row border rounded mx-0 me-3 ms-2 px-0">
                         <p class="col-10 m-0 my-2">Mujer</p>
                         <div class="col-2 m-0 my-2">
-                            <input class="form-radio" name="genero" type="radio" value="-161" required
-                                {% if genero == "-161" %}checked{% endif %}>
+                            <input class="form-radio" name="genero" type="radio" value="-161" required {% if
+                                genero=="-161" %}checked{% endif %}>
                         </div>
                     </div>
                 </div>
 
                 <p class="m-0 mb-1 mt-3 ms-1">Nivel de Actividad</p>
                 <div class="mx-1">
-                    <select class="form-select" name="actividad" required>
+                    <select class="form-select" name="actFisica" required>
                         <option selected disabled>Selecciona una opción</option>
-                        <option value="1.2" {% if actFisica == "1.2" %}selected{% endif %}>Sedentario</option>
-                        <option value="1.375" {% if actFisica == "1.375" %}selected{% endif %}>Actividad Ligera</option>
-                        <option value="1.55" {% if actFisica == "1.55" %}selected{% endif %}>Actividad Moderada</option>
-                        <option value="1.725" {% if actFisica == "1.725" %}selected{% endif %}>Actividad Alta</option>
+                        <option value="1.2" {% if actFisica=="1.2" %}selected{% endif %}>Sedentario</option>
+                        <option value="1.375" {% if actFisica=="1.375" %}selected{% endif %}>Actividad Ligera</option>
+                        <option value="1.55" {% if actFisica=="1.55" %}selected{% endif %}>Actividad Moderada</option>
+                        <option value="1.725" {% if actFisica=="1.725" %}selected{% endif %}>Actividad Alta</option>
                     </select>
                 </div>
 
@@ -75,12 +79,62 @@
                 {% endwith %}
 
                 <div class="row px-3 mt-2">
-                    <button type="submit" class="btn text-light fw-semibold mt-3" style="background-color: rgb(255, 80, 80);">Calcular</button>
+                    <button type="submit" class="btn text-light fw-semibold mt-3"
+                        style="background-color: rgb(255, 80, 80);">Calcular</button>
                 </div>
             </form>
 
             {% block resultado %}
             {% endblock resultado %}
+        </div>
+    </div>
+
+    <div class="mx-5 px-5 mt-5 pt-5">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-light fw-semibold" type="button" 
+                        style="background-color: rgb(255, 80, 80);" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" 
+                        aria-controls="flush-collapseOne">
+                        Accordion Item #1
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate
+                        the <code>.accordion-flush</code> class. This is the first item’s accordion body.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-light fw-semibold" type="button" 
+                        style="background-color: rgb(255, 80, 80);" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" 
+                        aria-controls="flush-collapseTwo">
+                        Accordion Item #2
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate
+                        the <code>.accordion-flush</code> class. This is the second item’s accordion body. Let’s imagine
+                        this being filled with some actual content.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed text-light fw-semibold" type="button" 
+                        style="background-color: rgb(255, 80, 80);" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false
+                        " aria-controls="flush-collapseThree">
+                        Accordion Item #3
+                    </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate
+                        the <code>.accordion-flush</code> class. This is the third item’s accordion body. Nothing more
+                        exciting happening here in terms of content, but just filling up the space to make it look, at
+                        least at first glance, a bit more representative of how this would look in a real-world
+                        application.</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

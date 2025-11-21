@@ -60,6 +60,25 @@ def calcTmbGet():
         return render_template("calcTmbGet.html", peso=peso, altura=altura, edad=edad, genero=genero, actFisica=actFisica)
     return render_template("calcTmbGet.html")
 
+@app.route("/calcs/calcTmbGet/result", methods = ("GET", "POST"))
+def resultTmbGet():
+    if request.method == "POST":
+        peso = float(request.form.get("peso"))
+        altura = float(request.form.get("altura"))
+        edad = float(request.form.get("edad"))
+        genero = float(request.form.get("genero"))
+        actFisica = float(request.form.get("actFisica"))
+        
+        if actFisica == None:
+            flash("Nivel de actividad invalido")
+    
+        if get_flashed_messages():
+            return render_template("calcTmbGet.html", peso=peso, altura=altura, edad=edad, genero=genero, actFisica=actFisica)
+        else:
+            tmb = (10 * peso) + (6.25 * altura) - (5 * edad) + genero
+            get = tmb * actFisica
+            return render_template("resultTmbGet.html", tmb=tmb, get=get)
+
 @app.route("/calcs/calcGct")
 def calcGct():
     return render_template("calcGct.html")
@@ -113,7 +132,7 @@ def perfil():
 
     return render_template("perfil.html", nombre = nombre,  genero = genero, fechaNacim=fechaNacim , peso=peso, altura=altura, correo = correo, actFisica=actFisica)
 
-@app.route("/perfil/editarPerfil")
+@app.route("/perfil/editar")
 def editarPerfil():
     if not session.get("correo"):
         return redirect(url_for("sesion"))
@@ -161,8 +180,6 @@ def eliminarCuenta():
 
     flash("Tu cuenta ha sido eliminada exitosamente.", "success")
     return redirect(url_for("sesion"))
-
-
 
 @app.route("/cerrarSes")
 def cerrarSes():

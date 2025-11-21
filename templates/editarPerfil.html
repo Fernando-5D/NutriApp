@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label><strong>Nombre:</strong></label>
-                            <input type="text" class="form-control" name="nombre" value="{{ nombre }}">
+                            <input type="text" class="form-control" name="nombre" value="{{ nombre }}" minlength="3" maxlength="50">
                         </div>
 
                         <div class="col-md-6 mb-3">
@@ -47,12 +47,12 @@
 
                         <div class="col-md-6 mb-3">
                             <label><strong>Peso:</strong></label>
-                            <input type="number" class="form-control" name="peso" value="{{ peso }}">
+                            <input type="number" class="form-control" name="peso" minlength="1" step="any" value="{{ peso }}">
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label><strong>Altura:</strong></label>
-                            <input type="number" class="form-control" name="altura" value="{{ altura }}">
+                            <input type="number" class="form-control" name="altura" minlength="1" step="any" value="{{ altura }}">
                         </div>
 
                         <div class="col-md-6 mb-3">
