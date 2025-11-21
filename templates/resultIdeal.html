@@ -1,0 +1,22 @@
+{% extends "form.html" %}
+
+{% block resultado %}
+<div>
+    <div class="border mx-2 my-4"></div>
+
+    <div class="row ms-1 mt-2">
+        <h5 class="col-11 p-0">Resultados del Calculo de Ideal</h5>
+        <a class="col-1" href="/">
+            <button class="p-0 m-0 btn fw-bold fs-5">X</button>
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col ms-3 me-2 border border-primary rounded bg-primary-subtle">
+            <p class="text-center mt-2">Tus Resultados son</p>
+            <h3 class="text-center text-primary fw-bold">{{ pesIdealMuj,pesIdealHom }}</h3>
+        </div>
+
+    </div>
+</div>
+{% endblock resultado %}
