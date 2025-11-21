@@ -40,6 +40,29 @@ def inicio():
 def calcs():
     return render_template("calcs.html")
 
+@app.route("/resultIdeal")
+def form():
+    return render_template("calIdeal.html")
+
+@app.route("/resultadoIdeal", methods = ("GET", "POST"))
+def resultadoIdeal():
+    if request.method == "POST":
+        peso = float(request.form.get("peso"))
+        altura = float(request.form.get("altura"))
+        Edad = float(request.form.get("Edad"))
+        genero = request.form.get("genero")
+        pesIdealHom=(altura-100)-(altura-150)/4
+        pesIdealMuj=(altura-100)-(altura-150)/2.5
+        if genero == 5:
+            pesIdealHom=pesIdealHom
+            return render_template("calIdeal.html", pesIdealHom=pesIdealHom)
+        elif genero==-161:
+            pesIdealMuj=pesIdealMuj
+            return render_template("calIdeal.html", pesIdealMuj=pesIdealMuj)
+    
+    
+    return render_template("calIdeal.html", pesIdealMuj=pesIdealMuj,pesIdealHom=pesIdealHom)
+
 @app.route("/calcs/calcImc")
 def calcImc():
     return render_template("calIMC.html")
@@ -317,4 +340,5 @@ def registrando():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
