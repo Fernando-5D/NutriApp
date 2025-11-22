@@ -40,9 +40,56 @@ def inicio():
 def calcs():
     return render_template("calcs.html")
 
-@app.route("/calcs/calcImc")
-def calcImc():
-    return render_template("calcImc.html")
+@app.route("/calcs/calIMC")
+def calIMC():
+    return render_template("calIMC.html")
+
+@app.route("/calcs/calIdeal")
+def calIdeal():
+    return render_template("calIdeal.html")
+
+
+
+
+
+@app.route("/resultIdeal", methods = ("GET", "POST"))
+def resultIdeal():
+    if request.method == "POST":
+        peso = float(request.form.get("peso"))
+        altura = float(request.form.get("altura"))
+        genero = request.form.get("genero")
+
+        if genero == 5:
+           peso = (altura - 100) - (altura-150)/4
+        else:
+           peso = (altura - 100) - (altura-150)/2.5
+    
+        
+    return render_template("calIdeal.html",pesIdeal=peso)
+
+@app.route("/resultIMC", methods = ("GET", "POST"))
+def resultIMC():
+    if request.method == "POST":
+        peso = float(request.form.get("peso"))
+        altura = float(request.form.get("altura"))
+        IMC=round(peso/(altura*altura), 2)
+
+
+        if IMC<18.5:
+            clasificacion="Bajo peso"
+            return render_template("calIMC.html",clasificacion=clasificacion, IMC=IMC)
+        elif 18.5 <= IMC <= 24.9:
+            clasificacion="Peso Saludable"
+            return render_template("calIMC.html",clasificacion=clasificacion, IMC=IMC)
+        elif 25.0 <= IMC <= 29.9:
+            clasificacion="Sobre Peso"
+            return render_template("calIMC.html",clasificacion=clasificacion, IMC=IMC)
+        elif 30.0 <= IMC <= 39.9:
+            clasificacion="Obesidad"
+            return render_template("calIMC.html",clasificacion=clasificacion, IMC=IMC)
+    
+    return render_template("calIMC.html",clasificacion=clasificacion, IMC=IMC)
+
 
 @app.route("/calcs/calcTmb")
 def calcTmb():
@@ -108,7 +155,7 @@ def calcMacros():
     return render_template("calcMacros.html")
 
 @app.route("/calcs/calcMacros/result", methods = ("GET", "POST"))
-def resultGct():
+def resultMacros():
     if request.method == "POST":
         peso = float(request.form.get("peso"))
         altura = float(request.form.get("altura"))
@@ -315,3 +362,4 @@ def registrando():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
