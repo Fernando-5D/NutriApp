@@ -68,8 +68,7 @@ def resultIMC():
     if request.method == "POST":
         peso = float(request.form.get("peso"))
         altura = float(request.form.get("altura"))
-        IMC=round(peso/(altura*altura), 2)
-
+        IMC=round(peso / (altura * altura), 1)
 
         if IMC<18.5:
             clasificacion="Bajo peso"
@@ -152,6 +151,7 @@ def calcMacros():
 
 @app.route("/calcs/calcMacros/result", methods = ("GET", "POST"))
 def resultMacros():
+    error = []
     if request.method == "POST":
         peso = float(request.form.get("peso"))
         altura = float(request.form.get("altura"))
@@ -164,14 +164,21 @@ def resultMacros():
         
         if actFisica == None:
             flash("Selecciona tu nivel de actividad fisica", "danger")
-            return render_template("calcGct.html", peso=peso, altura=altura, edad=edad, genero=genero, actFisica=actFisica)
+            
+        if proteinas + grasas + carbs != 100:
+            error.append("La suma de los porcentajes de macronutrientes debe ser igual a 100%")
+        
+        if error:
+            for err in error:
+                flash(err, "danger")
+            return render_template("calcMacros.html", peso=peso, altura=altura, edad=edad, genero=genero, actFisica=actFisica)
         else:     
             tmb = (10 * peso) + (6.25 * altura) - (5 * edad) + genero
             gct = tmb * float(actFisica)
-            proteinas = (gct * (proteinas / 100)) / 4
-            grasas = (gct * (grasas / 100)) / 4
-            carbs = (gct * (carbs / 100)) / 9
-            return render_template("resultGct.html", proteinas=proteinas, grasas=grasas, carbs=carbs)
+            proteinas = round((gct * (proteinas / 100)) / 4, 1)
+            grasas = round((gct * (grasas / 100)) / 4, 1)
+            carbs = round((gct * (carbs / 100)) / 9, 1)
+            return render_template("resultMacros.html", proteinas=proteinas, grasas=grasas, carbs=carbs)
     
 @app.route("/perfil")
 def perfil():

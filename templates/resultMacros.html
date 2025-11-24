@@ -6,24 +6,29 @@
 
     <div class="row ms-1 mt-2">
         <h5 class="col-11 p-0">Resultados del Calculo</h5>
-        <a class="col-1" href="/calcs/calcGct">
+        <a class="col-1" href="/calcs/calcMacros">
             <button type="button" class="btn-close" aria-label="Close"></button>
         </a>
     </div>
 
-    <div class="ms-1 border border-warning rounded bg-warning-subtle">
-        <p class="text-center m-0 mt-2 fw-semibold">Proteinas</p>
-        <h3 class="text-center text-warning fw-bold">{{ proteinas }}</h3>
-    </div>
+    <div class="row mx-1">
+        <div class="col-3 me-1 border border-primary rounded bg-primary-subtle">
+            <p class="text-center m-0 mt-4 mb-2 fw-semibold">Proteinas</p>
+            <h3 class="text-center text-primary fw-bold">{{ proteinas }}g</h3>
+            <p class="text-center fw-semibold">por dia</p>
+        </div>
 
-    <div class="ms-1 border border-warning rounded bg-warning-subtle">
-        <p class="text-center m-0 mt-2 fw-semibold">Grasas</p>
-        <h3 class="text-center text-warning fw-bold">{{ grasas }}</h3>
-    </div>
+        <div class="col mx-1 border border-warning rounded bg-warning-subtle">
+            <p class="text-center m-0 mt-3 mb-2 fw-semibold lh-sm">Grasas<br>(incluye grasas saturadas)</p>
+            <h3 class="text-center text-warning fw-bold">{{ grasas }}g</h3>
+            <p class="text-center fw-semibold">por dia</p>
+        </div>
 
-    <div class="ms-1 border border-warning rounded bg-warning-subtle">
-        <p class="text-center m-0 mt-2 fw-semibold">Carbs</p>
-        <h3 class="text-center text-warning fw-bold">{{ carbs }}</h3>
+        <div class="col-3 ms-1 border border-danger rounded bg-danger-subtle">
+            <p class="text-center m-0 mt-3 mb-2 fw-semibold lh-sm">Carbs<br>(incluye azucar)</p>
+            <h3 class="text-center text-danger fw-bold">{{ carbs }}g</h3>
+            <p class="text-center fw-semibold">por dia</p>
+        </div>
     </div>
 </div>
 {% endblock resultado %}
