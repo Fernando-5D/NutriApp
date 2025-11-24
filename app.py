@@ -48,10 +48,6 @@ def calIMC():
 def calIdeal():
     return render_template("calIdeal.html")
 
-
-
-
-
 @app.route("/resultIdeal", methods = ("GET", "POST"))
 def resultIdeal():
     if request.method == "POST":
