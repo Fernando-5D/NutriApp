@@ -1,0 +1,29 @@
+{% extends "calcMacros.html" %}
+
+{% block resultado %}
+<div>
+    <div class="border mx-2 my-4"></div>
+
+    <div class="row ms-1 mt-2">
+        <h5 class="col-11 p-0">Resultados del Calculo</h5>
+        <a class="col-1" href="/calcs/calcGct">
+            <button type="button" class="btn-close" aria-label="Close"></button>
+        </a>
+    </div>
+
+    <div class="ms-1 border border-warning rounded bg-warning-subtle">
+        <p class="text-center m-0 mt-2 fw-semibold">Proteinas</p>
+        <h3 class="text-center text-warning fw-bold">{{ proteinas }}</h3>
+    </div>
+
+    <div class="ms-1 border border-warning rounded bg-warning-subtle">
+        <p class="text-center m-0 mt-2 fw-semibold">Grasas</p>
+        <h3 class="text-center text-warning fw-bold">{{ grasas }}</h3>
+    </div>
+
+    <div class="ms-1 border border-warning rounded bg-warning-subtle">
+        <p class="text-center m-0 mt-2 fw-semibold">Carbs</p>
+        <h3 class="text-center text-warning fw-bold">{{ carbs }}</h3>
+    </div>
+</div>
+{% endblock resultado %}

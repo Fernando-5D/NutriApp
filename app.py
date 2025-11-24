@@ -106,6 +106,29 @@ def resultGct():
 @app.route("/calcs/calcMacros")
 def calcMacros():
     return render_template("calcMacros.html")
+
+@app.route("/calcs/calcMacros/result", methods = ("GET", "POST"))
+def resultMacros():
+    if request.method == "POST":
+        peso = float(request.form.get("peso"))
+        altura = float(request.form.get("altura"))
+        edad = float(request.form.get("edad"))
+        genero = float(request.form.get("genero"))
+        actFisica = request.form.get("actFisica")
+        proteinas = float(request.form.get("proteinas"))
+        grasas = float(request.form.get("grasas"))
+        carbs = float(request.form.get("carbs"))
+        
+        if actFisica == None:
+            flash("Selecciona tu nivel de actividad fisica", "danger")
+            return render_template("calcGct.html", peso=peso, altura=altura, edad=edad, genero=genero, actFisica=actFisica)
+        else:     
+            tmb = (10 * peso) + (6.25 * altura) - (5 * edad) + genero
+            gct = tmb * float(actFisica)
+            proteinas=(gct*(proteinas/100))/4
+            grasas=(gct*(grasas/100))/4
+            carbs=(gct*(carbs/100))/9
+            return render_template("resultGct.html", proteinas=proteinas, grasas=grasas, carbs=carbs)
     
 @app.route("/perfil")
 def perfil():

@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="row justify-content-center mt-4 mb-4 mx-5 px-5">
+    <div class="card mt-5 shadow-sm p-0" style="width: 625px;">
+        <div class="card-header" style="background-color: rgb(134, 238, 120);">
+            <h4 class="text-center text-light">Calculadora de Macronutrientes</h4>
+        </div>
+
+        <div class="card-body px-4 py-3">
+            <form class="form" action="/calcs/calcMacros/result" method="post">
+                <div class="row">
+                    <div class="col-4">
+                        <p class="m-0 mb-1 ms-1">Peso (kg)</p>
+                        <div class="ms-1">
+                            <input class="form-control" name="peso" type="number" minlength="1" step="any"
+                                value="{{ peso }}" required>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <p class="m-0 mb-1">Altura (cm)</p>
+                        <div class="">
+                            <input class="form-control" name="altura" type="number" minlength="1" step="any"
+                                value="{{ altura }}" required>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <p class="m-0 mb-1 me-1">Edad</p>
+                        <div class="me-1">
+                            <input class="form-control" name="edad" type="number" minlength="1" value="{{ edad }}"
+                                required>
+                        </div>
+                    </div>
+                </div>
+
+
+                <p class="m-0 mb-1 mt-3 ms-1">Género</p>
+                <div class="row">
+                    <div class="col row border rounded mx-0 ms-3 me-2 px-0">
+                        <p class="col-10 m-0 my-2">Hombre</p>
+                        <div class="col-2 m-0 my-2">
+                            <input class="form-radio" name="genero" type="radio" value="5" required {% if genero=="5"
+                                %}checked{% endif %}>
+                        </div>
+                    </div>
+
+                    <div class="col row border rounded mx-0 me-3 ms-2 px-0">
+                        <p class="col-10 m-0 my-2">Mujer</p>
+                        <div class="col-2 m-0 my-2">
+                            <input class="form-radio" name="genero" type="radio" value="-161" required {% if
+                                genero=="-161" %}checked{% endif %}>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="m-0 mb-1 mt-3 ms-1">Nivel de Actividad</p>
+                <div class="mx-1">
+                    <select class="form-select" name="actFisica" required>
+                        <option selected disabled>Selecciona una opción</option>
+                        <option value="1.2" {% if actFisica=="1.2" %}selected{% endif %}>Sedentario</option>
+                        <option value="1.375" {% if actFisica=="1.375" %}selected{% endif %}>Actividad Ligera</option>
+                        <option value="1.55" {% if actFisica=="1.55" %}selected{% endif %}>Actividad Moderada</option>
+                        <option value="1.725" {% if actFisica=="1.725" %}selected{% endif %}>Actividad Alta</option>
+                    </select>
+                </div>
+
+                <p class="m-0 mb-1 mt-3 ms-1">Porcentaje de Macros</p>
+                <div class="row">
+                    <div class="col row border rounded-2 p-0 ms-3 me-2">
+                        <p class="col-5 mt-1">Proteinas:</p>
+                        <p class="col-1">%</p>
+                        <input type="number" class="col-5" minlength="10" maxlength="35" name="proteinas">
+                    </div>
+                    <div class="col row border rounded-2 p-0 mx-3">
+                        <p class="col-5 mt-1">Grasas:</p>
+                        <p class="col-1">%</p>
+                        <input type="number" class="col-5" minlength="20" maxlength="35" name="grasas">
+                    </div>
+                    <div class="col row border rounded-2 p-0 me-3 ms-2">
+                        <p class="col-5 mt-1">Carbs:</p>
+                        <p class="col-1">%</p>
+                        <input type="number" class="col-5" minlength="45" maxlength="65" name="carbs">
+                    </div>
+                </div>
+
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-danger alert-dismissible fade show mt-3 mx-1" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+
+                <div class="row px-3 mt-2">
+                    <button type="submit" class="btn text-light fw-semibold mt-3"
+                        style="background-color: rgb(134, 238, 120);">Calcular</button>
+                </div>
+            </form>
+
+            {% block resultado %}
+            {% endblock resultado %}
+        </div>
+    </div>
+</div>
+{% endblock main %}
+
+{% block footer %}
+{% endblock footer %}
