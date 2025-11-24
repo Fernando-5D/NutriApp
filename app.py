@@ -168,9 +168,9 @@ def resultMacros():
         else:     
             tmb = (10 * peso) + (6.25 * altura) - (5 * edad) + genero
             gct = tmb * float(actFisica)
-            proteinas=(gct*(proteinas/100))/4
-            grasas=(gct*(grasas/100))/4
-            carbs=(gct*(carbs/100))/9
+            proteinas = (gct * (proteinas / 100)) / 4
+            grasas = (gct * (grasas / 100)) / 4
+            carbs = (gct * (carbs / 100)) / 9
             return render_template("resultGct.html", proteinas=proteinas, grasas=grasas, carbs=carbs)
     
 @app.route("/perfil")
