@@ -85,7 +85,6 @@ def resultIMC():
     
     return render_template("calIMC.html",clasificacion=clasificacion, IMC=IMC)
 
-
 @app.route("/calcs/calcTmb")
 def calcTmb():
     if session.get("correo"):
