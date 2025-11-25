@@ -1,3 +1,4 @@
+# NO CORRERLO, esta incompleto y da errores
 # aviso nutrimental (azucares o sales altas en alimentos, productos o recetas)
 import requests
 from datetime import datetime, date
