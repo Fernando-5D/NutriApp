@@ -2,40 +2,37 @@
 import requests
 from datetime import datetime, date
 from flask_mysqldb import MySQL
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, request, flash, get_flashed_messages, redirect, url_for, session
 app = Flask(__name__)
-sql = MySQL(app)
+mysql = MySQL(app)
 
 app.config["SECRET_KEY"] = "nutrishelfporfavortreviñonecesitoexcentar"
 app.config["MYSQL_HOST"] = "localhost"
 app.config["MYSQL_USER"] = "root"
 app.config["MYSQL_PASSWORD"] = ""
 app.config["MYSQL_DB"] = "nutrishelf"
-usuarios = {}
+usuarios = {}   # < Borrar una vez adaptado a base de datos
 
-apiKey: "cdea8d91f93441d8a0332ff3ad59725d"
-hoy = date.today()
-nutridatoDiario = {
-    "texto": None,
-    "fecha": None
-}
+apiKey = "cdea8d91f93441d8a0332ff3ad59725d"
+today = date.today()
 
 @app.route("/")
 def inicio():    
     if session.get("correo"):
-        if nutridatoDiario["fecha"] != hoy:
-            trivia = requests.get("https://api.spoonacular.com/food/trivia/random", params={"apiKey": apiKey})
-            if trivia.status_code == 200:
-                trivia = trivia.json()
-                nutridatoDiario["texto"] = trivia["text"]
-                nutridatoDiario["fecha"] = hoy
+        # if nutridatoDiario["fecha"] != today:
+            # trivia = requests.get("https://api.spoonacular.com/food/trivia/random", params={"apiKey": apiKey})
+            # if trivia.status_code == 200:
+                # trivia = trivia.json()
+                # nutridatoDiario["texto"] = trivia["text"]
+                # nutridatoDiario["fecha"] = today
                 
         cumple = False
         fechaNacim = datetime.strptime(session.get("fechaNacim"), '%Y-%m-%d').date()
-        if hoy.month == fechaNacim.month and hoy.day == fechaNacim.day:
+        if today.month == fechaNacim.month and today.day == fechaNacim.day:
             cumple = True
             
-        return render_template("inicio.html", nutridato=nutridatoDiario["texto"], cumple=cumple)
+        return render_template("inicio.html", cumple=cumple)
     else:
         return render_template("intro.html")
     
@@ -58,10 +55,10 @@ def resultIdeal():
         altura = float(request.form.get("altura"))
         genero = request.form.get("genero")
 
-        if genero == 5:
-           peso = (altura - 100) - (altura-150)/4
+        if genero == 'H':
+           peso = (altura - 100) - (altura - 150) / 4
         else:
-           peso = (altura - 100) - (altura-150)/2.5
+           peso = (altura - 100) - (altura - 150) / 2.5
     
         
     return render_template("calIdeal.html",pesIdeal=peso)
@@ -71,7 +68,7 @@ def resultIMC():
     if request.method == "POST":
         peso = float(request.form.get("peso"))
         altura = float(request.form.get("altura"))
-        IMC=round(peso / (altura * altura), 1)
+        IMC = round(peso / (altura * altura), 1)
 
         if IMC<18.5:
             clasificacion="Bajo peso"
@@ -96,8 +93,8 @@ def calcTmb():
         fechaNacim = datetime.strptime(session.get("fechaNacim"), "%Y-%m-%d").date()
         genero = session.get("genero")
         
-        edad = hoy.year - fechaNacim.year
-        if (hoy.month, hoy.day) < (fechaNacim.month, fechaNacim.day):
+        edad = today.year - fechaNacim.year
+        if (today.month, today.day) < (fechaNacim.month, fechaNacim.day):
             edad -= 1
         
         return render_template("calcTmb.html", peso=peso, altura=altura, edad=edad, genero=genero)
@@ -109,9 +106,9 @@ def resultTmb():
         peso = float(request.form.get("peso"))
         altura = float(request.form.get("altura"))
         edad = float(request.form.get("edad"))
-        genero = float(request.form.get("genero"))
+        genero = request.form.get("genero")
             
-        tmb = (10 * peso) + (6.25 * altura) - (5 * edad) + genero
+        tmb = (10 * peso) + (6.25 * altura) - (5 * edad) + (5 if genero == 'H' else -161)
         return render_template("resultTmb.html", tmb=tmb)
     
 @app.route("/calcs/calcGct")
@@ -123,8 +120,8 @@ def calcGct():
         genero = session.get("genero")
         actFisica = session.get("actFisica")
         
-        edad = hoy.year - fechaNacim.year
-        if (hoy.month, hoy.day) < (fechaNacim.month, fechaNacim.day):
+        edad = today.year - fechaNacim.year
+        if (today.month, today.day) < (fechaNacim.month, fechaNacim.day):
             edad -= 1
         
         return render_template("calcGct.html", peso=peso, altura=altura, edad=edad, genero=genero, actFisica=actFisica)
@@ -143,7 +140,7 @@ def resultGct():
             flash("Selecciona tu nivel de actividad fisica", "danger")
             return render_template("calcGct.html", peso=peso, altura=altura, edad=edad, genero=genero, actFisica=actFisica)
         else:     
-            tmb = (10 * peso) + (6.25 * altura) - (5 * edad) + genero
+            tmb = (10 * peso) + (6.25 * altura) - (5 * edad) + (5 if genero == 'H' else -161)
             gct = tmb * float(actFisica)
             return render_template("resultGct.html", gct=gct)
 
@@ -158,7 +155,7 @@ def resultMacros():
         peso = float(request.form.get("peso"))
         altura = float(request.form.get("altura"))
         edad = float(request.form.get("edad"))
-        genero = float(request.form.get("genero"))
+        genero = request.form.get("genero")
         actFisica = request.form.get("actFisica")
         proteinas = float(request.form.get("proteinas"))
         grasas = float(request.form.get("grasas"))
@@ -175,7 +172,7 @@ def resultMacros():
                 flash(err, "danger")
             return render_template("calcMacros.html", peso=peso, altura=altura, edad=edad, genero=genero, actFisica=actFisica)
         else:     
-            tmb = (10 * peso) + (6.25 * altura) - (5 * edad) + genero
+            tmb = (10 * peso) + (6.25 * altura) - (5 * edad) + (5 if genero == 'H' else -161)
             gct = tmb * float(actFisica)
             proteinas = round((gct * (proteinas / 100)) / 4, 1)
             grasas = round((gct * (grasas / 100)) / 4, 1)
@@ -220,12 +217,12 @@ def perfil():
     elif actFisica == "1.725":
         actFisica = "Actividad Alta"
     
-    if genero == "5":
+    if genero == 'H':
         genero = "Hombre"
-    elif genero == "-161":
+    else:
         genero = "Mujer"
 
-    return render_template("perfil.html", nombre = nombre,  genero = genero, fechaNacim=fechaNacim , peso=peso, altura=altura, correo = correo, actFisica=actFisica)
+    return render_template("perfil.html", nombre=nombre,  genero=genero, fechaNacim=fechaNacim , peso=peso, altura=altura, correo = correo, actFisica=actFisica)
 
 @app.route("/perfil/editar")
 def editarPerfil():
@@ -328,7 +325,7 @@ def registrando():
         passw = request.form.get("passw")
         passwC = request.form.get("passwC")
         
-        if fechaNacim > hoy:
+        if fechaNacim > today:
             error.append("La fecha no puede ser futura")
         
         if not actFisica:
