@@ -1,10 +1,16 @@
 # aviso nutrimental (azucares o sales altas en alimentos, productos o recetas)
 import requests
 from datetime import datetime, date
+from flask_mysqldb import MySQL
 from flask import Flask, render_template, request, flash, get_flashed_messages, redirect, url_for, session
 app = Flask(__name__)
+sql = MySQL(app)
 
 app.config["SECRET_KEY"] = "nutrishelfporfavortreviñonecesitoexcentar"
+app.config["MYSQL_HOST"] = "localhost"
+app.config["MYSQL_USER"] = "root"
+app.config["MYSQL_PASSWORD"] = ""
+app.config["MYSQL_DB"] = "nutrishelf"
 usuarios = {}
 
 params = {
