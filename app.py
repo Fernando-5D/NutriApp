@@ -13,10 +13,7 @@ app.config["MYSQL_PASSWORD"] = ""
 app.config["MYSQL_DB"] = "nutrishelf"
 usuarios = {}
 
-params = {
-    "apiKey": "cdea8d91f93441d8a0332ff3ad59725d"
-}
-
+apiKey: "cdea8d91f93441d8a0332ff3ad59725d"
 hoy = date.today()
 nutridatoDiario = {
     "texto": None,
@@ -27,7 +24,7 @@ nutridatoDiario = {
 def inicio():    
     if session.get("correo"):
         if nutridatoDiario["fecha"] != hoy:
-            trivia = requests.get("https://api.spoonacular.com/food/trivia/random", params=params)
+            trivia = requests.get("https://api.spoonacular.com/food/trivia/random", params={"apiKey": apiKey})
             if trivia.status_code == 200:
                 trivia = trivia.json()
                 nutridatoDiario["texto"] = trivia["text"]
