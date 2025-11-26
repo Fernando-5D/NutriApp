@@ -46,25 +46,25 @@ def crear_tabla_users():
 
 def email_existe(correo):
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT correo FROM usuarios WHERE correo=%s", (correo,))
+    cursor.execute("SELECT correo FROM nutrishelf WHERE correo=%s", (correo,))
     return cursor.fetchone() is not None
 
 
 def obtener_usuario_por_email(correo):
  try:
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM usuarios WHERE correo=%s", (correo,))
+    cursor.execute("SELECT * FROM nutrishelf WHERE correo=%s", (correo,))
     return cursor.fetchone()  
  except Exception as e:
     print(f"Error obteniendo usuario: {e}")
     return None
 
-def registrar_usuario(nombre, genero, fechaNacim, actFisica, peso, altura, correo, passw, passwC):
+def registrar_usuario(nombre, genero, fechaNacim, actFisica, peso, altura, correo, passw):
     try:
         cursor = mysql.connection.cursor()
         hashed = generate_password_hash(passw)
         cursor.execute(
-            '''INSERT INTO usuarios(nombre, genero, fechaNacim, actFisica, peso, altura, correo, passw,passwC)
+            '''INSERT INTO nutrishelf(nombre, genero, fechaNacim, actFisica, peso, altura, correo, passw,passwC)
                VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)''',
             (nombre, genero, fechaNacim, actFisica, peso, altura, correo, hashed,passwC)
         )
@@ -79,7 +79,7 @@ def registrar_usuario(nombre, genero, fechaNacim, actFisica, peso, altura, corre
 def actualizar_usuario_por_correo(correo, nombre, genero, fechaNacim, actFisica, peso, altura):
     try:
         cursor = mysql.connection.cursor()
-        cursor.execute('''UPDATE usuarios
+        cursor.execute('''UPDATE nutrishelf
                           SET nombre=%s, genero=%s, fechaNacim=%s, actFisica=%s, peso=%s, altura=%s
                           WHERE correo=%s''',
                        (nombre, genero, fechaNacim, actFisica, peso, altura, correo))
@@ -92,7 +92,7 @@ def actualizar_usuario_por_correo(correo, nombre, genero, fechaNacim, actFisica,
 def eliminar_usuario_por_correo(correo):
     try:
         cursor = mysql.connection.cursor()
-        cursor.execute("DELETE FROM usuarios WHERE correo=%s", (correo,))
+        cursor.execute("DELETE FROM nutrishelf WHERE correo=%s", (correo,))
         mysql.connection.commit()
         return True, "Tu cuenta ha sido eliminada exitosamente."
     except Exception as e:
@@ -342,3 +342,4 @@ def registrando():
         return redirect(url_for("sesion")) if ok else render_template("registro.html")
 
 if __name__ == "__main__": app.run(debug=True)
+
