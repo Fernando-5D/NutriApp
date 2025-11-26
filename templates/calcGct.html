@@ -41,7 +41,7 @@
                     <div class="col row border rounded mx-0 ms-3 me-2 px-0">
                         <p class="col-10 m-0 my-2">Hombre</p>
                         <div class="col-2 m-0 my-2">
-                            <input class="form-radio" name="genero" type="radio" value="5" required {% if genero=="5"
+                            <input class="form-radio" name="genero" type="radio" value="5" required {% if genero=="H"
                                 %}checked{% endif %}>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                         <p class="col-10 m-0 my-2">Mujer</p>
                         <div class="col-2 m-0 my-2">
                             <input class="form-radio" name="genero" type="radio" value="-161" required {% if
-                                genero=="-161" %}checked{% endif %}>
+                                genero=="M" %}checked{% endif %}>
                         </div>
                     </div>
                 </div>
@@ -59,10 +59,10 @@
                 <div class="mx-1">
                     <select class="form-select" name="actFisica" required>
                         <option selected disabled>Selecciona una opción</option>
-                        <option value="1.2" {% if actFisica=="1.2" %}selected{% endif %}>Sedentario</option>
-                        <option value="1.375" {% if actFisica=="1.375" %}selected{% endif %}>Actividad Ligera</option>
-                        <option value="1.55" {% if actFisica=="1.55" %}selected{% endif %}>Actividad Moderada</option>
-                        <option value="1.725" {% if actFisica=="1.725" %}selected{% endif %}>Actividad Alta</option>
+                        <option value="1.2" {% if actFisica=="sedentario" %}selected{% endif %}>Sedentario</option>
+                        <option value="1.375" {% if actFisica=="ligera" %}selected{% endif %}>Actividad Ligera</option>
+                        <option value="1.55" {% if actFisica=="moderada" %}selected{% endif %}>Actividad Moderada</option>
+                        <option value="1.725" {% if actFisica=="alta" %}selected{% endif %}>Actividad Alta</option>
                     </select>
                 </div>
 
