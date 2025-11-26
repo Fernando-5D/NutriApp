@@ -6,6 +6,7 @@ from datetime import datetime, date
 from flask_mysqldb import MySQL
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, request, flash, get_flashed_messages, redirect, url_for, session
+
 app = Flask(__name__)
 mysql = MySQL(app)
 
