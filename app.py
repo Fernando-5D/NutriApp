@@ -126,7 +126,19 @@ def recetas():
     if recetas.status_code == 200:
         recetas = recetas.json()
             
-    return render_template("recetas.html", recetas=recetas)
+    return render_template("recetas.html", recetas=recetas["results"])
+
+@app.route("/ingredientes")
+def calcs(): return render_template("ingredientes.html")
+
+@app.route("//buscarIngredientes", methods=("GET","POST"))
+def calcs():
+    if request.method == "POST":
+        ingrediente = request.form.get("ingrediente")
+        ingredientes = requests.get(f"https://api.spoonacular.com/food/ingredients/search?query={ingrediente}&number=100", params={"apiKey": apiKey})
+        if ingredientes.status_code == 200:
+            ingredientes = ingredientes.json()
+            return render_template("ingredientesResults.html", ingredientes=ingredientes["results"])
 
 @app.route("/calcs")
 def calcs(): return render_template("calcs.html")
