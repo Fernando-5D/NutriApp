@@ -96,15 +96,20 @@ try:
 except:
     print("Advertencia: tabla usuarios no verificada.")
 
+nutridatoDiario = {
+    "texto": None, 
+    "fecha": None
+}
+
 @app.route("/")
 def inicio():    
     if session.get("correo"):
-        # if nutridatoDiario["fecha"] != today:
-            # trivia = requests.get("https://api.spoonacular.com/food/trivia/random", params={"apiKey": apiKey})
-            # if trivia.status_code == 200:
-                # trivia = trivia.json()
-                # nutridatoDiario["texto"] = trivia["text"]
-                # nutridatoDiario["fecha"] = today
+        if nutridatoDiario["fecha"] != today:
+            trivia = requests.get("https://api.spoonacular.com/food/trivia/random", params={"apiKey": apiKey})
+            if trivia.status_code == 200:
+                trivia = trivia.json()
+                nutridatoDiario["texto"] = trivia["text"]
+                nutridatoDiario["fecha"] = today
                 
         cumple = False
         fechaNacim = datetime.strptime(session.get("fechaNacim"), '%Y-%m-%d').date()
@@ -114,6 +119,15 @@ def inicio():
         return render_template("inicio.html", cumple=cumple)
     else:
         return render_template("intro.html")
+
+@app.route("/recetas")
+def recetas():
+    if nutridatoDiario["fecha"] != today:
+        recetas = requests.get("https://api.spoonacular.com/food/trivia/random?number=100", params={"apiKey": apiKey})
+        if recetas.status_code == 200:
+            recetas = recetas.json()
+            
+    return render_template("recetas.html", recetas=recetas)
 
 @app.route("/calcs")
 def calcs(): return render_template("calcs.html")
