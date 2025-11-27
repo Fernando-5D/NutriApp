@@ -141,6 +141,30 @@ def buscarIngredientes():
             ingredientes = ingredientes.json()
             return render_template("ingredientesResults.html", ingredientes=ingredientes)
 
+@app.route("/productos")
+def productos(): return render_template("productos.html")
+
+@app.route("/buscarproductos", methods=("GET","POST"))
+def buscarproductos():
+    if request.method == "POST":
+        producto = request.form.get("search")
+        productos = requests.get(f"https://api.spoonacular.com/food/products/suggest?query={producto}&number=100", params={"apiKey": apiKey})
+        if productos.status_code == 200:
+            productos = productos.json()
+            return render_template("productosResults.html", productos=productos["results"])
+        
+@app.route("/menus")
+def menus(): return render_template("menus.html")
+
+@app.route("/buscarmenus", methods=("GET","POST"))
+def buscarmenus():
+    if request.method == "POST":
+        menu = request.form.get("search")
+        menus = requests.get(f"https://api.spoonacular.com/food/menuItems/search?query={menu}&number=100", params={"apiKey": apiKey})
+        if menus.status_code == 200:
+            menus = menus.json()
+            return render_template("menusResults.html", menus=menus["menuItems"])
+
 @app.route("/calcs")
 def calcs(): return render_template("calcs.html")
 @app.route("/calcs/calIMC")
