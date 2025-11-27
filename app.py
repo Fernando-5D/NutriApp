@@ -167,8 +167,10 @@ def buscarmenus():
 
 @app.route("/calcs")
 def calcs(): return render_template("calcs.html")
+
 @app.route("/calcs/calIMC")
 def calIMC(): return render_template("calIMC.html")
+
 @app.route("/calcs/calIdeal")
 def calIdeal(): return render_template("calIdeal.html")
 
