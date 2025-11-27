@@ -58,11 +58,13 @@ def registrar_usuario(nombre, genero, fechaNacim, actFisica, peso, altura, corre
     try:
         cursor = mysql.connection.cursor()
         hashed = generate_password_hash(passw)
+        fecha_str = fechaNacim.strftime("%Y-%m-%d")
         cursor.execute(
             '''INSERT INTO usuarios(nombre, genero, fechaNacim, actFisica, peso, altura, correo, passw)
-               VALUES (%s,%s,%Y-%m-%d,%s,%.1f,%.1f,%s,%s)''',
-            (nombre, genero, fechaNacim, actFisica, peso, altura, correo, hashed)
+               VALUES (%s, %s, %s, %s, %s, %s, %s, %s)''',
+            (nombre, genero, fecha_str, actFisica, peso, altura, correo, hashed)
         )
+
         mysql.connection.commit()
         return True, f"Registrado con exito: {correo}"
     except Exception as e:
@@ -357,4 +359,5 @@ def registrando():
         return redirect(url_for("sesion")) if ok else render_template("registro.html")
 
 if __name__ == "__main__": app.run(debug=True)
+
 
