@@ -3,12 +3,12 @@
 
 import requests
 from datetime import datetime, date
-from flask_mysqldb import MySQL
+# from flask_mysqldb import MySQL
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, request, flash, get_flashed_messages, redirect, url_for, session
 
 app = Flask(__name__)
-mysql = MySQL(app)
+# mysql = MySQL(app)
 
 app.config["SECRET_KEY"] = "nutrishelfporfavortreviñonecesitoexcentar"
 app.config["MYSQL_HOST"] = "localhost"
@@ -122,23 +122,22 @@ def inicio():
 
 @app.route("/recetas")
 def recetas():
-    recetas = requests.get("https://api.spoonacular.com/food/trivia/random?number=100", params={"apiKey": apiKey})
+    recetas = requests.get("https://api.spoonacular.com/recipes/random?number=100", params={"apiKey": apiKey})
     if recetas.status_code == 200:
         recetas = recetas.json()
-            
-    return render_template("recetas.html", recetas=recetas["results"])
+        return render_template("recetas.html", recetas=recetas["recipes"])
 
 @app.route("/ingredientes")
-def calcs(): return render_template("ingredientes.html")
+def ingredientes(): return render_template("ingredientes.html")
 
-@app.route("//buscarIngredientes", methods=("GET","POST"))
-def calcs():
+@app.route("/buscarIngredientes", methods=("GET","POST"))
+def buscarIngredientes():
     if request.method == "POST":
-        ingrediente = request.form.get("ingrediente")
-        ingredientes = requests.get(f"https://api.spoonacular.com/food/ingredients/search?query={ingrediente}&number=100", params={"apiKey": apiKey})
+        ingrediente = request.form.get("search")
+        ingredientes = requests.get(f"https://api.spoonacular.com/food/ingredients/autocomplete?query={ingrediente}&number=100", params={"apiKey": apiKey})
         if ingredientes.status_code == 200:
             ingredientes = ingredientes.json()
-            return render_template("ingredientesResults.html", ingredientes=ingredientes["results"])
+            return render_template("ingredientesResults.html", ingredientes=ingredientes)
 
 @app.route("/calcs")
 def calcs(): return render_template("calcs.html")
