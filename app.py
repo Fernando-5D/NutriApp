@@ -122,10 +122,9 @@ def inicio():
 
 @app.route("/recetas")
 def recetas():
-    if nutridatoDiario["fecha"] != today:
-        recetas = requests.get("https://api.spoonacular.com/food/trivia/random?number=100", params={"apiKey": apiKey})
-        if recetas.status_code == 200:
-            recetas = recetas.json()
+    recetas = requests.get("https://api.spoonacular.com/food/trivia/random?number=100", params={"apiKey": apiKey})
+    if recetas.status_code == 200:
+        recetas = recetas.json()
             
     return render_template("recetas.html", recetas=recetas)
 
