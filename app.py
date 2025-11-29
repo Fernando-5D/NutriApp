@@ -1,8 +1,8 @@
 # aviso nutrimental (azucares o sales altas en alimentos, productos o recetas)
 
+import json
 import requests
 from datetime import datetime, date
-import json
 from flask_mysqldb import MySQL
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, request, flash, get_flashed_messages, redirect, url_for, session
