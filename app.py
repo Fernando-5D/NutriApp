@@ -1,14 +1,14 @@
-# NO CORRERLO, esta incompleto y da errores
 # aviso nutrimental (azucares o sales altas en alimentos, productos o recetas)
 
 import requests
 from datetime import datetime, date
-# from flask_mysqldb import MySQL
+import json
+from flask_mysqldb import MySQL
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, request, flash, get_flashed_messages, redirect, url_for, session
 
 app = Flask(__name__)
-# mysql = MySQL(app)
+mysql = MySQL(app)
 
 app.config["SECRET_KEY"] = "nutrishelfporfavortreviñonecesitoexcentar"
 app.config["MYSQL_HOST"] = "localhost"
@@ -24,7 +24,7 @@ def crear_tabla_users():
     try:
         cursor = mysql.connection.cursor()
         cursor.execute('''
-            CREATE TABLE IF NOT EXISTS users (
+            CREATE TABLE IF NOT EXISTS usuarios (
                 nombre VARCHAR(100),
                 genero CHAR(1),
                 fechaNacim DATE,
@@ -98,33 +98,36 @@ try:
 except:
     print("Advertencia: tabla usuarios no verificada.")
 
-nutridatoDiario = {
-    "texto": None, 
-    "fecha": None
-}
-
 @app.route("/")
 def inicio():    
     if session.get("correo"):
-        if nutridatoDiario["fecha"] != today:
-            trivia = requests.get("https://api.spoonacular.com/food/trivia/random", params={"apiKey": apiKey})
-            if trivia.status_code == 200:
-                trivia = trivia.json()
-                nutridatoDiario["texto"] = trivia["text"]
-                nutridatoDiario["fecha"] = today
-                
+        nutridato = None
+        try:
+            cursor = mysql.connection.cursor()
+            cursor.execute("SELECT fecha FROM respuestas_api WHERE nombre = \"nutridato\"")
+            if cursor.fetchone() != today:
+                trivia = requests.get("https://api.spoonacular.com/food/trivia/random", params={"apiKey": apiKey})
+                if trivia.status_code == 200:
+                    trivia = trivia.json()
+                    cursor.execute("INSERT INTO respuestas_api (nombre, data, fecha) VALUES (%s, %s, DATE(%s))", ("nutridato", trivia, str(today)))
+            
+            cursor.execute("SELECT data FROM respuestas_api WHERE nombre = \"nutridato\"")
+            nutridato = cursor.fetchone()
+        except Exception as e:
+            print(f"Error obteniendo usuario: {e}")
+    
         cumple = False
         fechaNacim = datetime.strptime(session.get("fechaNacim"), '%Y-%m-%d').date()
         if today.month == fechaNacim.month and today.day == fechaNacim.day:
             cumple = True
             
-        return render_template("inicio.html", cumple=cumple)
+        return render_template("inicio.html", cumple = cumple, nutridato = json.loads(nutridato))
     else:
         return render_template("intro.html")
 
 @app.route("/recetas")
 def recetas():
-    recetas = requests.get("https://api.spoonacular.com/recipes/random?number=100", params={"apiKey": apiKey})
+    recetas = requests.get("https://api.spoonacular.com/recipes/random?number=25", params={"apiKey": apiKey})
     if recetas.status_code == 200:
         recetas = recetas.json()
         return render_template("recetas.html", recetas=recetas["recipes"])
@@ -136,7 +139,7 @@ def ingredientes(): return render_template("ingredientes.html")
 def buscarIngredientes():
     if request.method == "POST":
         ingrediente = request.form.get("search")
-        ingredientes = requests.get(f"https://api.spoonacular.com/food/ingredients/autocomplete?query={ingrediente}&number=100", params={"apiKey": apiKey})
+        ingredientes = requests.get(f"https://api.spoonacular.com/food/ingredients/autocomplete?query={ingrediente}&number=25", params={"apiKey": apiKey})
         if ingredientes.status_code == 200:
             ingredientes = ingredientes.json()
             return render_template("ingredientesResults.html", ingredientes=ingredientes)
@@ -148,7 +151,7 @@ def productos(): return render_template("productos.html")
 def buscarproductos():
     if request.method == "POST":
         producto = request.form.get("search")
-        productos = requests.get(f"https://api.spoonacular.com/food/products/suggest?query={producto}&number=100", params={"apiKey": apiKey})
+        productos = requests.get(f"https://api.spoonacular.com/food/products/suggest?query={producto}&number=25", params={"apiKey": apiKey})
         if productos.status_code == 200:
             productos = productos.json()
             return render_template("productosResults.html", productos=productos["results"])
@@ -160,10 +163,15 @@ def menus(): return render_template("menus.html")
 def buscarmenus():
     if request.method == "POST":
         menu = request.form.get("search")
-        menus = requests.get(f"https://api.spoonacular.com/food/menuItems/search?query={menu}&number=100", params={"apiKey": apiKey})
+        menus = requests.get(f"https://api.spoonacular.com/food/menuItems/search?query={menu}&number=25", params={"apiKey": apiKey})
         if menus.status_code == 200:
             menus = menus.json()
             return render_template("menusResults.html", menus=menus["menuItems"])
+        
+refri = []
+@app.route("/refri")
+def refrigerador():
+    return render_template("refri.html", refri=refri)
 
 @app.route("/calcs")
 def calcs(): return render_template("calcs.html")

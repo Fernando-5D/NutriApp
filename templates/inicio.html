@@ -10,16 +10,16 @@
     </nav>
 
     <div class="mx-5 p-5">
-        <h5 class="text-center mb-5">Nutridato del Dia 💡: {{ nutridato }}</h5>
+        <h5 class="text-center mb-5">Nutridato del Dia 💡: {{ nutridato["text"] }}</h5>
         <div class="text-center">
             <h3>
                 {% if cumple %}
                 Feliz cumpleaños,
                 {% else %}
                     {% if session.get("genero") %}
-                        {% if session.get("genero") == "5" %}
+                        {% if session.get("genero") == "H" %}
                         Bienvenido,
-                        {% elif session.get("genero") == "-161" %}
+                        {% elif session.get("genero") == "M" %}
                         Bienvenida,
                         {% endif %}
                     {% endif %}
