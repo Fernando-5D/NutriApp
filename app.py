@@ -146,8 +146,6 @@ def inicio():
 def AnaPlatillo():
     return render_template("AnaPlatillo.html")
 
-
-
 @app.route("/recetas")
 def recetas():
     recetas = requests.get("https://api.spoonacular.com/recipes/random?number=25", params={"apiKey": apiKey})
