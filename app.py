@@ -142,6 +142,12 @@ def inicio():
     else:
         return render_template("intro.html")
 
+@app.route("/AnaPlatillo", methods=["GET"])
+def AnaPlatillo():
+    return render_template("AnaPlatillo.html")
+
+
+
 @app.route("/recetas")
 def recetas():
     recetas = requests.get("https://api.spoonacular.com/recipes/random?number=25", params={"apiKey": apiKey})
@@ -419,3 +425,5 @@ def registrando():
         return redirect(url_for("sesion")) if ok else render_template("registro.html")
 
 if __name__ == "__main__": app.run(debug=True)
+
+
