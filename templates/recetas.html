@@ -2,18 +2,39 @@
 
 {% block main %}
 <div class="m-5 p-5">
-    <h1>Recetas</h1>
-    <div class="mt-3 mb-5 row">
+    <h1 class="text-center">Recetas</h1>
+    <div class="mt-3 mb-5 mx-1 row">
         {% for receta in recetas %}
-        <div class="col-4 card">
+        <div class="col-4 card m-2 p-0" style="width: 270px;">
             <img src="{{ receta.image }}" class="card-img-top">
 
-            <div class="card-body mx-2 my-3">
+            <div class="card-body m-2 mb-3">
                 <h5 class="card-title">{{ receta.title }}</h5>
-                <p class="card-text">{{ receta.summary }}</p>
+
+                <form action="/receta" method="post">
+                    <input type="number" name="id" value="{{ receta.id }}" hidden>
+                    <button type="submit" class="btn mt-3 text-center text-light fw-semibold"
+                        style="background-color: rgb(140, 95, 65);">Ver receta</button>
+                </form>
             </div>
         </div>
         {% endfor %}
+    </div>
+
+    <div class="mt-3 d-flex justify-content-center">
+        <nav>
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link px-3 py-0 text-center text-light text-decoration-none fw-bold fs-2" href="{{ url_for('anteriorPag', offset=offset) }}" 
+                        style="background-color: rgb(94, 71, 57);" {% if not offset > 0 %}disabled{% endif %}><</a>
+                </li>
+
+                <li class="page-item">
+                    <a class="page-link px-3 py-0 text-center text-light text-decoration-none fw-bold fs-2" href="{{ url_for('siguientePag', offset=offset) }}"
+                        style="background-color: rgb(94, 71, 57);"  {% if not offset < 5224 %}disabled{% endif %}>></a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
 {% endblock main %}

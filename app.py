@@ -17,7 +17,7 @@ app.config["MYSQL_PASSWORD"] = ""
 app.config["MYSQL_DB"] = "nutrishelf"
 app.config["MYSQL_CURSORCLASS"] = "DictCursor"  
 
-apiKey = "093d5ebea6184a1b9f6158c9b9aebc34"
+apiKey = "f152c8001d0044c897f39599c43c79d0"
 today = date.today()
 
 def crear_tabla_users():
@@ -165,14 +165,30 @@ def analizarImagen():
         return render_template("AnaPlatillo.html", imagenAnali=imagenAnali)
     except Exception as e:
         return render_template("AnaPlatillo.html", error=(e))
-
-
-@app.route("/recetas")
-def recetas():
-    recetas = requests.get("https://api.spoonacular.com/recipes/random?number=25", params={"apiKey": apiKey})
+    
+@app.route("/recetas/<int:offset>")
+def recetas(offset):
+    params = {
+        "apiKey": apiKey,
+        "offset": offset
+    }
+    
+    recetas = requests.get("https://api.spoonacular.com/recipes/complexSearch?number=40", params=params)
     if recetas.status_code == 200:
         recetas = recetas.json()
-        return render_template("recetas.html", recetas=recetas["recipes"])
+        return render_template("recetas.html", recetas=recetas["results"], offset=offset)
+    
+@app.route("/siguientePag/<int:offset>")
+def siguientePag(offset):
+    if offset < 5224:
+        offset += 40
+    return redirect(url_for("recetas", offset=offset))
+
+@app.route("/anteriorPag/<int:offset>")
+def anteriorPag(offset):
+    if offset > 0:
+        offset -= 40
+    return redirect(url_for("recetas", offset=offset))
 
 @app.route("/ingredientes")
 def ingredientes(): return render_template("ingredientes.html")
