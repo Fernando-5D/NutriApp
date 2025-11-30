@@ -3,10 +3,10 @@
 
 <div class="mt-5 mb-5 text-center">
     <h1>Analizador de Platillos</h1>
-    <p>Pega una URL de imagen y obtén la clasificación del platillo.</p>
+    <h6>Pega una URL de imagen y obten la clasificación del platillo (puede llegar a fallar)</h6>
 </div>
 
-<div class="mx-5 rounded-4 p-5 row align-items-center shadow" style="background-color: black;">
+<div class="mx-5 rounded-4 p-5 row align-items-center" style="background-color: black;">
     <div class="col-7 text-light">
 
         <form action="/analizarImagen" method="POST" class="mt-3">
@@ -22,7 +22,7 @@
         {% if imagenAnali %}
         <div class="container mt-5 text-light">
 
-            <h1>Resultado del análisis</h1>
+            <h1>Resultados del analisis de tu imagen</h1>
         </h6>Los resultados pueden llegar a</h6>
             {% if imagenAnali.get("category") %}
                 <h1>Platillo detectado
@@ -32,10 +32,10 @@
 
 
             {% if imagenAnali.nutrition %}
-                <h3>Nutrición estimada:</h3>
+                <h3>Nutricion estimada (Puede llegar a fallar)</h3>
                 <h5>Calorias {{ imagenAnali.nutrition.calories.value }}</h5>
-                <h5>Grasa {{ imagenAnali.nutrition.fat.value }}</h5>
-                <h5>Proteína {{ imagenAnali.nutrition.protein.value }}</h5>
+                <h5>Grasas {{ imagenAnali.nutrition.fat.value }}</h5>
+                <h5>Proteinas {{ imagenAnali.nutrition.protein.value }}</h5>
                 <h5>Carbohidratos {{ imagenAnali.nutrition.carbs.value }}</h5>
             {% endif %}
 
