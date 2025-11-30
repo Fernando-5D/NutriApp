@@ -147,29 +147,6 @@ def AnaPlatillo():
     return render_template("AnaPlatillo.html")
 
 
-@app.route("/analizarImagen", methods=["POST"])
-def analizarImagen():
-    imagen = request.form.get("imagen")
-
-    if not imagen:
-        return render_template("AnaPlatillo.html", error="No se envió ninguna URL de imagen")
-    try:
-        response = requests.get(
-            "https://api.spoonacular.com/food/images/analyze",
-            params={ "imageUrl": imagen,   "apiKey": apiKey   }
-        )
-
-        if response.status_code != 200:
-            return render_template("AnaPlatillo.html")
-        imagenAnali = response.json()
-
-        return render_template("AnaPlatillo.html", imagenAnali=imagenAnali)
-    except Exception as e:
-        return render_template("AnaPlatillo.html", error=(e))
-
-
-
-
 
 @app.route("/recetas")
 def recetas():
@@ -448,4 +425,5 @@ def registrando():
         return redirect(url_for("sesion")) if ok else render_template("registro.html")
 
 if __name__ == "__main__": app.run(debug=True)
+
 
