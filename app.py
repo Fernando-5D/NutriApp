@@ -17,7 +17,7 @@ app.config["MYSQL_PASSWORD"] = ""
 app.config["MYSQL_DB"] = "nutrishelf"
 app.config["MYSQL_CURSORCLASS"] = "DictCursor"  
 
-apiKey = "aa8d1b33167b47deb39f92366dc1b9cd"
+apiKey = "093d5ebea6184a1b9f6158c9b9aebc34"
 today = date.today()
 
 def crear_tabla_users():
@@ -104,26 +104,41 @@ def inicio():
         nutridato = None
         try:
             cursor = mysql.connection.cursor()
-            cursor.execute("SELECT fecha FROM respuestas_api WHERE nombre = %s", ("nutridato",))
+            cursor.execute("SELECT data, fecha FROM respuestas_api WHERE nombre = %s", ("nutridato",))
             resp = cursor.fetchone()
-            if not resp or resp[0] != today:
+
+            fecha = resp["fecha"] if resp else None
+            data = resp["data"] if resp else None
+            
+            if fecha and isinstance(fecha, datetime):
+                fecha = fecha.date()
+
+            if fecha != today:
                 trivia = requests.get("https://api.spoonacular.com/food/trivia/random", params={"apiKey": apiKey})
                 if trivia.status_code == 200:
                     trivia = trivia.json()
-                    cursor.execute("INSERT INTO respuestas_api (nombre, data, fecha) VALUES (%s, %s, %s)", ("nutridato", json.dumps(trivia, ensure_ascii=False), str(today)))
+                    cursor.execute("""
+                        REPLACE INTO respuestas_api (nombre, data, fecha)
+                        VALUES (%s, %s, %s)
+                    """, ("nutridato", json.dumps(trivia, ensure_ascii=False), today.strftime("%Y-%m-%d")))
                     mysql.connection.commit()
-            
-            cursor.execute("SELECT data FROM respuestas_api WHERE nombre = %s", ("nutridato",))
-            nutridato = cursor.fetchone()
+
+                    data = json.dumps(trivia, ensure_ascii=False)
+
+            try:
+                nutridato = json.loads(data) if data else None
+            except Exception as e:
+                print(f"Error convirtiendo data a json: {e}")
+
         except Exception as e:
-            print(f"Error obteniendo usuario: {e}")
-    
+            print(f"Error obteniendo nutridato: {e}")
+
         cumple = False
         fechaNacim = datetime.strptime(session.get("fechaNacim"), '%Y-%m-%d').date()
         if today.month == fechaNacim.month and today.day == fechaNacim.day:
             cumple = True
             
-        return render_template("inicio.html", cumple = cumple, nutridato = json.loads(nutridato[0]))
+        return render_template("inicio.html", cumple=cumple, nutridato=nutridato)
     else:
         return render_template("intro.html")
 
@@ -265,31 +280,41 @@ def resultGct():
         return render_template("resultGct.html", gct=gct)
 
 @app.route("/calcs/calcMacros")
-def calcMacros(): return render_template("calcMacros.html")
+def calcMacros(): 
+    if session.get("correo"):
+        return render_template("calcMacros.html")
+    else:
+        return render_template("sesion.html")
 
 @app.route("/calcs/calcMacros/result", methods=["GET","POST"])
 def resultMacros():
-    error = []
-    if request.method == "POST":
-        peso = float(request.form.get("peso"))
-        altura = float(request.form.get("altura"))
-        edad = float(request.form.get("edad"))
-        genero = request.form.get("genero")
-        actFisica = request.form.get("actFisica")
-        proteinas = float(request.form.get("proteinas"))
-        grasas = float(request.form.get("grasas"))
-        carbs = float(request.form.get("carbs"))
-        if proteinas + grasas + carbs != 100:
-            error.append("La suma de los porcentajes de macronutrientes debe ser igual a 100%")
-        if error:
-            for e in error: flash(e,"danger")
-            return render_template("calcMacros.html")
-        tmb = (10*peso)+(6.25*altura)-(5*edad)+(5 if genero=='H' else -161)
-        gct = tmb * float(actFisica)
-        return render_template("resultMacros.html",
-                               proteinas=round((gct*(proteinas/100))/4,1),
-                               grasas=round((gct*(grasas/100))/4,1),
-                               carbs=round((gct*(carbs/100))/9,1))
+    if session.get("correo"):
+        error = []
+        if request.method == "POST":
+            peso = float(request.form.get("peso"))
+            altura = float(request.form.get("altura"))
+            edad = float(request.form.get("edad"))
+            genero = request.form.get("genero")
+            actFisica = request.form.get("actFisica")
+            proteinas = float(request.form.get("proteinas"))
+            grasas = float(request.form.get("grasas"))
+            carbs = float(request.form.get("carbs"))
+            
+            if proteinas + grasas + carbs != 100:
+                error.append("La suma de los porcentajes de macronutrientes debe ser igual a 100%")
+                
+            if error:
+                for e in error: flash(e,"danger")
+                return render_template("calcMacros.html")
+            else:
+                tmb = (10*peso)+(6.25*altura)-(5*edad)+(5 if genero=='H' else -161)
+                gct = tmb * float(actFisica)
+                proteinas=round((gct*(proteinas/100))/4,1)
+                grasas=round((gct*(grasas/100))/4,1)
+                carbs=round((gct*(carbs/100))/9,1)
+                return render_template("resultMacros.html", proteinas=proteinas, grasas=grasas, carbs=carbs)
+    else:
+        return render_template("sesion.html")
 
 @app.route("/perfil")
 def perfil():
