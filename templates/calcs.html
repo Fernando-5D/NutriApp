@@ -55,16 +55,21 @@
         </div>
     </div>
     
-    <div class="my-3 mx-5 rounded-4 p-5 row align-items-center" style="background-color: rgb(125, 199, 65);">
+     {% if not session.get("usuario") %}
+        <div></div>
+         {% else %}
+         <div class="my-3 mx-5 rounded-4 p-5 row align-items-center" style="background-color: rgb(68, 208, 123);">
         <div class="col-8">
             <h2 class="text-light fw-bold">Calculadora de Macronutrientes</h2>
             <p class="text-light fs-5">Conoce los nutrientes que necesitas en grandes cantidades para obtener energia y realizar funciones vitales.</p>
             <a href="/calcs/calcMacros" class="btn btn-dark fw-semibold mt-3 fs-5 text-decoration-none">Entrar</a>
         </div>
-
         <div class="col-4 text-center">
             <img src="static/img/macros.webp" style="width: 300px;" alt="bascula medica">
         </div>
+         {% endif %}
+    
     </div>
 </div>
 {% endblock main %}
+
