@@ -1,7 +1,72 @@
 {% extends "base.html" %}
 
 {% block main %}
-<div class="m-5 p-5">
-    
+<div class="m-5 mb-0 p-5">
+    <div class="mx-5">
+        <div class="card rounded-0 shadow">
+            <div class="card-body row">
+                <div class="col-5">
+                    <img src="{{ receta.image }}" style="width: 100%;">
+
+                    <div class="mt-1 align-content-center">
+                        <div class="d-flex flex-wrap justify-content-center">
+                            {% for diet in receta.diets %}
+                            <span class="flex-fill badge m-1 rounded-1 text-light text-capitalize fw-semibold fs-5"
+                                style="background-color: {{ colorD[diet] }};">
+                                {{ diet }}
+                            </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-7 align-content-center">
+                    <div class="row">
+                        <h3 class="col mb-3 fw-bold">{{ receta.title }}</h3>
+
+                        <div class="col-5 d-flex justify-content-end">
+                            {% for label in receta.labels %}
+                                {% if label.value %}
+                                <span class="badge text-light text-capitalize fw-semibold"
+                                    style="background-color: {{ colorL[label.name] }};">
+                                    {{ label.name }}
+                                </span>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <p>{{ receta.summary | safe }}</p>
+                </div>
+            </div>
+        </div>
+
+        <table class="mt-5 border" style="width: 100%;">
+            <thead>
+                <th class="bg-dark text-light text-center fw-bold">Calorías</th>
+                <th class="bg-dark text-light text-center fw-bold">Grasas</th>
+                <th class="bg-dark text-light text-center fw-bold">Grasas Saturadas</th>
+                <th class="bg-dark text-light text-center fw-bold">Carbohidratos</th>
+                <th class="bg-dark text-light text-center fw-bold">Carbohidratos Netos</th>
+                <th class="bg-dark text-light text-center fw-bold">Azucar</th>
+                <th class="bg-dark text-light text-center fw-bold">Colesterol</th>
+                <th class="bg-dark text-light text-center fw-bold">Sodio</th>
+                <th class="bg-dark text-light text-center fw-bold">Alcohol</th>
+                <th class="bg-dark text-light text-center fw-bold">% Alcohol</th>
+                <th class="bg-dark text-light text-center fw-bold">Protein</th>
+            </thead>
+
+            <thead>
+                {% for amount in receta.nutritionalInfo %}
+                <th class="text-center fw-semibold fs-5">{{ amount }}</th>
+                {% endfor %}
+            </thead>
+        </table>
+
+        <div class="mt-5">
+            <h4 class="fw-bold">Instrucciones</h4>
+            <p class="mt-2 fs-5">{{ receta.instructions | safe }}</p>
+        </div>
+    </div>
 </div>
 {% endblock main %}

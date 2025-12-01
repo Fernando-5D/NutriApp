@@ -17,8 +17,30 @@ app.config["MYSQL_PASSWORD"] = ""
 app.config["MYSQL_DB"] = "nutrishelf"
 app.config["MYSQL_CURSORCLASS"] = "DictCursor"  
 
-apiKey = "f152c8001d0044c897f39599c43c79d0"
+apiKey = "4575c0ddb8bd4b909ada67f0d6506675"
 today = date.today()
+
+colorDiets = {
+    "gluten free": "rgb(255, 165, 0)",
+    "dairy free": "rgb(255, 215, 0)",
+    "ketogenic": "rgb(255, 69, 0)",
+    "vegetarian": "rgb(34, 139, 34)",
+    "lacto vegetarian": "rgb(50, 205, 50)",
+    "ovo vegetarian": "rgb(0, 128, 0)",
+    "lacto ovo vegetarian": "rgb(50, 177, 50)",
+    "vegan": "rgb(0, 100, 0)",
+    "pescatarian": "rgb(70, 130, 180)",
+    "paleolithic": "rgb(160, 82, 45)",
+    "primal": "rgb(139, 69, 19)",
+    "low FODMAP": "rgb(218, 165, 32)",
+    "whole30": "rgb(205, 92, 92)"
+}
+
+colorLabels = {
+    "barato": "rgb(30, 144, 255)",
+    "popular": "rgb(65, 105, 225)",
+    "sostenible": "rgb(34, 139, 34)"
+}
 
 def crear_tabla_users():
     try:
@@ -199,43 +221,30 @@ def verReceta():
             resp = resp.json()
             receta = {
                 "image": resp["image"],
-                "title": resp["title"],
                 "diets": resp["diets"],
-                "summary": resp["summary"],
+                "title": resp["title"],
                 "labels": [
                     {
-                        "name": "Vegetariano",
-                        "value": resp["vegetarian"]
-                    },
-                    {
-                        "name": "Vegano",
-                        "value": resp["vegan"]
-                    },
-                    {
-                        "name": "Sin gluten",
-                        "value": resp["glutenFree"]
-                    },
-                    {
-                        "name": "Sin lacteos",
-                        "value": resp["dairyFree"]
-                    },
-                    {
-                        "name": "Barato",
+                        "name": "barato",
                         "value": resp["cheap"]
                     },
                     {
-                        "name": "Popular",
+                        "name": "popular",
                         "value": resp["veryPopular"]
                     },
                     {
-                        "name": "Sostenible",
+                        "name": "sostenible",
                         "value": resp["sustainable"]
                     },
                 ],
-                "nutritionalInfo": [],
+                "summary": resp["summary"],
+                "nutritionalInfo": [
+                    resp["nutrition"]["nutrients"][n]["amount"] for n in range(0, 11)
+                ],
                 "instructions": resp["instructions"]
             }
-            return render_template("receta.html", receta=receta)
+            
+            return render_template("receta.html", receta=receta, colorD=colorDiets, colorL=colorLabels)
     
 @app.route("/ingredientes")
 def ingredientes(): return render_template("ingredientes.html")
