@@ -190,6 +190,53 @@ def anteriorPag(offset):
         offset -= 40
     return redirect(url_for("recetas", offset=offset))
 
+@app.route("/verReceta", methods=("GET", "POST"))
+def verReceta():
+    if request.method == "POST":
+        idReceta = request.form.get("idReceta")
+        resp = requests.get(f"https://api.spoonacular.com/recipes/{idReceta}/information?includeNutrition=true", params={"apiKey": apiKey})
+        if resp.status_code == 200:
+            resp = resp.json()
+            receta = {
+                "image": resp["image"],
+                "title": resp["title"],
+                "diets": resp["diets"],
+                "summary": resp["summary"],
+                "labels": [
+                    {
+                        "name": "Vegetariano",
+                        "value": resp["vegetarian"]
+                    },
+                    {
+                        "name": "Vegano",
+                        "value": resp["vegan"]
+                    },
+                    {
+                        "name": "Sin gluten",
+                        "value": resp["glutenFree"]
+                    },
+                    {
+                        "name": "Sin lacteos",
+                        "value": resp["dairyFree"]
+                    },
+                    {
+                        "name": "Barato",
+                        "value": resp["cheap"]
+                    },
+                    {
+                        "name": "Popular",
+                        "value": resp["veryPopular"]
+                    },
+                    {
+                        "name": "Sostenible",
+                        "value": resp["sustainable"]
+                    },
+                ],
+                "nutritionalInfo": [],
+                "instructions": resp["instructions"]
+            }
+            return render_template("receta.html", receta=receta)
+    
 @app.route("/ingredientes")
 def ingredientes(): return render_template("ingredientes.html")
 

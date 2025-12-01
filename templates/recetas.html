@@ -11,8 +11,8 @@
             <div class="card-body m-2 mb-3">
                 <h5 class="card-title">{{ receta.title }}</h5>
 
-                <form action="/receta" method="post">
-                    <input type="number" name="id" value="{{ receta.id }}" hidden>
+                <form action="/verReceta" method="post">
+                    <input type="number" name="idReceta" value="{{ receta.id }}" hidden>
                     <button type="submit" class="btn mt-3 text-center text-light fw-semibold"
                         style="background-color: rgb(140, 95, 65);">Ver receta</button>
                 </form>
