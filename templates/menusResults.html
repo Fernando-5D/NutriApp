@@ -1,49 +1,20 @@
-{% extends "base.html" %}
-{% block main %}
+{% extends "menus.html" %}
+{% block result %}
+<div class="mt-3 mb-5 row">
+    {% for menu in menus %}
+<div class="col-4 card m-2 p-0 py-2" style="width: 245px;">
+        <img src="{{ menu.image }}" class="card-img-top">
+<div class="card-body m-2 mb-3">
+            <p>{{ menu.restaurantChain }}</p>
+<h5 class="card-title">{{ menu.title }}</h5>
 
-<div class="container mt-4 p-4">
-
-    <h1 class="text-center mb-4">Resultados de Menus</h1>
-
-    <a href="/menus" class="btn mb-3" style="background-color: rgb(94, 71, 57); color:white;"> buscar otra vez</a>
-    {% if menus %}
-
-        <div class="row">
-            {% for menu in menus %}
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div class="card h-100 shadow-sm">
-
-                    {% if menu.image %}
-                        <img src="{{ menu.image }}" class="card-img-top"
-                             style="height: 180px; object-fit: cover;">
-                    {% else %}
-                            <div class="text-white">Sin imagen</div>
-                    {% endif %}
-
-                    <div class="card-body d-flex flex-column">
-                        <h6 class="card-title">{{ menu.title }}</h6>
-
-                        {% if menu.restaurantChain %}
-                            <h6 class="mb-2">{{ menu.restaurantChain }}</h6>
-                        {% endif %}
-
-                        <form method="post" action="/verMenu" class="mt-auto">
-                            <input type="hidden" name="idMenu" value="{{ menu.id }}">
-                            <button type="submit" class="btn w-100 mt-2" style="background-color: rgb(140, 95, 65); color:white;">ver detalles
-                            </button>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-
-    {% elif not error %}
-        <div class="alert alert-warning">
-            nose encontraron nada para esta busqueda
-        </div>
-    {% endif %}
+            <form action="/verMenu" method="post">
+                <input type="number" name="idMenu" value="{{ menu.id }}" hidden>
+                <button type="submit" class="btn mt-3 text-center text-light fw-semibold"
+                    style="background-color: rgb(140, 95, 65);">Ver menu</button>
+            </form>
+         </div>
+    </div>
+    {% endfor %}
 </div>
-
-{% endblock %}
+{% endblock result %}
