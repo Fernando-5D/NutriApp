@@ -1,47 +1,82 @@
 {% extends "base.html" %}
 {% block main %}
 
-<div class="mt-5 mb-5 text-center">
-    <h1>Analizador de Platillos</h1>
-    <h6>Pega una URL de imagen y obten la clasificación del platillo (puede llegar a fallar)</h6>
-</div>
+<div class="container mt-5 mb-5">
 
-<div class="mx-5 rounded-4 p-5 row align-items-center" style="background-color: black;">
-    <div class="col-7 text-light">
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Analizador de Platillos</h1>
+        <h5>Pega una URL de imagen y obtén la clasificación del platillo</p>
+    </div>
 
-        <form action="/analizarImagen" method="POST" class="mt-3">
-            <input type="text" id="imagen" name="imagen" class="form-control mb-3" placeholder="Pegar aqui la URL de tu imagen" required>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
 
-            <button class="btn btn-light fw-semibold mt-2" type="submit"> Analizar Platillo </button>
-        </form>
+            <div class="card shadow-lg border-0 rounded-4" style="background:black;">
+                <div class="card-body p-5 text-light">
 
-        {% if error %}
-            <div class="alert alert-danger mt-4">{{ error }}</div>
-        {% endif %}
+                    <form action="/analizarImagen" method="POST">
+                        <h5 class="form-label fw-semibold">URL de la imagen</h5>
+                        <input type="text" id="imagen" name="imagen" 
+                               class="form-control form-control-lg mb-4 rounded-3" 
+                               placeholder="Pega aca la URL de tu imagen" required>
 
-        {% if imagenAnali %}
-        <div class="container mt-5 text-light">
+                        <div class="d-grid">
+                            <button class="btn btn-light fw-semibold rounded-3" type="submit">
+                                Analizar Platillo
+                            </button>
+                        </div>
+                    </form>
 
-            <h1>Resultados del analisis de tu imagen</h1>
-        </h6>Los resultados pueden llegar a</h6>
-            {% if imagenAnali.get("category") %}
-                <h1>Platillo detectado
-                    <h4>{{ imagenAnali.category.name }}</h4>
-                </h1>
-            {% endif %}
+                    {% if error %}
+                        <div class="alert alert-danger mt-4">{{ error }}</div>
+                    {% endif %}
 
+                </div>
+            </div>
 
-            {% if imagenAnali.nutrition %}
-                <h3>Nutricion estimada (Puede llegar a fallar)</h3>
-                <h5>Calorias {{ imagenAnali.nutrition.calories.value }}</h5>
-                <h5>Grasas {{ imagenAnali.nutrition.fat.value }}</h5>
-                <h5>Proteinas {{ imagenAnali.nutrition.protein.value }}</h5>
-                <h5>Carbohidratos {{ imagenAnali.nutrition.carbs.value }}</h5>
+            {% if imagenAnali %}
+            <div class="card shadow-lg border-0 rounded-4 mt-5">
+                <div class="card-body p-4">
+
+                    <h3 class="fw-bold mb-3">Resultados del análisis</h3>
+                    <p class="text-muted">Los resultados pueden llegar a fallar dependiendo de la imagen</p>
+
+                        <div class="mt-4">
+                            <h5 class="fw-semibold">Platillo detectado</h5>
+                            <p class="fs-4">{{ imagenAnali.category.name }}</p>
+                        </div>
+
+                    <div class="mt-4">
+                        <h5 class="fw-semibold mb-3">Nutricion calculada estimada(puede fallar)</h5>
+
+                        <div>
+                            <h6 class="d-flex justify-content-between">
+                                <h5>Calorías</h5>
+                                <h6>{{ imagenAnali.nutrition.calories.value }}</h6>
+                            </h6>
+                            <h6 class="d-flex justify-content-between">
+                                <h5>Grasas</h5>
+                                <h6>{{ imagenAnali.nutrition.fat.value }}</h6>
+                            </h6>
+                            <h6 class="d-flex justify-content-between">
+                                <h5>Proteínas</h5>
+                                <h6>{{ imagenAnali.nutrition.protein.value }}</h6>
+                            </h6>
+                            <h6 class="d-flex justify-content-between">
+                                <h5>Carbohidratos</h5>
+                                <h6>{{ imagenAnali.nutrition.carbs.value }}</h6>
+                            </h6>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
             {% endif %}
 
         </div>
-        {% endif %}
     </div>
+
 </div>
 
 {% endblock main %}
+
