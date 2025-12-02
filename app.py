@@ -164,9 +164,9 @@ def inicio():
     else:
         return render_template("intro.html")
 
-@app.route("/AnaPlatillo", methods=["GET"])
+@app.route("/analisisPlatillo", methods=["GET"])
 def AnaPlatillo():
-    return render_template("AnaPlatillo.html")
+    return render_template("analisisPlatillo.html")
 
 @app.route("/analizarImagen", methods=["POST"])
 def analizarImagen():
@@ -190,12 +190,13 @@ def analizarImagen():
     
 @app.route("/recetas/<int:offset>")
 def recetas(offset):
+    query = f"query={request.form.get("query")}&"
     params = {
         "apiKey": apiKey,
         "offset": offset
     }
     
-    recetas = requests.get("https://api.spoonacular.com/recipes/complexSearch?number=40", params=params)
+    recetas = requests.get(f"https://api.spoonacular.com/recipes/complexSearch?{query}number=40", params=params)
     if recetas.status_code == 200:
         recetas = recetas.json()
         return render_template("recetas.html", recetas=recetas["results"], offset=offset)
