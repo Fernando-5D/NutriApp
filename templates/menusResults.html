@@ -1,18 +1,22 @@
 {% extends "menus.html" %}
 
 {% block result %}
-<div class="mt-5">
-    <div class="mt-3 mb-5 row">
+<div class="mt-3 mb-5 row">
     {% for menu in menus %}
-    <div class="col-6 card">
+    <div class="col-4 card m-2 p-0 py-2" style="width: 245px;">
         <img src="{{ menu.image }}" class="card-img-top">
-        
-        <div class="card-body mx-2 my-3">
-            <h5 class="card-title">{{ menu.title }}</h5>
+
+        <div class="card-body m-2 mb-3">
             <p>{{ menu.restaurantChain }}</p>
-        </div>
+            <h5 class="card-title">{{ menu.title }}</h5>
+
+            <form action="/verMenu" method="post">
+                <input type="number" name="idMenu" value="{{ menu.id }}" hidden>
+                <button type="submit" class="btn mt-3 text-center text-light fw-semibold"
+                    style="background-color: rgb(140, 95, 65);">Ver menu</button>
+            </form>
+         </div>
     </div>
     {% endfor %}
-</div> 
 </div>
 {% endblock result %}

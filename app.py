@@ -17,7 +17,7 @@ app.config["MYSQL_PASSWORD"] = ""
 app.config["MYSQL_DB"] = "nutrishelf"
 app.config["MYSQL_CURSORCLASS"] = "DictCursor"  
 
-apiKey = "4575c0ddb8bd4b909ada67f0d6506675"
+apiKey = "6d1a8c1543f9402fa1dfe2301881d5d3"
 today = date.today()
 
 colorDiets = {
@@ -34,12 +34,6 @@ colorDiets = {
     "primal": "rgb(139, 69, 19)",
     "low FODMAP": "rgb(218, 165, 32)",
     "whole30": "rgb(205, 92, 92)"
-}
-
-colorLabels = {
-    "barato": "rgb(30, 144, 255)",
-    "popular": "rgb(65, 105, 225)",
-    "sostenible": "rgb(34, 139, 34)"
 }
 
 def crear_tabla_users():
@@ -190,13 +184,12 @@ def analizarImagen():
     
 @app.route("/recetas/<int:offset>")
 def recetas(offset):
-    query = f"query={request.form.get("query")}&"
     params = {
         "apiKey": apiKey,
         "offset": offset
     }
-    
-    recetas = requests.get(f"https://api.spoonacular.com/recipes/complexSearch?{query}number=40", params=params)
+        
+    recetas = requests.get(f"https://api.spoonacular.com/recipes/complexSearch?number=40&sort=healthiness", params=params)
     if recetas.status_code == 200:
         recetas = recetas.json()
         return render_template("recetas.html", recetas=recetas["results"], offset=offset)
@@ -224,20 +217,6 @@ def verReceta():
                 "image": resp["image"],
                 "diets": resp["diets"],
                 "title": resp["title"],
-                "labels": [
-                    {
-                        "name": "barato",
-                        "value": resp["cheap"]
-                    },
-                    {
-                        "name": "popular",
-                        "value": resp["veryPopular"]
-                    },
-                    {
-                        "name": "sostenible",
-                        "value": resp["sustainable"]
-                    },
-                ],
                 "summary": resp["summary"],
                 "nutritionalInfo": [
                     resp["nutrition"]["nutrients"][n]["amount"] for n in range(0, 11)
@@ -245,7 +224,7 @@ def verReceta():
                 "instructions": resp["instructions"]
             }
             
-            return render_template("receta.html", receta=receta, colorD=colorDiets, colorL=colorLabels)
+            return render_template("receta.html", receta=receta, color=colorDiets)
     
 @app.route("/ingredientes")
 def ingredientes(): return render_template("ingredientes.html")
@@ -277,8 +256,12 @@ def menus(): return render_template("menus.html")
 @app.route("/buscarmenus", methods=("GET","POST"))
 def buscarmenus():
     if request.method == "POST":
-        menu = request.form.get("search")
-        menus = requests.get(f"https://api.spoonacular.com/food/menuItems/search?query={menu}&number=25", params={"apiKey": apiKey})
+        query = request.form.get("query")
+        menus = requests.get(
+            f"https://api.spoonacular.com/food/menuItems/search?query={query}&number=100&minCalories=400&maxCalories=700&minCarbs=40&maxCarbs=90&minProtein=20&maxProtein=50&minFat=10&maxFat=30", 
+            params={"apiKey": apiKey}
+        )
+        
         if menus.status_code == 200:
             menus = menus.json()
             return render_template("menusResults.html", menus=menus["menuItems"])

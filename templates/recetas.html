@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block main %}
-<div class="m-5 p-5">
-    <nav class="nav justify-content-evenly py-3 mt-5" style="background-color: rgb(94, 71, 57);">
-        <a href="/recetas" class="nav-item text-light text-decoration-none fw-semibold fs-4">Recetas</a>
-        <a href="/menus" class="nav-item text-light text-decoration-none fw-semibold fs-4">Menus</a>
-    </nav>
-    
+<nav class="nav justify-content-evenly py-3 mt-5" style="background-color: rgb(94, 71, 57);">
+    <a href="/recetas/0" class="nav-item text-light text-decoration-none fw-semibold fs-4">Recetas</a>
+    <a href="/menus" class="nav-item text-light text-decoration-none fw-semibold fs-4">Menus</a>
+</nav>
+
+<div class="m-5 mt-2 p-5">
     <h1 class="text-center">Recetas</h1>
     <div class="mt-3 mb-5 mx-1 row">
         {% for receta in recetas %}

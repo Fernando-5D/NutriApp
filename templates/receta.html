@@ -12,7 +12,7 @@
                         <div class="d-flex flex-wrap justify-content-center">
                             {% for diet in receta.diets %}
                             <span class="flex-fill badge m-1 rounded-1 text-light text-capitalize fw-semibold fs-5"
-                                style="background-color: {{ colorD[diet] }};">
+                                style="background-color: {{ color[diet] }};">
                                 {{ diet }}
                             </span>
                             {% endfor %}
@@ -21,21 +21,7 @@
                 </div>
 
                 <div class="col-7 align-content-center">
-                    <div class="row">
-                        <h3 class="col mb-3 fw-bold">{{ receta.title }}</h3>
-
-                        <div class="col-5 d-flex justify-content-end">
-                            {% for label in receta.labels %}
-                                {% if label.value %}
-                                <span class="badge text-light text-capitalize fw-semibold"
-                                    style="background-color: {{ colorL[label.name] }};">
-                                    {{ label.name }}
-                                </span>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                    </div>
-
+                    <h3 class="mb-3 fw-bold">{{ receta.title }}</h3>
                     <p>{{ receta.summary | safe }}</p>
                 </div>
             </div>
