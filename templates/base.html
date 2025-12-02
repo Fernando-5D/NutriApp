@@ -19,13 +19,13 @@
         <a class="text-light fw-bold text-decoration-none fs-2" href="/">NutriShelf</a>
         <a href="/calcs" class="text-light fw-semibold text-decoration-none fs-5">Calculadoras</a>
       
-       {% if not session.get("usuario") %}
+       {% if not session.get("correo") %}
          <a></a>
        {% else %}
          <a href="/" class="text-light fw-semibold text-decoration-none fs-5">Mi Refrigerador</a>
        {% endif %}
 
-       {% if not session.get("usuario") %}
+       {% if not session.get("correo") %}
          <a></a>
        {% else %}
          <a href="/analisisPlatillo" class="text-light fw-semibold text-decoration-none fs-5">Analisis de Platillo</a>
@@ -73,3 +73,4 @@
 
 
 </html>
+
