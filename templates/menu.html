@@ -1,43 +1,37 @@
 {% extends "base.html" %}
+
 {% block main %}
+<div class="m-5 mb-0 p-5">
+    <div class="mx-5">
+        <div class="card rounded-0 shadow">
+            <div class="card-body row">
+                <img src="{{ menu.image }}" class="col-5" style="width: 45%;">
 
-<div class="container mt-4 p-4">
-    <div class="card shadow p-4">
+                <div class="col-6 align-content-center ms-5">
+                    <p>{{ menu.restaurantChain }}</p>
+                    <h3 class="mb-3 fw-bold">{{ menu.title }}</h3>
+                </div>
+ </div>
 
+        <table class="mt-5 border" style="width: 100%;">
+            <thead>
+                <th class="bg-dark text-light text-center fw-bold py-2">Calorías (kcal)</th>
+                <th class="bg-dark text-light text-center fw-bold py-2">Grasas (g)</th>
+                <th class="bg-dark text-light text-center fw-bold py-2">Grasas Saturadas (g)</th>
+                <th class="bg-dark text-light text-center fw-bold py-2">Carbohidratos (g)</th>
+                <th class="bg-dark text-light text-center fw-bold py-2">Carbohidratos Netos (g)</th>
+                <th class="bg-dark text-light text-center fw-bold py-2">Azucar (g)</th>
+                <th class="bg-dark text-light text-center fw-bold py-2">Colesterol (mg)</th>
+                <th class="bg-dark text-light text-center fw-bold py-2">Sodio (mg)</th>
+                <th class="bg-dark text-light text-center fw-bold py-2">Alcohol (g)</th>
+                <th class="bg-dark text-light text-center fw-bold py-2">% Alcohol</th>
+                <th class="bg-dark text-light text-center fw-bold py-2">Proteina (g)</th>
+            </thead>
+<thead>
+                {% for amount in menu.nutritionalInfo %}
+                <th class="text-center fw-semibold fs-5">{{ amount }}</th>
+                {% endfor %}
+            </thead>
+        </table>
+{% endblock main %}
 
-        {% if not menu %}
-          <h4>No se udo cargar el menu</h4>
-        {% else %}
-
-            <h2 class="fw-bold mb-4">{{ menu.title }}</h2>
-
-                <img src="{{ menu.image }}" class="img-fluid rounded mb-4" style="max-width: 400px;">
-            <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <h5>Restaurante</h5>
-                        <p class="fs-5">{{ menu.restaurantChain }}</p>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <h5>Porciones</h5>
-                        <h6 class="fs-5">
-                            {{ menu.servings.number }}
-                        </h6>
-                    </div>
-            </div>
-
-<div class="mb-4">
-    <h4>Informacion Nutricional</h4>
-
-    <div class="p-3">
-        <h6>Calorias: {{ menu.nutrition.calories }} kcal</h6>
-        <h6>Grasas: {{ menu.nutrition.fat }}</h6>
-        <h6>Proteinas: {{ menu.nutrition.protein }}</h6>
-        <h6>Carbohidratos: {{ menu.nutrition.carbs }}</h6>
-    </div>
-<a href="/menus" class="btn" style="background-color: rgb(94, 71, 57); color:white;"> Volver a buscar</a>
-</div>
-{% endif %}
-        {% endif %}
-    </div>
-</div>
-{% endblock %}
