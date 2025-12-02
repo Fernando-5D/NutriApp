@@ -256,7 +256,7 @@ def menus(): return render_template("menus.html")
 @app.route("/buscarmenus", methods=("GET","POST"))
 def buscarmenus():
     if request.method == "POST":
-        query = request.form.get("query")
+        query = request.form.get("search")
         menus = requests.get(
             f"https://api.spoonacular.com/food/menuItems/search?query={query}&number=100&minCalories=400&maxCalories=700&minCarbs=40&maxCarbs=90&minProtein=20&maxProtein=50&minFat=10&maxFat=30", 
             params={"apiKey": apiKey}
@@ -519,6 +519,7 @@ def registrando():
         return redirect(url_for("sesion")) if ok else render_template("registro.html")
 
 if __name__ == "__main__": app.run(debug=True)
+
 
 
 
