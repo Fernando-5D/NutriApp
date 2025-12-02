@@ -1,5 +1,3 @@
-# aviso nutrimental (azucares o sales altas en alimentos, productos o recetas)
-
 import json
 import requests
 from datetime import datetime, date
@@ -114,40 +112,20 @@ try:
 except:
     print("Advertencia: tabla usuarios no verificada.")
 
+nutridato = {
+    "texto": None,
+    "fecha": None
+}
+
 @app.route("/")
 def inicio():    
     if session.get("correo"):
-        nutridato = None
-        try:
-            cursor = mysql.connection.cursor()
-            cursor.execute("SELECT data, fecha FROM respuestas_api WHERE nombre = %s", ("nutridato",))
-            resp = cursor.fetchone()
-
-            fecha = resp["fecha"] if resp else None
-            data = resp["data"] if resp else None
-            
-            if fecha and isinstance(fecha, datetime):
-                fecha = fecha.date()
-
-            if fecha != today:
-                trivia = requests.get("https://api.spoonacular.com/food/trivia/random", params={"apiKey": apiKey})
-                if trivia.status_code == 200:
-                    trivia = trivia.json()
-                    cursor.execute("""
-                        REPLACE INTO respuestas_api (nombre, data, fecha)
-                        VALUES (%s, %s, %s)
-                    """, ("nutridato", json.dumps(trivia, ensure_ascii=False), today.strftime("%Y-%m-%d")))
-                    mysql.connection.commit()
-
-                    data = json.dumps(trivia, ensure_ascii=False)
-
-            try:
-                nutridato = json.loads(data) if data else None
-            except Exception as e:
-                print(f"Error convirtiendo data a json: {e}")
-
-        except Exception as e:
-            print(f"Error obteniendo nutridato: {e}")
+        if nutridato["fecha"] != today:
+            trivia = requests.get("https://api.spoonacular.com/food/trivia/random", params={"apiKey": apiKey})
+            if trivia.status_code == 200:
+                trivia = trivia.json()
+                nutridato["texto"] = trivia["text"]
+                nutridato["fecha"] = today
 
         cumple = False
         fechaNacim = datetime.strptime(session.get("fechaNacim"), '%Y-%m-%d').date()
@@ -221,34 +199,13 @@ def verReceta():
                 "nutritionalInfo": [
                     resp["nutrition"]["nutrients"][n]["amount"] for n in range(0, 11)
                 ],
+                "ingredients": [
+                    resp["extendedIngredients"][i]["original"] for i in range(len(resp["extendedIngredients"]))
+                ],
                 "instructions": resp["instructions"]
             }
             
             return render_template("receta.html", receta=receta, color=colorDiets)
-    
-@app.route("/ingredientes")
-def ingredientes(): return render_template("ingredientes.html")
-
-@app.route("/buscarIngredientes", methods=("GET","POST"))
-def buscarIngredientes():
-    if request.method == "POST":
-        ingrediente = request.form.get("search")
-        ingredientes = requests.get(f"https://api.spoonacular.com/food/ingredients/autocomplete?query={ingrediente}&number=25", params={"apiKey": apiKey})
-        if ingredientes.status_code == 200:
-            ingredientes = ingredientes.json()
-            return render_template("ingredientesResults.html", ingredientes=ingredientes)
-
-@app.route("/productos")
-def productos(): return render_template("productos.html")
-
-@app.route("/buscarproductos", methods=("GET","POST"))
-def buscarproductos():
-    if request.method == "POST":
-        producto = request.form.get("search")
-        productos = requests.get(f"https://api.spoonacular.com/food/products/suggest?query={producto}&number=25", params={"apiKey": apiKey})
-        if productos.status_code == 200:
-            productos = productos.json()
-            return render_template("productosResults.html", productos=productos["results"])
         
 @app.route("/menus")
 def menus(): return render_template("menus.html")
@@ -284,11 +241,6 @@ def verMenu():
             }
             
             return render_template("menu.html", menu=menu)
-
-refri = []
-@app.route("/refri")
-def refrigerador():
-    return render_template("refri.html", refri=refri)
 
 @app.route("/calcs")
 def calcs(): return render_template("calcs.html")
