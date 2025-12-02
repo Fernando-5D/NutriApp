@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="m-5 p-5">
+    <h1>Ingredientes</h1>
+    <form action="/buscarIngredientes" method="post">
+        <div class="row">
+            <input type="search" name="search" class="form-control col-9" placeholder="Buscar ingredientes" required>
+            <input type="submit" value="Buscar" class="btn btn-success col-2 ms-3">
+        </div>
+    </form>
+    
+    {% block result %}
+    {% endblock result %}
+</div>
+{% endblock main %}

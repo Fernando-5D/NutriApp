@@ -1,0 +1,13 @@
+{% extends "ingredientes.html" %}
+
+{% block result %}
+<div class="mt-3 mb-5 row">
+    {% for ingrediente in ingredientes %}
+    <div class="col-4 card">
+        <div class="card-body mx-2 my-3">
+            <h5 class="card-title">{{ ingrediente.name }}</h5>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock result %}

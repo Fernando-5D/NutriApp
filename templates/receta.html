@@ -53,8 +53,8 @@
             <h4 class="fw-bold">Ingredientes</h4>
             
             <div class="mt-2">
-                {% for i in ingredients %}
-                    <p class="ms-3 fs-5">{{ i }}</p>
+                {% for i in receta.ingredients %}
+                    <p class="m-0 fs-5">- {{ i }}</p>
                 {% endfor %}
             </div>
         </div>

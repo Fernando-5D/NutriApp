@@ -1,4 +1,3 @@
-import json
 import requests
 from datetime import datetime, date
 from flask_mysqldb import MySQL
@@ -167,7 +166,7 @@ def recetas(offset):
         "offset": offset
     }
         
-    recetas = requests.get(f"https://api.spoonacular.com/recipes/complexSearch?number=40&sort=healthiness", params=params)
+    recetas = requests.get(f"https://api.spoonacular.com/recipes/complexSearch?number=36&sort=healthiness", params=params)
     if recetas.status_code == 200:
         recetas = recetas.json()
         return render_template("recetas.html", recetas=recetas["results"], offset=offset)
@@ -408,7 +407,7 @@ def eliminarCuenta():
     ok,msg = eliminar_usuario_por_correo(correo)
     flash(msg, "success" if ok else "danger")
     if ok: session.clear()
-    return redirect(url_for("sesion"))
+    return redirect(url_for("inicio"))
 
 @app.route("/cerrarSes")
 def cerrarSes(): session.clear(); return redirect(url_for("sesion"))
