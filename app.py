@@ -17,7 +17,7 @@ app.config["MYSQL_PASSWORD"] = ""
 app.config["MYSQL_DB"] = "nutrishelf"
 app.config["MYSQL_CURSORCLASS"] = "DictCursor"  
 
-apiKey = "6d1a8c1543f9402fa1dfe2301881d5d3"
+apiKey = "3b1235d8ee9549b9bbce5e6b523a1db2"
 today = date.today()
 
 colorDiets = {
@@ -175,12 +175,12 @@ def analizarImagen():
         )
 
         if response.status_code != 200:
-            return render_template("AnaPlatillo.html")
+            return render_template("analisisPlatillo.html")
         imagenAnali = response.json()
 
-        return render_template("AnaPlatillo.html", imagenAnali=imagenAnali)
+        return render_template("analisisPlatillo.html", imagenAnali=imagenAnali)
     except Exception as e:
-        return render_template("AnaPlatillo.html", error=(e))
+        return render_template("analisisPlatillo.html", error=(e))
     
 @app.route("/recetas/<int:offset>")
 def recetas(offset):
@@ -265,7 +265,26 @@ def buscarmenus():
         if menus.status_code == 200:
             menus = menus.json()
             return render_template("menusResults.html", menus=menus["menuItems"])
-        
+
+@app.route("/verMenu", methods=("GET", "POST"))
+def verMenu():
+    if request.method == "POST":
+        imgMenu = request.form.get("imgMenu")
+        idMenu = request.form.get("idMenu")
+        resp = requests.get(f"https://api.spoonacular.com/food/menuItems/{idMenu}", params={"apiKey": apiKey})
+        if resp.status_code == 200:
+            resp = resp.json()
+            menu = {
+                "image": imgMenu,
+                "restaurantChain": resp["restaurantChain"],
+                "title": resp["title"],
+                "nutritionalInfo": [
+                    resp["nutrition"]["nutrients"][n]["amount"] for n in range(0, 11)
+                ]
+            }
+            
+            return render_template("menu.html", menu=menu)
+
 refri = []
 @app.route("/refri")
 def refrigerador():

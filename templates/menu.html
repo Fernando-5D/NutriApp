@@ -5,24 +5,11 @@
     <div class="mx-5">
         <div class="card rounded-0 shadow">
             <div class="card-body row">
-                <div class="col-5">
-                    <img src="{{ receta.image }}" style="width: 100%;">
+                <img src="{{ menu.image }}" class="col-5" style="width: 45%;">
 
-                    <div class="mt-1 align-content-center">
-                        <div class="d-flex flex-wrap justify-content-center">
-                            {% for diet in receta.diets %}
-                            <span class="flex-fill badge m-1 rounded-1 text-light text-capitalize fw-semibold fs-5"
-                                style="background-color: {{ color[diet] }};">
-                                {{ diet }}
-                            </span>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-7 align-content-center">
-                    <h3 class="mb-3 fw-bold">{{ receta.title }}</h3>
-                    <p>{{ receta.summary | safe }}</p>
+                <div class="col-6 align-content-center ms-5">
+                    <p>{{ menu.restaurantChain }}</p>
+                    <h3 class="mb-3 fw-bold">{{ menu.title }}</h3>
                 </div>
             </div>
         </div>
@@ -43,16 +30,11 @@
             </thead>
 
             <thead>
-                {% for amount in receta.nutritionalInfo %}
+                {% for amount in menu.nutritionalInfo %}
                 <th class="text-center fw-semibold fs-5">{{ amount }}</th>
                 {% endfor %}
             </thead>
         </table>
-
-        <div class="mt-5">
-            <h4 class="fw-bold">Instrucciones</h4>
-            <p class="mt-2 fs-5">{{ receta.instructions | safe }}</p>
-        </div>
     </div>
 </div>
 {% endblock main %}
