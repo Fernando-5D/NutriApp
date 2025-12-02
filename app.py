@@ -15,7 +15,7 @@ app.config["MYSQL_PASSWORD"] = ""
 app.config["MYSQL_DB"] = "nutrishelf"
 app.config["MYSQL_CURSORCLASS"] = "DictCursor"  
 
-apiKey = "3b1235d8ee9549b9bbce5e6b523a1db2"
+apiKey = "ca37fc599e394ee8a6efe586de735366"
 today = date.today()
 
 colorDiets = {
@@ -113,19 +113,19 @@ except:
     print("Advertencia: tabla usuarios no verificada.")
 
 nutridato = {
-    "texto": None,
-    "fecha": None
+    "text": None,
+    "date": None
 }
 
 @app.route("/")
 def inicio():    
     if session.get("correo"):
-        if nutridato["fecha"] != today:
+        if nutridato["date"] != today:
             trivia = requests.get("https://api.spoonacular.com/food/trivia/random", params={"apiKey": apiKey})
             if trivia.status_code == 200:
                 trivia = trivia.json()
-                nutridato["texto"] = trivia["text"]
-                nutridato["fecha"] = today
+                nutridato["text"] = trivia["text"]
+                nutridato["date"] = today
 
         cumple = False
         fechaNacim = datetime.strptime(session.get("fechaNacim"), '%Y-%m-%d').date()

@@ -50,6 +50,16 @@
         </table>
 
         <div class="mt-5">
+            <h4 class="fw-bold">Ingredientes</h4>
+            
+            <div class="mt-2">
+                {% for i in ingredients %}
+                    <p class="ms-3 fs-5">{{ i }}</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="mt-5">
             <h4 class="fw-bold">Instrucciones</h4>
             <p class="mt-2 fs-5">{{ receta.instructions | safe }}</p>
         </div>
