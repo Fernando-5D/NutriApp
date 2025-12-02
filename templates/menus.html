@@ -1,28 +1,20 @@
 {% extends "base.html" %}
-
 {% block main %}
-<nav class="nav justify-content-evenly mt-5 pt-4 pb-3" style="background-color: rgb(94, 71, 57);">
-    <a href="/recetas/0" class="nav-item text-light text-decoration-none fw-semibold fs-4">Recetas</a>
-    <a href="/menus" class="nav-item text-light text-decoration-none fw-semibold fs-4">Menus</a>
-</nav>
 
-<div class="m-5 mt-2 p-5">
-    <h1 class="text-center mb-3">Menus</h1>
-    <div class="mx-5 px-1 pb-2">
-        <form action="/buscarmenus" method="post" class="mx-2">
-            <div class="d-flex">
-                <input type="search" name="search" class="form-control flex-fill" placeholder="Buscar platillos de menus" required>
-                <button type="submit" class="btn ms-3" style="background-color: rgb(94, 71, 57);">
-                    <img src="static/img/buscador.png" style="width: 35px;">
-                </button>
-            </div>
-        </form>
+<div class="container mt-4 p-4">
+    <h1 class="text-center mb-4">Buscar menus</h1>
 
-        {% block result %}
-        <div class="justify-content-center align-content-center m-5 p-5">
-            <p class="text-center fs-2">Usa el buscador para encontrar platillos de menus saludables</p>
+    <form action="/buscarmenus" method="post" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Buscar menus ejemplo: pizza, burger, salad" required>
+            <button type="submit" class="btn" style="background-color: rgb(140, 95, 65); color: white;">  Buscar
+            </button>
         </div>
-        {% endblock result %}
+    </form>
+
+    <div class="text-center">
+        <p>Busca menus de restaurantes como pizza, hamburguesas, ensaladas</p>
     </div>
 </div>
-{% endblock main %}
+
+{% endblock %}
