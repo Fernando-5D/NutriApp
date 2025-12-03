@@ -404,9 +404,8 @@ def guardarCambiosPerfil():
 def eliminarCuenta():
     correo = session.get("correo")
     if not correo: return redirect(url_for("sesion"))
-    ok,msg = eliminar_usuario_por_correo(correo)
-    flash(msg, "success" if ok else "danger")
-    if ok: session.clear()
+    recibiendo = eliminar_usuario_por_correo(correo)
+    if recibiendo: session.clear()
     return redirect(url_for("inicio"))
 
 @app.route("/cerrarSes")
@@ -465,12 +464,9 @@ def registrando():
         if error:
             for e in error: flash(e,"danger")
             return render_template("registro.html")
-        ok,msg = registrar_usuario(nombre,genero,fechaNacim,actFisica,peso,altura,correo,passw)
-        flash(msg,"success" if ok else "danger")
-        return redirect(url_for("sesion")) if ok else render_template("registro.html")
+        recibiendo = registrar_usuario(nombre,genero,fechaNacim,actFisica,peso,altura,correo,passw)
+        return redirect(url_for("sesion")) if recibiendo else render_template("registro.html")
 
 if __name__ == "__main__": app.run(debug=True)
-
-
 
 
