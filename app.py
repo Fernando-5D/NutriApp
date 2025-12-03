@@ -393,9 +393,8 @@ def guardarCambiosPerfil():
         peso = request.form.get("peso")
         altura = request.form.get("altura")
         actFisica = request.form.get("actFisica")
-        ok,msg = actualizar_usuario_por_correo(correo,nombre,genero,fechaNacim,actFisica,peso,altura)
-        flash(msg, "success" if ok else "danger")
-        if ok:
+        recibiendo = actualizar_usuario_por_correo(correo,nombre,genero,fechaNacim,actFisica,peso,altura)
+        if recibiendo:
             session.update({"nombre":nombre,"genero":genero,"fechaNacim":fechaNacim,
                             "peso":peso,"altura":altura,"actFisica":actFisica})
         return redirect(url_for("perfil"))
@@ -468,5 +467,8 @@ def registrando():
         return redirect(url_for("sesion")) if recibiendo else render_template("registro.html")
 
 if __name__ == "__main__": app.run(debug=True)
+
+
+
 
 
