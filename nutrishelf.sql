@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Versión del servidor:         10.4.32-MariaDB - mariadb.org binary distribution
+-- Versión del servidor:         10.4.28-MariaDB - mariadb.org binary distribution
 -- SO del servidor:              Win64
--- HeidiSQL Versión:             12.13.0.7147
+-- HeidiSQL Versión:             12.11.0.7065
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 
 -- Volcando datos para la tabla nutrishelf.usuarios: ~1 rows (aproximadamente)
 REPLACE INTO `usuarios` (`nombre`, `genero`, `fechaNacim`, `actFisica`, `peso`, `altura`, `correo`, `passw`) VALUES
-	('Fernando', 'H', '2008-06-18', 'sedentario', 55, 180, 'fer@mail.com', 'scrypt:32768:8:1$lb979yQ8lBTSKyhK$6296539062cc14376b5f49d3257d9738e489bc6ae7de47015f5cc6b60111c673292a30ef9c204d19731401bb212c0029af0593a5e0674ef7ddb01642f6f3c65f');
+	('test', 'H', '2025-12-03', 'ligera', 65, 172, 'test@gmail.com', 'scrypt:32768:8:1$p0RTTeYv4eeLoab8$cf2724237af32de1a856ba2929621a0575a03f98d8dc70b88ed57575e1447f639f9df2196dc33ff586c6820fd78bf4bf94ec260687f5eeebc23d18cfeb51dbd6');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
